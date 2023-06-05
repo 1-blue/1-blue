@@ -1,67 +1,49 @@
-<section align="center">
-  <h2 style="text-align: center; margin: 0;">🛠️ Tech Stack 🛠️</h2>
-  <img src="https://img.shields.io/badge/HTML-orange?style=flat-square&logo=HTML5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS-blue?style=flat-square&logo=CSS3&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-yellow?style=flat-square&logo=JavaScript&logoColor=white" />
-  <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white" />
-</section>
+<img src="https://capsule-render.vercel.app/api?type=waving&section=header&height=200&color=timeGradient&text=FrontEnd%20Developer&fontSize=40&fontColor=FFFFFF&fontAlign=32&fontAlignY=36&animation=fadeIn&desc=1-blue&descSize=36&descAlign=86&descAlignY=36" style="width: 100%;" />
 
-<section align="center">
-  <img src="https://img.shields.io/badge/React.js-informational?style=flat-square&logo=React&logoColor=white" />
-  <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=Next.js&logoColor=white" />
-</section>
-  
-<section align="center">
-  <img src="https://img.shields.io/badge/TailwindCss-06B6D4?style=flat-square&logo=TailwindCss&logoColor=white" />
-  <img src="https://img.shields.io/badge/StyledComponents-DB7093?style=flat-square&logo=StyledComponents&logoColor=white" />
-</section>
-  
-<section align="center">
-  <img src="https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=Prisma&logoColor=white" />
-  <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=flat-square&logo=Sequelize&logoColor=white" />
-</section>
-  
-<section align="center">
-  <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white" />
-  <img src="https://img.shields.io/badge/ReduxSaga-999999?style=flat-square&logo=ReduxSaga&logoColor=white" />
-  <img src="https://img.shields.io/badge/SWR-818CF8?style=flat-square&logoColor=white" />
-</section>
-  
-<section align="center">
-  <img src="https://img.shields.io/badge/AWS_EC2-232F3E?style=flat-square&logo=AmazonAWS&logoColor=white" />
-  <img src="https://img.shields.io/badge/AWS_S3-569A31?style=flat-square&logo=AmazonS3&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=white" />
-</section>
+# 📱 Contact
 
-<br />
++ <a href="mailto:1-blue98@naver.com">1-blue98@naver.com</a>
++ <a href="tel:010-2103-8259">010-2103-8259</a>
++ [GitHub Blog](https://1-blue.github.io)
 
-<section align="center">
-  <h2 style="text-align: center; margin: 0;">👀 Contact 👀</h2>
-  <a href="https://velog.io/@1-blue">
-    <img src="https://img.shields.io/badge/Velog-20C997?style=flat-square&logo=Velog&logoColor=white&link=https://velog.io/@1-blue" />
-  </a>
-  <a href="https://trello.com/user81374892/boards">
-    <img src="https://img.shields.io/badge/Trello-0052CC?style=flat-square&logo=Trello&logoColor=white&link=https://trello.com/user81374892/boards" />
-  </a>
-  <a href="https://github.com/1-blue">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white&link=https://github.com/1-blue" />
-  </a>
-</section>
+# 🪄 Skill
 
-<br />
+## 🪛 Tool
+| Git | GitHub | GitBook | VSCode | SourceTree | Trello | Figma |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/git/F05032" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/github/181717" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/gitbook/3884FF" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/visualstudiocode/007ACC" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/sourcetree/0052CC" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/trello/0052CC" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="icon" width="75" height="75" /></div> |
 
-<section align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=1-blue&theme=midnight-purple&show_icons=true" />
-</section>
+## 📤 FrontEnd
+| React.js | Next.js | TailwindCss | Styled-Components | Redux-Toolkit | React-Query | StoryBook |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/styledcomponents/DB7093" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/redux/764ABC" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/reactquery/FF4154" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/storybook/FF4785" alt="icon" width="75" height="75" /></div> |
 
-<br />
+## 📥 BackEnd
+| Express | Prisma | Mysql | AWS-EC2 | AWS-RDS | AWS-S3 | JWT |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/express/000000" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/prisma/2D3748" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazonec2/FF9900" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazonrds/527FFF" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazons3/569A31" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/jsonwebtokens/000000" alt="icon" width="75" height="75" /></div> |
 
-<section align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=1-blue&layout=compact&theme=dark&langs_count=8" />
-</section>
+## ✂️ Common
+| HTML5 | CSS3 | JavaScript | TypeScript |
+| :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/css3/1572B6" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="icon" width="75" height="75" /></div> |
 
-<br />
+## ⏳ ETC
+> 사용만 해봐서 이해도가 낮은 기술
 
-<section align="center">
-  <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=1blue98" />
-</section>
+| Sequelize | Passport | Socket.io | Webpack | Nginx | Recoil | Zustand |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/sequelize/52B0E7" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/passport/34E27A" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/socketdotio/010101" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/nginx/009639" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;">Recoil</div> | <div style="display: flex; align-items: flex-start;">Zustand</div> |
+
+## 📌 앞으로 공부하고 싶은 기술
+1. Nest
+2. Spring
+3. AWS
+4. Animation
+
+# 👀 Status
+
+| <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=1-blue&layout=donut-vertical&bg_color=151515&text_color=fff&title_color=fff" /> | <img src="https://github-readme-stats.vercel.app/api?username=1-blue&theme=midnight-purple&show_icons=true" /> | <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=1blue98" /> |
+| :--: | :--: | :--: |
+
+<img src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=200&color=timeGradient&text=아무%20것도%20하지%20않을%20거면%20죽어%20버려&fontSize=30&fontColor=FFFFFF&fontAlign=50&fontAlignY=70&animation=fadeIn&desc=-환혼-&descSize=16&descAlign=83&descAlignY=88" style="width: 100%;" />
