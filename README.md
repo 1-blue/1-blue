@@ -1,10 +1,14 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&section=header&height=200&color=timeGradient&text=FrontEnd%20Developer&fontSize=40&fontColor=FFFFFF&fontAlign=32&fontAlignY=36&animation=fadeIn&desc=1-blue&descSize=36&descAlign=86&descAlignY=36" style="width: 100%;" />
 
+`TypeScript`와 `TailwindCss`를 좋아하는 프론트엔드 개발자 박상은입니다.<br />
+풀스택 개발자가 되는 것을 목표로 달리고 있습니다.<br />
+
 # 📱 Contact
 
 + <a href="mailto:1-blue98@naver.com">1-blue98@naver.com</a>
 + <a href="tel:010-2103-8259">010-2103-8259</a>
 + [GitHub Blog](https://1-blue.github.io)
++ [portfolio](https://bleportfolio.vercel.app)
 
 # 🪄 Skill
 
@@ -19,27 +23,21 @@
 | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/styledcomponents/DB7093" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/redux/764ABC" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/reactquery/FF4154" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/storybook/FF4785" alt="icon" width="75" height="75" /></div> |
 
 ## 📥 BackEnd
-| Express | Prisma | Mysql | AWS-EC2 | AWS-RDS | AWS-S3 | JWT |
-| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/express/000000" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/prisma/2D3748" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazonec2/FF9900" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazonrds/527FFF" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazons3/569A31" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/jsonwebtokens/000000" alt="icon" width="75" height="75" /></div> |
+| Express | Prisma | AWS-EC2 | AWS-S3 |
+| :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/express/000000" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/prisma/2D3748" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazonec2/FF9900" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/amazons3/569A31" alt="icon" width="75" height="75" /></div> |
 
 ## ✂️ Common
-| HTML5 | CSS3 | JavaScript | TypeScript |
-| :--: | :--: | :--: | :--: |
-| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/css3/1572B6" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="icon" width="75" height="75" /></div> |
+| HTML5 | CSS3 | JavaScript | TypeScript | JWT |
+| :--: | :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/css3/1572B6" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/jsonwebtokens/000000" alt="icon" width="75" height="75" /></div> |
 
 ## ⏳ ETC
-> 사용만 해봐서 이해도가 낮은 기술
+> 사용 경험만 있는 기술
 
-| Sequelize | Passport | Socket.io | Webpack | Nginx | Recoil | Zustand |
-| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/sequelize/52B0E7" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/passport/34E27A" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/socketdotio/010101" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/nginx/009639" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;">Recoil</div> | <div style="display: flex; align-items: flex-start;">Zustand</div> |
-
-## 📌 앞으로 공부하고 싶은 기술
-1. Nest
-2. Spring
-3. AWS
-4. Animation
+| Sequelize | Passport | Socket.io | Webpack | Nginx | Recoil | Zustand | Nest.js |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/sequelize/52B0E7" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/passport/34E27A" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/socketdotio/010101" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/nginx/009639" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/recoil/3578E5" alt="icon" width="75" height="75" /></div> | <div style="display: flex; align-items: flex-start;">Zustand</div> | <div style="display: flex; align-items: flex-start;"><img src="https://cdn.simpleicons.org/nestjs/E0234E" alt="icon" width="75" height="75" /></div> |
 
 # 👀 Status
 
