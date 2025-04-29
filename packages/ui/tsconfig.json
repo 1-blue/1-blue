@@ -1,0 +1,13 @@
+{
+  "extends": "@1-blue/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@1-blue/ui/*": ["./src/*"]
+    },
+    "module": "esnext",
+    "moduleResolution": "bundler"
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}
