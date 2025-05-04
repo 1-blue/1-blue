@@ -7,11 +7,11 @@ import { getChampionByName } from "#src/apis";
  */
 export async function GET(
   request: Request,
-  { params }: { params: { name: string } }
+  { params }: { params: Promise<{ name: string }> }
 ) {
   try {
     // URL 파라미터에서 챔피언 이름 추출
-    const { name } = params;
+    const { name } = await params;
     console.log(`'${name}' 챔피언 정보 요청 처리 중...`);
 
     // Riot API에서 챔피언 정보 가져오기
