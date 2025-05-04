@@ -1,5 +1,5 @@
 // src/lib/db/skins.ts
-import { supabase, type ChampionData } from "#src/apis";
+import { adminSupabase, type ChampionData } from "#src/apis";
 import { LOL_API_ENDPOINT, VERSION } from "#src/constants";
 
 interface SkinInsertData {
@@ -48,7 +48,7 @@ export async function saveChampionSkinsToDb(championData: ChampionData) {
     }));
 
     // upsert 방식으로 저장 (중복 방지 및 업데이트)
-    const { error } = await supabase
+    const { error } = await adminSupabase
       .schema("lol")
       .from("champion_skins")
       .upsert(skinData, {
@@ -64,7 +64,7 @@ export async function saveChampionSkinsToDb(championData: ChampionData) {
     // 더 이상 존재하지 않는 스킨 삭제
     const existingSkinIds = championData.skins.map((skin) => skin.id);
     if (existingSkinIds.length > 0) {
-      const { error: deleteError } = await supabase
+      const { error: deleteError } = await adminSupabase
         .schema("lol")
         .from("champion_skins")
         .delete()

@@ -1,5 +1,5 @@
 // src/lib/db/champions.ts
-import { supabase, type ChampionData } from "#src/apis";
+import { adminSupabase, type ChampionData } from "#src/apis";
 import { LOL_API_ENDPOINT, VERSION } from "#src/constants";
 
 /**
@@ -36,7 +36,7 @@ const saveChampionToDB = async (championData: ChampionData) => {
       version: VERSION,
     };
 
-    const { error, ...props } = await supabase
+    const { error, ...props } = await adminSupabase
       .schema("lol")
       .from("champions")
       .upsert(championInfo, {

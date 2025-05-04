@@ -1,4 +1,3 @@
-// src/lib/quiz/generator.ts
 import { supabase } from "#src/apis";
 
 /**

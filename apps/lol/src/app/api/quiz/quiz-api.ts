@@ -1,9 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
-
-// Supabase 클라이언트 초기화
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import { adminSupabase } from "#src/apis";
 
 // 퀴즈 타입 정의
 export type Quiz = {
@@ -27,7 +22,7 @@ export async function generateQuizzes(
 ): Promise<Quiz[]> {
   try {
     // 스킨 데이터를 가져온 후 클라이언트 측에서 랜덤하게 섞기
-    const { data, error } = await supabase
+    const { data, error } = await adminSupabase
       .schema("lol")
       .from("champion_skins")
       .select(
