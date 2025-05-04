@@ -6,10 +6,6 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const anon_key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 const service_role_key = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
-console.log("🚀 supabaseUrl >> ", supabaseUrl);
-console.log("🚀 anon_key >> ", anon_key.slice(0, 10));
-console.log("🚀 service_role_key >> ", service_role_key.slice(0, 10));
-
 // 클라이언트용 Supabase 인스턴스 (익명 키 사용)
 export const supabase = createClient(supabaseUrl, anon_key);
 
