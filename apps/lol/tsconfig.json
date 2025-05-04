@@ -3,8 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@1-blue/ui/*": ["../../packages/ui/src/*"]
+      "#src/*": ["./src/*"]
     },
     "plugins": [
       {

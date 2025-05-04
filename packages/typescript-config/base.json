@@ -11,14 +11,12 @@
     "module": "NodeNext",
     "moduleDetection": "force",
     "moduleResolution": "NodeNext",
-    "noUncheckedIndexedAccess": true,
+    "noUncheckedIndexedAccess": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022",
     "paths": {
-      "#server/*": ["../../apps/server/src/*"],
-      "#client/*": ["../../apps/client/src/*"],
       "#ui/*": ["../../packages/ui/src/*"]
     }
   }
