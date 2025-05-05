@@ -46,9 +46,13 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="flex justify-center">
-          <Button asChild variant="ghost">
+        <div className="flex justify-center mt-4">
+          <Button asChild variant="link">
             <Link href="/how-to-play">게임 방법 자세히 알아보기</Link>
+          </Button>
+
+          <Button asChild variant="link">
+            <Link href="/skins">스킨 갤러리 보기</Link>
           </Button>
         </div>
       </section>
