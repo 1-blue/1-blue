@@ -129,10 +129,10 @@ export const QuizProvider = ({
 
   // 게임 시작 시 시간 기록
   useEffect(() => {
-    if (quizzes.length > 0 && startTime === null) {
+    if (quizzes.length > 0 && startTime === null && !isLoading && !isGameOver) {
       setStartTime(Date.now());
     }
-  }, [quizzes, startTime]);
+  }, [quizzes, startTime, isLoading, isGameOver]);
 
   // 게임 종료 시 시간 계산
   useEffect(() => {

@@ -20,6 +20,10 @@ const GameResult = () => {
     setShowRankingForm(false);
   };
 
+  const handleRestartQuiz = () => {
+    window.location.reload();
+  };
+
   return (
     <motion.div
       className="flex flex-col items-center justify-center space-y-6 p-8"
@@ -68,10 +72,7 @@ const GameResult = () => {
           메인으로 돌아가기
         </Button>
 
-        <Button
-          onClick={() => router.push(`/game?type=${quizType}`)}
-          variant="default"
-        >
+        <Button onClick={handleRestartQuiz} variant="default">
           다시 시작하기
         </Button>
       </div>
