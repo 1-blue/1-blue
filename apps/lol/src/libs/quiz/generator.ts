@@ -1,4 +1,4 @@
-import { supabase } from "#src/apis";
+import { anonSupabase } from "#src/apis/annoSupabase";
 
 /**
  * 스킨 퀴즈 문제 타입
@@ -19,7 +19,7 @@ export interface SkinQuiz {
 export async function getRandomSkinQuiz(): Promise<SkinQuiz | null> {
   try {
     // 랜덤으로 스킨 데이터 가져오기
-    const { data, error } = await supabase
+    const { data, error } = await anonSupabase
       .schema("lol")
       .from("champion_skins")
       .select("*")
@@ -35,7 +35,7 @@ export async function getRandomSkinQuiz(): Promise<SkinQuiz | null> {
     const skinData = data[0];
 
     // 오답 옵션 가져오기
-    const { data: wrongOptions, error: wrongError } = await supabase
+    const { data: wrongOptions, error: wrongError } = await anonSupabase
       .schema("lol")
       .from("champion_skins")
       .select("champion_name")
@@ -63,7 +63,7 @@ export async function getRandomSkinQuiz(): Promise<SkinQuiz | null> {
       console.log(`오답 채우기 시도 ${attempts}/${MAX_ATTEMPTS}`);
 
       // 이전 쿼리보다 더 많은 데이터 요청
-      const { data: fallbackOptions, error: fallbackError } = await supabase
+      const { data: fallbackOptions, error: fallbackError } = await anonSupabase
         .schema("lol")
         .from("champion_skins")
         .select("champion_name")

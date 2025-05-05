@@ -1,5 +1,5 @@
-// src/lib/db/champions.ts
-import { adminSupabase, type ChampionData } from "#src/apis";
+import { adminSupabase } from "#src/apis/adminSupabase";
+import { type ChampionData } from "#src/apis";
 import { LOL_API_ENDPOINT, VERSION } from "#src/constants";
 
 /**

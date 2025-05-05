@@ -1,4 +1,4 @@
-import { adminSupabase } from "#src/apis";
+import { adminSupabase } from "#src/apis/adminSupabase";
 
 // 퀴즈 타입 정의
 export type Quiz = {
