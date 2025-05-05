@@ -27,7 +27,7 @@ const Page: NextPage = () => {
         <HowToPlayTabs />
 
         <motion.div
-          className="mt-8 mb-4 bg-card/60 rounded-lg p-4"
+          className="mb-4 bg-card/60 rounded-lg p-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.5 }}

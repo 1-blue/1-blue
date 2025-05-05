@@ -8,7 +8,7 @@ import {
 
 const HowToPlayTabs: React.FC = () => {
   return (
-    <Tabs defaultValue="basics" className="mb-6">
+    <Tabs defaultValue="basics" className="mb-4">
       <TabsList className="grid grid-cols-3 gap-2 w-full">
         <TabsTrigger value="basics">기본 규칙</TabsTrigger>
         <TabsTrigger value="multiple-choice">객관식</TabsTrigger>
@@ -16,7 +16,7 @@ const HowToPlayTabs: React.FC = () => {
       </TabsList>
 
       <TabsContent value="basics">
-        <div className="space-y-6 mb-8">
+        <div className="space-y-3">
           <motion.div
             className="bg-card/80 border border-border rounded-lg p-4"
             initial={{ opacity: 0, x: -20 }}
@@ -65,7 +65,7 @@ const HowToPlayTabs: React.FC = () => {
       </TabsContent>
 
       <TabsContent value="multiple-choice">
-        <div className="space-y-6 mb-8">
+        <div className="space-y-3">
           <motion.div
             className="bg-card/80 border border-border rounded-lg p-4"
             initial={{ opacity: 0 }}
@@ -101,7 +101,7 @@ const HowToPlayTabs: React.FC = () => {
       </TabsContent>
 
       <TabsContent value="short-answer">
-        <div className="space-y-6 mb-8">
+        <div className="space-y-3">
           <motion.div
             className="bg-card/80 border border-border rounded-lg p-4"
             initial={{ opacity: 0 }}
