@@ -6,7 +6,8 @@ import { Database } from "#src/supabase/types/database";
 
 export interface IQuiz {
   id: string;
-  skinImageUrl: string;
+  splashImageUrl: string;
+  loadingImageUrl: string;
   championName: string;
   skinName: string;
   correctAnswer: string;
@@ -30,7 +31,9 @@ export const useQuizQuery = (
     supabase
       .schema("lol")
       .from("champion_skins")
-      .select("id, champion_name, skin_name, splash_image_url")
+      .select(
+        "id, champion_name, skin_name, splash_image_url, loading_image_url"
+      )
       .neq("skin_num", 0)
   );
 
@@ -59,7 +62,6 @@ export const useQuizQuery = (
     // 퀴즈 생성
     const quizzes: IQuiz[] = quizSkins.map((skin, index) => {
       const skinName = skin.skin_name;
-      const championName = skin.champion_name;
 
       // 객관식 선택지 생성
       let options: string[] = [];
@@ -80,8 +82,9 @@ export const useQuizQuery = (
 
       return {
         id: skin.id.toString(),
-        skinImageUrl: skin.splash_image_url,
-        championName,
+        splashImageUrl: skin.splash_image_url,
+        loadingImageUrl: skin.loading_image_url,
+        championName: skin.champion_name,
         skinName,
         correctAnswer: skinName,
         options,

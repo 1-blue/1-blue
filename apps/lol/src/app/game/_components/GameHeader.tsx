@@ -5,7 +5,7 @@ const GameHeader = () => {
     useQuizContext();
 
   return (
-    <div className="w-full max-w-md px-2 py-4 mb-6">
+    <div className="w-full max-w-md px-2 py-4">
       <div className="flex justify-between mb-2">
         <div className="text-foreground/80">
           <span className="font-bold">{currentQuizIndex + 1}</span>/
