@@ -17,6 +17,7 @@ const NextButton = () => {
         onClick={handleNextQuiz}
         size="lg"
         className="font-bold py-6 px-8 text-lg"
+        autoFocus
       >
         {isLast ? "결과 보기" : "다음 문제"}
       </Button>

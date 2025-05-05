@@ -31,6 +31,7 @@ interface QuizContextType {
   inputRef: React.RefObject<HTMLInputElement | null>;
   totalQuizzes: number;
   quizType: QuizType;
+  completionTime: number;
 
   // 메서드
   handleOptionSelect: (option: string) => void;
@@ -72,6 +73,10 @@ export const QuizProvider = ({
   const [timeLeft, setTimeLeft] = useState(15);
   const [isGameOver, setIsGameOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // 퀴즈 시작 및 완료 시간 추적
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [completionTime, setCompletionTime] = useState(0);
 
   // 현재 퀴즈
   const currentQuiz = quizzes[currentQuizIndex];
@@ -124,6 +129,20 @@ export const QuizProvider = ({
     isCorrect,
     quizType,
   ]);
+
+  // 게임 시작 시 시간 기록
+  useEffect(() => {
+    if (quizzes.length > 0 && startTime === null) {
+      setStartTime(Date.now());
+    }
+  }, [quizzes, startTime]);
+
+  // 게임 종료 시 시간 계산
+  useEffect(() => {
+    if (isGameOver && startTime) {
+      setCompletionTime(Date.now() - startTime);
+    }
+  }, [isGameOver, startTime]);
 
   // 객관식 선택지 선택 처리
   const handleOptionSelect = (option: string) => {
@@ -205,6 +224,7 @@ export const QuizProvider = ({
     inputRef,
     totalQuizzes: quizzes.length,
     quizType,
+    completionTime,
     handleOptionSelect,
     handleSubmitAnswer,
     handleKeyDown,

@@ -15,8 +15,7 @@ export const metadata: Metadata = {
   },
   applicationName: "LoL 스킨 퀴즈",
   themeColor: "#1e293b",
-  viewport:
-    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+  viewport: `minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover`,
 };
 
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
