@@ -2,7 +2,7 @@
 
 import ErrorDisplay from "#src/components/game/ErrorDisplay";
 import LoadingSpinner from "#src/components/game/LoadingSpinner";
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
 import GameResult from "#src/app/game/_components/GameResult";
 import { Button } from "@1-blue/ui/components/button";
 import GameHeader from "#src/app/game/_components/GameHeader";
@@ -54,10 +54,6 @@ const GameContent: React.FC = () => {
 
       {/* 퀴즈 질문 */}
       <div className="w-full max-w-md mb-4">
-        <h2 className="text-xl font-bold text-center text-foreground/90 mb-4">
-          이 스킨의 이름은?
-        </h2>
-
         {/* 객관식 선택지 */}
         {quizType === "multiple-choice" && <MultipleChoiceQuiz />}
 

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { cn } from "@1-blue/ui/lib";
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
 
 const MultipleChoiceQuiz = () => {
   const { currentQuiz, selectedOption, isCorrect, handleOptionSelect } =

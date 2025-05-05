@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@1-blue/ui/components/button";
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
 
 const NextButton = () => {
   const { currentQuizIndex, totalQuizzes, handleNextQuiz } = useQuizContext();

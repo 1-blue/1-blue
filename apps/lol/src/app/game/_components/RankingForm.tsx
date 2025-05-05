@@ -3,7 +3,7 @@ import { Button } from "@1-blue/ui/components/button";
 import { Input } from "@1-blue/ui/components/input";
 import { Label } from "@1-blue/ui/components/label";
 import { motion } from "framer-motion";
-import type { QuizType } from "#src/app/game/context/QuizContext";
+import type { QuizType } from "#src/app/game/_context/QuizContext";
 
 interface RankingFormProps {
   score: number;

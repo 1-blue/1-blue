@@ -1,30 +1,5 @@
-import { anonSupabase } from "#src/apis/annoSupabase";
 import { NextResponse } from "next/server";
-
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const limit = searchParams.get("limit") || "10";
-  const quizType = searchParams.get("quiz_type");
-
-  let query = anonSupabase
-    .schema("lol")
-    .from("rankings")
-    .select("id, nickname, score, completion_time, created_at, quiz_type")
-    .order("score", { ascending: false })
-    .order("completion_time", { ascending: true });
-
-  if (quizType) {
-    query = query.eq("quiz_type", quizType);
-  }
-
-  const { data, error } = await query.limit(parseInt(limit));
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
-  return NextResponse.json(data);
-}
+import { anonSupabase } from "#src/apis/annoSupabase";
 
 export async function POST(request: Request) {
   const body = await request.json();

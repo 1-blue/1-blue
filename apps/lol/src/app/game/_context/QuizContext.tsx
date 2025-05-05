@@ -8,8 +8,7 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import type { Quiz } from "#src/app/api/quiz/quiz-api";
-import { useQuizQuery } from "#src/app/game/hooks/useQuizQuery";
+import { type IQuiz, useQuizQuery } from "#src/app/game/_hooks/useQuizQuery";
 
 // 퀴즈 타입 정의
 export type QuizType = "multiple-choice" | "short-answer";
@@ -17,8 +16,8 @@ export type QuizType = "multiple-choice" | "short-answer";
 // Context 타입 정의
 interface QuizContextType {
   // 상태
-  quizzes: Quiz[];
-  currentQuiz: Quiz | undefined;
+  quizzes: IQuiz[];
+  currentQuiz: IQuiz | undefined;
   currentQuizIndex: number;
   selectedOption: string | null;
   inputAnswer: string;
@@ -36,7 +35,6 @@ interface QuizContextType {
   // 메서드
   handleOptionSelect: (option: string) => void;
   handleSubmitAnswer: () => void;
-  handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   handleNextQuiz: () => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -57,7 +55,6 @@ export const QuizProvider = ({
   quizCount,
   quizType,
 }: QuizProviderProps) => {
-  // TanStack Query를 사용하여 퀴즈 데이터 가져오기
   const {
     data: quizzes = [],
     isLoading,
@@ -132,10 +129,10 @@ export const QuizProvider = ({
 
   // 게임 시작 시 시간 기록
   useEffect(() => {
-    if (quizzes.length > 0 && startTime === null) {
+    if (quizzes.length > 0 && startTime === null && !isLoading && !isGameOver) {
       setStartTime(Date.now());
     }
-  }, [quizzes, startTime]);
+  }, [quizzes, startTime, isLoading, isGameOver]);
 
   // 게임 종료 시 시간 계산
   useEffect(() => {
@@ -172,17 +169,6 @@ export const QuizProvider = ({
 
     if (correct) {
       setScore((prev) => prev + 100);
-    }
-  };
-
-  // 키보드 엔터 처리
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (
-      e.key === "Enter" &&
-      quizType === "short-answer" &&
-      inputAnswer.trim() !== ""
-    ) {
-      handleSubmitAnswer();
     }
   };
 
@@ -227,7 +213,6 @@ export const QuizProvider = ({
     completionTime,
     handleOptionSelect,
     handleSubmitAnswer,
-    handleKeyDown,
     handleNextQuiz,
     handleInputChange,
   };

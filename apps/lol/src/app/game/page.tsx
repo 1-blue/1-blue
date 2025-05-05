@@ -3,8 +3,8 @@ import type { NextPage } from "next";
 
 import LoadingSpinner from "#src/components/game/LoadingSpinner";
 
-import { QuizProvider } from "./context/QuizContext";
-import GameContent from "./_components/GameContent";
+import { QuizProvider } from "#src/app/game/_context/QuizContext";
+import GameContent from "#src/app/game/_components/GameContent";
 
 const MAX_QUIZ_COUNT = 10;
 

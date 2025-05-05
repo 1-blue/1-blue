@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@1-blue/ui/components/button";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
 import RankingForm from "./RankingForm";
 
 const GameResult = () => {
@@ -18,6 +18,10 @@ const GameResult = () => {
   const handleRankingSubmit = () => {
     setIsRegistered(true);
     setShowRankingForm(false);
+  };
+
+  const handleRestartQuiz = () => {
+    window.location.reload();
   };
 
   return (
@@ -68,10 +72,7 @@ const GameResult = () => {
           메인으로 돌아가기
         </Button>
 
-        <Button
-          onClick={() => router.push(`/game?type=${quizType}`)}
-          variant="default"
-        >
+        <Button onClick={handleRestartQuiz} variant="default">
           다시 시작하기
         </Button>
       </div>

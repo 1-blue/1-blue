@@ -1,40 +1,43 @@
-import { adminSupabase } from "#src/apis/adminSupabase";
+import { useMemo } from "react";
+import { useQuery } from "@supabase-cache-helpers/postgrest-react-query";
 
-// 퀴즈 타입 정의
-export type Quiz = {
+import useSupabaseBrowser from "#src/supabase/supabasae-browser";
+import { Database } from "#src/supabase/types/database";
+
+export interface IQuiz {
   id: string;
-  skinImageUrl: string;
+  splashImageUrl: string;
+  loadingImageUrl: string;
   championName: string;
   skinName: string;
   correctAnswer: string;
   options: string[];
-  quizType: "multiple-choice" | "short-answer";
-};
+  type: Database["lol"]["Enums"]["quiz_type_enum"];
+}
+export interface IQuizOption {
+  id: number;
+  champion_name: string;
+  skin_name: string;
+  splash_image_url: string;
+}
 
-/**
- * 퀴즈 데이터 생성 함수
- * @param count 생성할 퀴즈 수
- * @param quizType 퀴즈 유형 (객관식 또는 주관식)
- */
-export async function generateQuizzes(
+export const useQuizQuery = (
   count: number,
-  quizType: "multiple-choice" | "short-answer" = "multiple-choice"
-): Promise<Quiz[]> {
-  try {
-    // 스킨 데이터를 가져온 후 클라이언트 측에서 랜덤하게 섞기
-    const { data, error } = await adminSupabase
+  type: "multiple-choice" | "short-answer"
+) => {
+  const supabase = useSupabaseBrowser();
+
+  const { data, error, isLoading } = useQuery(
+    supabase
       .schema("lol")
       .from("champion_skins")
       .select(
-        `
-        id,
-        champion_name,
-        skin_name,
-        splash_image_url
-      `
+        "id, champion_name, skin_name, splash_image_url, loading_image_url"
       )
-      .neq("skin_num", 0); // 기본 스킨 제외
+      .neq("skin_num", 0)
+  );
 
+  const quizzes = useMemo(() => {
     if (error || !data || data.length === 0) {
       console.error("스킨 데이터 가져오기 오류:", error);
       return [];
@@ -45,9 +48,9 @@ export async function generateQuizzes(
     const quizSkins = shuffledSkins.slice(0, count);
 
     // 객관식 퀴즈의 경우 선택지로 사용할 데이터 준비
-    let remainingSkins: any[] = [];
+    let remainingSkins: IQuizOption[] = [];
 
-    if (quizType === "multiple-choice") {
+    if (type === "multiple-choice") {
       // 정답이 아닌 스킨들을 선택지로 사용
       remainingSkins = shuffledSkins
         .filter(
@@ -57,14 +60,13 @@ export async function generateQuizzes(
     }
 
     // 퀴즈 생성
-    const quizzes: Quiz[] = quizSkins.map((skin, index) => {
+    const quizzes: IQuiz[] = quizSkins.map((skin, index) => {
       const skinName = skin.skin_name;
-      const championName = skin.champion_name;
 
       // 객관식 선택지 생성
       let options: string[] = [];
 
-      if (quizType === "multiple-choice") {
+      if (type === "multiple-choice") {
         // 현재 퀴즈를 위한 추가 선택지 4개 선택
         const startIdx = index * 4;
         const otherOptions = remainingSkins
@@ -80,18 +82,18 @@ export async function generateQuizzes(
 
       return {
         id: skin.id.toString(),
-        skinImageUrl: skin.splash_image_url,
-        championName,
+        splashImageUrl: skin.splash_image_url,
+        loadingImageUrl: skin.loading_image_url,
+        championName: skin.champion_name,
         skinName,
         correctAnswer: skinName,
         options,
-        quizType,
+        type,
       };
     });
 
     return quizzes;
-  } catch (error) {
-    console.error("퀴즈 생성 오류:", error);
-    return [];
-  }
-}
+  }, [data, error, type, count]);
+
+  return { data: quizzes, error, isLoading };
+};
