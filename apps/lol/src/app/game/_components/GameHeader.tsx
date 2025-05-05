@@ -1,4 +1,4 @@
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
 
 const GameHeader = () => {
   const { currentQuizIndex, totalQuizzes, score, timeLeft, quizType } =

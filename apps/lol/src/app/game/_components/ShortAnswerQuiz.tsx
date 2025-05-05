@@ -1,6 +1,7 @@
 import { Button } from "@1-blue/ui/components/button";
 import { cn } from "@1-blue/ui/lib";
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
+import { useState } from "react";
 
 const ShortAnswerQuiz = () => {
   const {
@@ -9,9 +10,29 @@ const ShortAnswerQuiz = () => {
     isCorrect,
     inputRef,
     handleInputChange,
-    handleKeyDown,
+    handleNextQuiz,
     handleSubmitAnswer,
   } = useQuizContext();
+
+  const [isComposing, setIsComposing] = useState(false);
+
+  // 자체 엔터키 핸들링 함수 생성
+  const handleCustomKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (isComposing) return;
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      if (isCorrect === null) {
+        // 첫 번째 엔터: 정답 확인
+        if (inputAnswer.trim() !== "") {
+          handleSubmitAnswer();
+        }
+      } else {
+        // 두 번째 엔터: 다음 문제로 이동
+        handleNextQuiz();
+      }
+    }
+  };
 
   if (!currentQuiz) return null;
 
@@ -20,9 +41,11 @@ const ShortAnswerQuiz = () => {
       <div className="relative">
         <input
           type="text"
+          onCompositionStart={() => setIsComposing(true)}
+          onCompositionEnd={() => setIsComposing(false)}
           value={inputAnswer}
           onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleCustomKeyDown}
           ref={inputRef}
           disabled={isCorrect !== null}
           placeholder="스킨 이름을 입력하세요"
@@ -54,13 +77,19 @@ const ShortAnswerQuiz = () => {
         </div>
       )}
 
-      <Button
-        onClick={handleSubmitAnswer}
-        disabled={inputAnswer.trim() === "" || isCorrect !== null}
-        className="w-full"
-      >
-        제출하기
-      </Button>
+      {isCorrect === null ? (
+        <Button
+          onClick={handleSubmitAnswer}
+          disabled={inputAnswer.trim() === ""}
+          className="w-full"
+        >
+          제출하기
+        </Button>
+      ) : (
+        <Button onClick={handleNextQuiz} className="w-full" autoFocus>
+          다음 문제
+        </Button>
+      )}
     </div>
   );
 };

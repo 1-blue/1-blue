@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@1-blue/ui/components/button";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
 import RankingForm from "./RankingForm";
 
 const GameResult = () => {

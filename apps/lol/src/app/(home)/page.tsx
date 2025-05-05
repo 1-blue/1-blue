@@ -1,11 +1,10 @@
 "use client";
 
-import { Button } from "@1-blue/ui/components/button";
 import Link from "next/link";
-import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
-import RankingContainer from "./RankingContainer";
+import { useQueryClient } from "@tanstack/react-query";
+import { Button } from "@1-blue/ui/components/button";
+import RankingTabs from "./_components/RankingTabs";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -22,8 +21,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col items-center p-8">
-      <div className="text-center mb-10 max-w-3xl">
-        <h1 className="text-4xl font-bold mb-3">LOL 퀴즈</h1>
+      <section className="text-center mb-10 max-w-3xl">
+        <h1 className="text-4xl font-bold mb-3">리그오브레전드 스킨 퀴즈</h1>
         <p className="text-xl text-gray-600 mb-6">
           리그 오브 레전드 챔피언 스킨을 맞춰보세요!
         </p>
@@ -52,9 +51,9 @@ export default function Home() {
             <Link href="/how-to-play">게임 방법 자세히 알아보기</Link>
           </Button>
         </div>
-      </div>
+      </section>
 
-      <div className="mt-6 w-full max-w-3xl">
+      <section className="mt-6 w-full max-w-3xl">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">🏆 랭킹</h2>
           <Button asChild variant="outline" size="sm">
@@ -62,12 +61,8 @@ export default function Home() {
           </Button>
         </div>
 
-        <Suspense
-          fallback={<div className="text-center py-8">랭킹 로딩 중...</div>}
-        >
-          <RankingContainer />
-        </Suspense>
-      </div>
+        <RankingTabs />
+      </section>
     </main>
   );
 }

@@ -10,10 +10,14 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "typecheck": "tsc --noEmit",
-    "generate-all-champion": "tsx -r dotenv/config src/scripts/generate-all-champion.ts"
+    "generate-all-champion": "tsx -r dotenv/config src/scripts/generate-all-champion.ts",
+    "generate-supabase-types": "pnpm dlx supabase gen types typescript --linked --schema=lol > src/supabase/types/database.ts"
   },
   "dependencies": {
     "@1-blue/ui": "workspace:*",
+    "@supabase-cache-helpers/postgrest-react-query": "^1.13.2",
+    "@supabase/postgrest-js": "^1.19.4",
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.4",
     "@tanstack/react-query": "^5.75.2",
     "framer-motion": "^12.9.4",

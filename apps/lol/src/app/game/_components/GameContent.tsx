@@ -2,7 +2,7 @@
 
 import ErrorDisplay from "#src/components/game/ErrorDisplay";
 import LoadingSpinner from "#src/components/game/LoadingSpinner";
-import { useQuizContext } from "#src/app/game/context/QuizContext";
+import { useQuizContext } from "#src/app/game/_context/QuizContext";
 import GameResult from "#src/app/game/_components/GameResult";
 import { Button } from "@1-blue/ui/components/button";
 import GameHeader from "#src/app/game/_components/GameHeader";
