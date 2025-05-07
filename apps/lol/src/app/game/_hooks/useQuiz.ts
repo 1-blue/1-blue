@@ -1,8 +1,6 @@
 import { useMemo } from "react";
 import { useQuery } from "@supabase-cache-helpers/postgrest-react-query";
-
-import useSupabaseBrowser from "#src/supabase/supabasae-browser";
-import { Database } from "#src/supabase/types/database";
+import { Database, getSupabaseFromAnnoRole } from "@1-blue/supabase";
 
 export interface IQuiz {
   id: string;
@@ -21,11 +19,11 @@ export interface IQuizOption {
   splash_image_url: string;
 }
 
-export const useQuizQuery = (
+export const useQuiz = (
   count: number,
   type: "multiple-choice" | "short-answer"
 ) => {
-  const supabase = useSupabaseBrowser();
+  const supabase = getSupabaseFromAnnoRole();
 
   const { data, error, isLoading } = useQuery(
     supabase

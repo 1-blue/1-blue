@@ -1,7 +1,6 @@
 // 파일 최상단에 추가
 import "dotenv/config";
 
-import { LOCALE, VERSION } from "#src/constants";
 import { saveChampionSkinsToDb } from "#src/libs/db/skins";
 import { saveChampionToDB } from "#src/libs/db/champions";
 import { getAllChampions, getChampionByName } from "#src/apis";
@@ -9,10 +8,10 @@ import { getAllChampions, getChampionByName } from "#src/apis";
 /**
  * 모든 챔피언 정보를 수집하여 DB에 저장하는 함수
  */
-const generateAllChampion = async () => {
+const generateAllSkin = async () => {
   try {
     console.log(
-      `리그 오브 레전드 데이터 수집 시작 (버전: ${VERSION}, 언어: ${LOCALE})`
+      `리그 오브 레전드 데이터 수집 시작 (버전: ${process.env.NEXT_PUBLIC_LOL_API_VERSION}, 언어: ${process.env.NEXT_PUBLIC_LOL_API_LOCALE})`
     );
 
     // 모든 챔피언 목록 가져오기
@@ -70,4 +69,4 @@ const generateAllChampion = async () => {
 };
 
 // 스크립트 실행
-generateAllChampion();
+generateAllSkin();

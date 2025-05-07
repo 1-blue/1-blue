@@ -9,7 +9,7 @@ import {
   TableRow,
   TableCell,
 } from "@1-blue/ui/components/table";
-import type { Database } from "#src/supabase/types/database";
+import type { Database } from "@1-blue/supabase";
 import { cn } from "@1-blue/ui/lib";
 
 const getRankingImogi = (index: number) => {

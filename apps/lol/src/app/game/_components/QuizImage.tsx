@@ -66,8 +66,8 @@ const QuizImage = () => {
         className="mb-2"
       >
         <TabsList className="grid grid-cols-2 w-full">
-          <TabsTrigger value="splash">스플래쉬 이미지</TabsTrigger>
-          <TabsTrigger value="loading">로딩 이미지</TabsTrigger>
+          <TabsTrigger value="splash">스플래쉬</TabsTrigger>
+          <TabsTrigger value="loading">로딩</TabsTrigger>
         </TabsList>
       </Tabs>
 

@@ -137,6 +137,23 @@ export type Database = {
       [_ in never]: never;
     };
   };
+  public: {
+    Tables: {
+      [_ in never]: never;
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
+    };
+  };
 };
 
 type DefaultSchema = Database[Extract<keyof Database, "public">];
@@ -249,5 +266,8 @@ export const Constants = {
     Enums: {
       quiz_type_enum: ["multiple-choice", "short-answer"],
     },
+  },
+  public: {
+    Enums: {},
   },
 } as const;

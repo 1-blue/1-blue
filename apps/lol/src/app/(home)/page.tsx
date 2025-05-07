@@ -5,8 +5,10 @@ import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@1-blue/ui/components/button";
 import RankingTabs from "./_components/RankingTabs";
+import type { NextPage } from "next";
+import SkinCarousel from "./_components/SkinCarousel";
 
-export default function Home() {
+const Home: NextPage = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -20,8 +22,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center p-8">
-      <section className="text-center mb-10 max-w-3xl">
+    <div className="min-h-screen flex flex-col items-center">
+      <section className="text-center mb-10 max-w-3xl w-full px-4 pt-8">
         <h1 className="text-4xl font-bold mb-3">리그오브레전드 스킨 퀴즈</h1>
         <p className="text-xl text-gray-600 mb-6">
           리그 오브 레전드 챔피언 스킨을 맞춰보세요!
@@ -57,7 +59,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-6 w-full max-w-3xl">
+      <section className="mb-6 max-w-xl w-full px-5">
+        <SkinCarousel />
+      </section>
+
+      <section className="mt-6 w-full max-w-3xl px-4 pb-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">🏆 랭킹</h2>
           <Button asChild variant="outline" size="sm">
@@ -67,6 +73,8 @@ export default function Home() {
 
         <RankingTabs />
       </section>
-    </main>
+    </div>
   );
-}
+};
+
+export default Home;

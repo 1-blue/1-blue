@@ -1,6 +1,6 @@
-import { adminSupabase } from "#src/apis/adminSupabase";
+import { getSupabaseFromAdminRole } from "@1-blue/supabase/server";
 import { type ChampionData } from "#src/apis";
-import { LOL_API_ENDPOINT, VERSION } from "#src/constants";
+import { LOL_API_ENDPOINT } from "#src/constants";
 
 /**
  * 챔피언 기본 정보를 Supabase DB에 저장하는 함수
@@ -9,6 +9,8 @@ import { LOL_API_ENDPOINT, VERSION } from "#src/constants";
  */
 const saveChampionToDB = async (championData: ChampionData) => {
   try {
+    const supabase = getSupabaseFromAdminRole();
+
     const championInfo = {
       id: championData.id,
       key: championData.key,
@@ -33,10 +35,10 @@ const saveChampionToDB = async (championData: ChampionData) => {
         "/" +
         LOL_API_ENDPOINT.championSquareImage(championData.id),
       tags: championData.tags,
-      version: VERSION,
+      version: process.env.NEXT_PUBLIC_LOL_API_VERSION,
     };
 
-    const { error, ...props } = await adminSupabase
+    const { error, ...props } = await supabase
       .schema("lol")
       .from("champions")
       .upsert(championInfo, {

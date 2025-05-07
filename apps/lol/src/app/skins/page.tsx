@@ -9,9 +9,9 @@ import { VirtuosoGrid } from "react-virtuoso";
 
 import { Input } from "@1-blue/ui/components/input";
 import { Button } from "@1-blue/ui/components/button";
-import { useQuizQuery } from "../game/_hooks/useQuizQuery";
 import SkinCard from "./_components/SkinCard";
 import { VirtuosoGridComponent } from "./_components/VirtuosoGridComponent";
+import useSkins from "./_hooks/useSkins";
 
 const OVERSCAN_PX = 2000;
 const INCREASE_VIEWPORT_BY_PX = 2000;
@@ -21,21 +21,17 @@ const Page: NextPage = () => {
   const [debouncedSearchQuery] = useDebounce(searchQuery, 500);
   const [isMounted, setIsMounted] = useState(false);
 
-  const { data: quizzes = [], isLoading } = useQuizQuery(
-    Infinity,
-    "multiple-choice"
-  );
+  const { skins, isLoading } = useSkins();
 
   // 필터링된 스킨 목록
   const filteredSkins = useMemo(() => {
-    if (!debouncedSearchQuery.trim()) return quizzes;
+    if (!skins) return [];
+    if (!debouncedSearchQuery.trim()) return skins;
 
-    return quizzes.filter((skin) =>
-      skin.correctAnswer
-        .toLowerCase()
-        .includes(debouncedSearchQuery.toLowerCase())
+    return skins.filter((skin) =>
+      skin.skin_name.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
     );
-  }, [quizzes, debouncedSearchQuery]);
+  }, [skins, debouncedSearchQuery]);
 
   useEffect(() => {
     setIsMounted(true);

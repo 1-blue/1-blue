@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 프로젝트 기술 스택
++ **프레임워크**: Next.js 15 (App Router 사용)
++ **언어**: TypeScript
++ **패키지 매니저**: pnpm
++ **프로젝트 구조**: Monorepo
++ **UI 라이브러리**: shadcn/ui
++ **스타일링**: Tailwind CSS (shadcn/ui에 포함)
++ **데이터베이스**: supabase
+
+# 주요 규칙
+1. **기술 스택 준수**: 항상 위에 명시된 기술 스택을 기반으로 코드를 작성하고 기능을 제안합니다.
+2. **UI 컴포넌트**: shadcn/ui 컴포넌트를 우선적으로 활용하며, 필요한 경우 커스터마이징합니다. Tailwind CSS를 사용하여 스타일링합니다.
+3. **TypeScript**: 모든 코드는 TypeScript로 작성하며, 타입 안정성을 중요하게 생각합니다. `any` 타입 사용은 최소화하고 명시적인 타입을 사용합니다.
+4. **패키지 관리**: pnpm을 사용하여 의존성을 관리합니다. 새로운 패키지를 추가할 때 pnpm 명령어를 사용합니다.
+5. **Monorepo 구조**: Monorepo 환경임을 인지하고, 패키지 간의 의존성 및 경로 설정에 유의합니다.
+6. **파일 구조**: Next.js App Router의 규칙을 따릅니다.
+7. **코드 스타일**: 일관성 있는 코드 스타일을 유지합니다 (Prettier, ESLint 설정이 있다면 해당 규칙을 따릅니다).
+
+# 개인 규칙
+1. 함수는 반드시 화살표 함수를 사용한다.
+2. 파일은 각 페이지의 폴대 내부에 `Private Folder`를 이용해 선언한다. ( `_components`, `_hooks`, `_types` 등 )
+3. `Monorepo`의 컴포넌트 및 함수를 가져올때는 `@1-blue/ui/components/button`와 같은 방식으로 가져온다,
+4. 추가로 `shadcn`의 컴포넌트 설치가 필요하다면 최상위에서 `pnpm run ui:add button`과 같은 명령어를 실행한다.
+5. 

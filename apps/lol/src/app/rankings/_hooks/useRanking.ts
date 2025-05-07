@@ -1,8 +1,8 @@
 import { useQuery } from "@supabase-cache-helpers/postgrest-react-query";
-import useSupabaseBrowser from "#src/supabase/supabasae-browser";
+import { getSupabaseFromAnnoRole } from "@1-blue/supabase";
 
 const useRanking = () => {
-  const supabase = useSupabaseBrowser();
+  const supabase = getSupabaseFromAnnoRole();
 
   const {
     data: rankings,

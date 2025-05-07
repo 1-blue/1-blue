@@ -6,7 +6,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@1-blue/ui/components/tabs";
-import useRanking from "#src/hooks/useRanking";
+import useRanking from "#src/app/rankings/_hooks/useRanking";
 import RankingTable from "#src/app/rankings/_components/RankingTable";
 
 const RankingTabs: React.FC = () => {

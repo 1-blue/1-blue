@@ -1,6 +1,6 @@
-import { adminSupabase } from "#src/apis/adminSupabase";
+import { getSupabaseFromAdminRole } from "@1-blue/supabase/server";
 import { type ChampionData } from "#src/apis";
-import { LOL_API_ENDPOINT, VERSION } from "#src/constants";
+import { LOL_API_ENDPOINT } from "#src/constants";
 
 interface SkinInsertData {
   champion_id: string;
@@ -30,7 +30,7 @@ export async function saveChampionSkinsToDb(championData: ChampionData) {
       champion_name: championData.name,
       skin_id: skin.id,
       skin_num: skin.num,
-      skin_name: skin.name,
+      skin_name: skin.name === "default" ? championData.name : skin.name,
       splash_image_url:
         process.env.NEXT_PUBLIC_LOL_API_URL +
         "/" +
@@ -44,11 +44,13 @@ export async function saveChampionSkinsToDb(championData: ChampionData) {
         "/" +
         LOL_API_ENDPOINT.championSquareImage(championData.id),
       has_chromas: skin.chromas,
-      version: VERSION,
+      version: process.env.NEXT_PUBLIC_LOL_API_VERSION,
     }));
 
+    const supabase = getSupabaseFromAdminRole();
+
     // upsert 방식으로 저장 (중복 방지 및 업데이트)
-    const { error } = await adminSupabase
+    const { error } = await supabase
       .schema("lol")
       .from("champion_skins")
       .upsert(skinData, {
@@ -64,7 +66,7 @@ export async function saveChampionSkinsToDb(championData: ChampionData) {
     // 더 이상 존재하지 않는 스킨 삭제
     const existingSkinIds = championData.skins.map((skin) => skin.id);
     if (existingSkinIds.length > 0) {
-      const { error: deleteError } = await adminSupabase
+      const { error: deleteError } = await supabase
         .schema("lol")
         .from("champion_skins")
         .delete()

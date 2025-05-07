@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { anonSupabase } from "#src/apis/annoSupabase";
+import { getSupabaseFromAdminRole } from "@1-blue/supabase/server";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -18,7 +18,9 @@ export async function POST(request: Request) {
     );
   }
 
-  const { data, error } = await anonSupabase
+  const supabase = getSupabaseFromAdminRole();
+
+  const { data, error } = await supabase
     .schema("lol")
     .from("rankings")
     .insert([{ nickname, password, score, completion_time, quiz_type }])

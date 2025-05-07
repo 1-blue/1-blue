@@ -12,19 +12,25 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@1-blue/ui/components/tabs";
 
 import { cn } from "@1-blue/ui/lib";
-import { IQuiz } from "#src/app/game/_hooks/useQuizQuery";
+import { Database } from "@1-blue/supabase";
 
 type TImageType = "splash" | "loading";
 
 interface IProps {
-  skin: IQuiz;
+  skin: Database["lol"]["Tables"]["champion_skins"]["Row"];
 }
 
 const SkinCard: React.FC<IProps> = ({ skin }) => {
   const [imageType, setImageType] = useState<TImageType>("splash");
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isSplashLoaded, setIsSplashLoaded] = useState(false);
+  const [isLoadingImgLoaded, setIsLoadingImgLoaded] = useState(false);
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
+
+  const showLoadingIndicator =
+    (imageType === "splash" && !isSplashLoaded) ||
+    (imageType === "loading" && !isLoadingImgLoaded);
 
   return (
     <motion.li
@@ -32,7 +38,7 @@ const SkinCard: React.FC<IProps> = ({ skin }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className="max-w-sm mx-auto"
+      className="w-full max-w-[400px] mx-auto list-none"
     >
       <Card className="overflow-hidden h-full flex flex-col py-1 gap-2">
         <CardHeader className="px-2">
@@ -53,43 +59,47 @@ const SkinCard: React.FC<IProps> = ({ skin }) => {
         </CardHeader>
 
         <CardContent className="p-0 flex-grow">
-          {/* 고정된 이미지 컨테이너 */}
-          <div className="relative w-full h-[240px] overflow-hidden">
+          <div className="relative w-full aspect-video overflow-hidden bg-muted/10">
             {/* 스플래쉬 이미지 */}
             <img
-              src={skin.splashImageUrl}
-              alt={`${skin.correctAnswer} 스플래쉬`}
+              src={skin.splash_image_url}
+              alt={`${skin.skin_name} 스플래쉬`}
               className={cn(
                 "absolute inset-0 w-full h-full object-cover transition-opacity duration-300",
-                imageType === "splash" ? "opacity-100 z-10" : "opacity-0 z-0"
+                imageType === "splash"
+                  ? "opacity-100 z-10"
+                  : "opacity-0 z-0 pointer-events-none"
               )}
-              onLoad={() => setIsLoaded(true)}
+              onLoad={() => setIsSplashLoaded(true)}
               loading="lazy"
             />
 
             {/* 로딩 이미지 */}
             <img
-              src={skin.loadingImageUrl}
-              alt={`${skin.correctAnswer} 로딩`}
+              src={skin.loading_image_url}
+              alt={`${skin.skin_name} 로딩`}
               className={cn(
                 "absolute inset-0 w-full h-full object-contain transition-opacity duration-300",
-                imageType === "loading" ? "opacity-100 z-10" : "opacity-0 z-0"
+                imageType === "loading"
+                  ? "opacity-100 z-10"
+                  : "opacity-0 z-0 pointer-events-none"
               )}
+              onLoad={() => setIsLoadingImgLoaded(true)}
               loading="lazy"
             />
 
             {/* 로딩 중 표시 */}
-            {!isLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-muted/20">
-                <p className="text-sm text-muted-foreground">로딩 중...</p>
+            {showLoadingIndicator && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                <p className="text-sm text-white">로딩 중...</p>
               </div>
             )}
           </div>
         </CardContent>
 
         <CardFooter className="p-2 justify-center">
-          <CardTitle className="text-center text-base truncate">
-            {skin.correctAnswer}
+          <CardTitle className="text-center text-base truncate min-h-6 flex items-center justify-center">
+            {skin.skin_name}
           </CardTitle>
         </CardFooter>
       </Card>

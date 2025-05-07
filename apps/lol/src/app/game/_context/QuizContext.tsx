@@ -8,7 +8,7 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import { type IQuiz, useQuizQuery } from "#src/app/game/_hooks/useQuizQuery";
+import { type IQuiz, useQuiz } from "#src/app/game/_hooks/useQuiz";
 
 // 퀴즈 타입 정의
 export type QuizType = "multiple-choice" | "short-answer";
@@ -55,11 +55,7 @@ export const QuizProvider = ({
   quizCount,
   quizType,
 }: QuizProviderProps) => {
-  const {
-    data: quizzes = [],
-    isLoading,
-    error,
-  } = useQuizQuery(quizCount, quizType);
+  const { data: quizzes = [], isLoading, error } = useQuiz(quizCount, quizType);
 
   // 퀴즈 상태 관리
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
