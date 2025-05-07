@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useQuizContext } from "#src/app/game/_context/QuizContext";
 import RankingForm from "./RankingForm";
+import { toast } from "sonner";
 
 const GameResult = () => {
   const router = useRouter();
@@ -22,6 +23,20 @@ const GameResult = () => {
 
   const handleRestartQuiz = () => {
     window.location.reload();
+  };
+
+  const handleCopyUrl = async () => {
+    const shareUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
+    // const shareUrl = `${process.env.NEXT_PUBLIC_CLIENT_URL}/game/result?score=${score}&total=${quizzes.length}&timeMin=${minutes}&timeSec=${remainingSeconds}&type=${quizType === "multiple-choice" ? "객관식" : "주관식"}`;
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      toast.success(
+        "링크가 복사되었습니다.\n결과를 카카오톡으로 공유해보세요!\n( 결과는 아직 개발중... )"
+      );
+    } catch (err) {
+      console.error("URL 복사 실패:", err);
+      toast.error("링크 복사에 실패했습니다.\n다시 시도해주세요");
+    }
   };
 
   return (
@@ -67,11 +82,13 @@ const GameResult = () => {
         </p>
       )}
 
-      <div className="flex gap-4 mt-4">
+      <div className="flex flex-wrap gap-4 mt-6 justify-center">
         <Button onClick={() => router.push("/")} variant="outline">
           메인으로 돌아가기
         </Button>
-
+        <Button onClick={handleCopyUrl} variant="default">
+          결과 공유하기
+        </Button>
         <Button onClick={handleRestartQuiz} variant="default">
           다시 시작하기
         </Button>
