@@ -6,27 +6,11 @@ import type { Metadata } from "next";
 import Footer from "./_components/common/Footer";
 import { Toaster } from "@1-blue/ui/components/sonner";
 
-const DEFAULT_SKIN_IMAGE_URLS = [
-  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_2.jpg",
-  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_86.jpg",
-  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Alistar_10.jpg",
-  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Bard_35.jpg",
-  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Maokai_6.jpg",
-  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/LeeSin_11.jpg",
-];
-
-const getRandomSkinImageUrl = () => {
-  const randomIndex = Math.floor(
-    Math.random() * DEFAULT_SKIN_IMAGE_URLS.length
-  );
-  return DEFAULT_SKIN_IMAGE_URLS[randomIndex];
-};
-
 export const generateMetadata = async (): Promise<Metadata> => {
   // 기본 메타데이터 값
   const title = "리그오브레전드(lol) 스킨 퀴즈";
   const description = `리그오브레전드(lol) 챔피언 스킨, 아이템, 스킬을 맞춰보세요!\n리그 오브 레전드 챔피언 스킨 지식을 테스트해보세요! 객관식과 주관식 모드를 제공합니다.`;
-  const imageUrl = getRandomSkinImageUrl();
+  const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Bard_35.jpg`;
 
   return {
     title,
