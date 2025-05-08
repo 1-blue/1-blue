@@ -10,7 +10,8 @@ import RankingTable from "#src/app/rankings/_components/RankingTable";
 import useRanking from "#src/app/rankings/_hooks/useRanking";
 
 const RankingTabs: React.FC = () => {
-  const { rankings, isLoading, error } = useRanking();
+  const { multipleChoiceRankings, shortAnswerRankings, isLoading, error } =
+    useRanking(10);
 
   if (error) {
     return (
@@ -19,18 +20,9 @@ const RankingTabs: React.FC = () => {
       </div>
     );
   }
-  if (isLoading || !rankings) {
+  if (isLoading || !multipleChoiceRankings || !shortAnswerRankings) {
     return <div className="text-center py-4">랭킹 로딩 중...</div>;
   }
-
-  // 주관식, 객관식별 랭킹 분리
-  const multipleChoiceRankings = rankings.filter(
-    (r) => r.quiz_type === "multiple-choice"
-  );
-
-  const shortAnswerRankings = rankings.filter(
-    (r) => r.quiz_type === "short-answer"
-  );
 
   return (
     <Tabs defaultValue="multiple-choice" className="w-full">

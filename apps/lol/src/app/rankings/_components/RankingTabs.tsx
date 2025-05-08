@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import {
   Tabs,
   TabsContent,
@@ -10,18 +11,20 @@ import useRanking from "#src/app/rankings/_hooks/useRanking";
 import RankingTable from "#src/app/rankings/_components/RankingTable";
 
 const RankingTabs: React.FC = () => {
-  const { rankings } = useRanking();
+  const { multipleChoiceRankings = [], shortAnswerRankings = [] } =
+    useRanking();
 
-  // 주관식, 객관식, 전체 랭킹 분리
-  const allRankings = rankings || [];
-
-  const multipleChoiceRankings = allRankings.filter(
-    (r) => r.quiz_type === "multiple-choice"
-  );
-
-  const shortAnswerRankings = allRankings.filter(
-    (r) => r.quiz_type === "short-answer"
-  );
+  const allRankings = useMemo(() => {
+    return [
+      ...(multipleChoiceRankings ?? []),
+      ...(shortAnswerRankings ?? []),
+    ].sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return a.completion_time - b.completion_time;
+    });
+  }, [multipleChoiceRankings, shortAnswerRankings]);
 
   return (
     <Tabs defaultValue="all" className="w-full">
@@ -36,11 +39,11 @@ const RankingTabs: React.FC = () => {
       </TabsContent>
 
       <TabsContent value="multiple-choice">
-        <RankingTable rankings={multipleChoiceRankings} />
+        <RankingTable rankings={multipleChoiceRankings ?? []} />
       </TabsContent>
 
       <TabsContent value="short-answer">
-        <RankingTable rankings={shortAnswerRankings} />
+        <RankingTable rankings={shortAnswerRankings ?? []} />
       </TabsContent>
     </Tabs>
   );
