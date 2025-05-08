@@ -61,7 +61,7 @@ export const generateMetadata = async ({
 
 const Home: NextPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <section className="text-center mb-10 max-w-3xl w-full px-4 pt-8">
         <h1 className="text-4xl font-bold mb-3">리그오브레전드 스킨 퀴즈</h1>
         <p className="text-xl text-gray-500 mb-6">

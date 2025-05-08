@@ -36,29 +36,46 @@ const RankingTable: React.FC<IProps> = ({
   isCompact = false,
   showQuizType = false,
 }) => {
+  let minTableWidth = 60; // 순위 열
+  minTableWidth += 100; // 닉네임 열
+  minTableWidth += 100; // 점수 열
+  minTableWidth += 100; // 소요시간 열
+
+  if (showQuizType) {
+    minTableWidth += 100; // 모드 열
+  }
+  if (!isCompact) {
+    minTableWidth += 100; // 날짜 열
+  }
+
   return (
-    <div className="max-w-2xl mx-auto border rounded-md overflow-hidden">
+    <div className="max-w-2xl mx-auto border rounded-md overflow-hidden overflow-x-auto">
       <div className="max-h-[500px] overflow-y-auto">
-        <Table className="w-full relative table-fixed">
+        <Table
+          className="w-full relative table-fixed"
+          style={{ minWidth: `${minTableWidth}px` }}
+        >
           <TableHeader className="sticky top-0 bg-background z-10">
             <TableRow className="border-b-2 border-primary/20">
-              <TableHead className="py-3 px-6 bg-background w-[60px]">
+              <TableHead className="py-3 px-6 bg-background w-[60px] text-center">
                 순위
               </TableHead>
-              <TableHead className="py-3 px-6 bg-background">닉네임</TableHead>
-              <TableHead className="py-3 px-6 text-right bg-background">
+              <TableHead className="py-3 px-6 bg-background text-center min-w-[100px]">
+                닉네임
+              </TableHead>
+              <TableHead className="py-3 px-6 text-right bg-background min-w-[100px]">
                 점수
               </TableHead>
-              <TableHead className="py-3 px-6 text-right bg-background">
+              <TableHead className="py-3 px-6 text-right bg-background min-w-[100px]">
                 소요시간
               </TableHead>
               {showQuizType && (
-                <TableHead className="py-3 px-6 text-center bg-background">
+                <TableHead className="py-3 px-6 text-center bg-background min-w-[100px]">
                   모드
                 </TableHead>
               )}
               {!isCompact && (
-                <TableHead className="py-3 px-6 text-right bg-background">
+                <TableHead className="py-3 px-6 text-center bg-background min-w-[100px]">
                   날짜
                 </TableHead>
               )}
@@ -80,23 +97,25 @@ const RankingTable: React.FC<IProps> = ({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <TableCell className="py-3 px-6">
+                  <TableCell className="py-3 px-6 text-center">
                     {getRankingImogi(index)}
                   </TableCell>
                   <TableCell
-                    className="py-3 px-6 truncate max-w-xs"
+                    className="py-3 px-6 text-center min-w-[100px]"
                     title={ranking.nickname}
                   >
-                    {ranking.nickname}
+                    {ranking.nickname.length > 6
+                      ? `${ranking.nickname.slice(0, 6)}...`
+                      : ranking.nickname}
                   </TableCell>
-                  <TableCell className="py-3 px-6 text-right">
+                  <TableCell className="py-3 px-6 text-right min-w-[100px]">
                     {ranking.score}점
                   </TableCell>
-                  <TableCell className="py-3 px-6 text-right whitespace-nowrap">
+                  <TableCell className="py-3 px-6 text-right whitespace-nowrap min-w-[100px]">
                     {minutes}분 {seconds}초
                   </TableCell>
                   {showQuizType && (
-                    <TableCell className="py-3 px-6 text-center">
+                    <TableCell className="py-3 px-6 text-center min-w-[100px]">
                       <span
                         className={cn(
                           "px-2 py-1 rounded-full text-xs whitespace-nowrap",
@@ -113,7 +132,7 @@ const RankingTable: React.FC<IProps> = ({
                     </TableCell>
                   )}
                   {!isCompact && (
-                    <TableCell className="py-3 px-6 text-right text-sm text-muted-foreground whitespace-nowrap">
+                    <TableCell className="py-3 px-6 text-center text-sm text-muted-foreground whitespace-nowrap min-w-[100px]">
                       {new Date(ranking.created_at || "").toLocaleDateString()}
                     </TableCell>
                   )}

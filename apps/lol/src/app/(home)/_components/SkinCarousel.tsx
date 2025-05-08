@@ -8,6 +8,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@1-blue/ui/components/carousel";
+import Link from "next/link";
+import routeMap from "#src/libs/routeMap";
 
 const SkinCarousel: React.FC = () => {
   const { shuffledSkins, isLoading } = useSkins();
@@ -33,7 +35,9 @@ const SkinCarousel: React.FC = () => {
       <CarouselContent className="ml-0">
         {slicedSkins.map((skin) => (
           <CarouselItem key={skin.id} className="p-0 basis-full">
-            <SkinCard skin={skin} />
+            <Link href={routeMap.champions.skins.detail(skin.skin_name)}>
+              <SkinCard skin={skin} />
+            </Link>
           </CarouselItem>
         ))}
       </CarouselContent>

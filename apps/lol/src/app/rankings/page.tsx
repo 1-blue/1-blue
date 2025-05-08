@@ -6,7 +6,7 @@ import routeMap from "#src/libs/routeMap";
 
 const Page: NextPage = () => {
   return (
-    <main className="min-h-screen p-8">
+    <main className="p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">🏆 퀴즈 랭킹</h1>
