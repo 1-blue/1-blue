@@ -13,8 +13,14 @@ import ResultCarousel from "./ResultCarousel";
 
 const GameResult = () => {
   const router = useRouter();
-  const { score, quizzes, completionTime, quizType, answeredQuizzes } =
-    useQuizContext();
+  const {
+    score,
+    quizzes,
+    completionTime,
+    quizType,
+    answeredQuizzes,
+    resetQuiz,
+  } = useQuizContext();
   const [showRankingForm, setShowRankingForm] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
@@ -30,6 +36,7 @@ const GameResult = () => {
   };
 
   const handleRestartQuiz = () => {
+    resetQuiz();
     router.replace(makeURLQueries(routeMap.game.index, { type: quizType }));
   };
 

@@ -46,6 +46,7 @@ const SkinCard: React.FC<IProps> = ({ skin }) => {
             value={imageType}
             onValueChange={(value) => setImageType(value as TImageType)}
             className="w-full"
+            onClick={(e) => e.preventDefault()}
           >
             <TabsList className="grid grid-cols-2 w-full">
               <TabsTrigger value="splash" className="text-xs py-1">

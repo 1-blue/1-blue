@@ -7,6 +7,7 @@ import React, {
   useRef,
   useEffect,
   ReactNode,
+  useCallback,
 } from "react";
 import { type IQuiz, useQuiz } from "#src/app/game/_hooks/useQuiz";
 
@@ -50,6 +51,7 @@ interface QuizContextType {
   handleSubmitAnswer: () => void;
   handleNextQuiz: () => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  resetQuiz: () => void;
 }
 
 // Context 생성
@@ -61,6 +63,9 @@ interface QuizProviderProps {
   quizCount: number;
   quizType: QuizType;
 }
+
+// 초기 시간 설정 (상수화)
+const INITIAL_TIME_LEFT = 15;
 
 // QuizProvider 컴포넌트
 export const QuizProvider = ({
@@ -76,10 +81,10 @@ export const QuizProvider = ({
   const [inputAnswer, setInputAnswer] = useState("");
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(15);
+  const [timeLeft, setTimeLeft] = useState(INITIAL_TIME_LEFT);
   const [isGameOver, setIsGameOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [answeredQuizzes, setAnsweredQuizzes] = useState<AnsweredQuiz[]>([]); // 정답/오답 기록 상태 초기화
+  const [answeredQuizzes, setAnsweredQuizzes] = useState<AnsweredQuiz[]>([]);
 
   // 퀴즈 시작 및 완료 시간 추적
   const [startTime, setStartTime] = useState<number | null>(null);
@@ -167,39 +172,42 @@ export const QuizProvider = ({
   }, [isGameOver, startTime]);
 
   // 객관식 선택지 선택 처리
-  const handleOptionSelect = (option: string) => {
-    if (
-      selectedOption !== null ||
-      isGameOver ||
-      isCorrect !== null ||
-      !currentQuiz
-    )
-      return;
+  const handleOptionSelect = useCallback(
+    (option: string) => {
+      if (
+        selectedOption !== null ||
+        isGameOver ||
+        isCorrect !== null ||
+        !currentQuiz
+      )
+        return;
 
-    setSelectedOption(option);
-    const correct = option === currentQuiz.correctAnswer;
-    setIsCorrect(correct);
+      setSelectedOption(option);
+      const correct = option === currentQuiz.correctAnswer;
+      setIsCorrect(correct);
 
-    if (correct) {
-      setScore((prev) => prev + 100);
-    }
-    setAnsweredQuizzes((prevAnswered) => [
-      ...prevAnswered,
-      {
-        quizId: currentQuiz.id,
-        questionText: currentQuiz.correctAnswer, // IQuiz의 correctAnswer를 문제 텍스트로 우선 사용
-        userAnswer: option,
-        correctAnswer: currentQuiz.correctAnswer,
-        isCorrect: correct,
-        splashImageUrl: currentQuiz.splashImageUrl,
-        options: currentQuiz.options,
-        quizType: "multiple-choice",
-      },
-    ]);
-  };
+      if (correct) {
+        setScore((prev) => prev + 100);
+      }
+      setAnsweredQuizzes((prevAnswered) => [
+        ...prevAnswered,
+        {
+          quizId: currentQuiz.id,
+          questionText: currentQuiz.correctAnswer, // IQuiz의 correctAnswer를 문제 텍스트로 우선 사용
+          userAnswer: option,
+          correctAnswer: currentQuiz.correctAnswer,
+          isCorrect: correct,
+          splashImageUrl: currentQuiz.splashImageUrl,
+          options: currentQuiz.options,
+          quizType: "multiple-choice",
+        },
+      ]);
+    },
+    [selectedOption, isGameOver, isCorrect, currentQuiz]
+  );
 
   // 주관식 답변 제출 처리
-  const handleSubmitAnswer = () => {
+  const handleSubmitAnswer = useCallback(() => {
     if (isCorrect !== null || isGameOver || !currentQuiz) return;
 
     const userAnswerTrimmed = inputAnswer
@@ -228,10 +236,11 @@ export const QuizProvider = ({
         quizType: "short-answer",
       },
     ]);
-  };
+    setInputAnswer("");
+  }, [isCorrect, isGameOver, currentQuiz, inputAnswer]);
 
   // 다음 문제로 이동
-  const handleNextQuiz = () => {
+  const handleNextQuiz = useCallback(() => {
     const nextIndex = currentQuizIndex + 1;
 
     if (nextIndex >= quizzes.length) {
@@ -241,17 +250,34 @@ export const QuizProvider = ({
       setSelectedOption(null);
       setInputAnswer("");
       setIsCorrect(null);
-      setTimeLeft(15);
+      setTimeLeft(INITIAL_TIME_LEFT);
     }
-  };
+  }, [currentQuizIndex, quizzes.length]);
 
   // 입력 변경 처리
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputAnswer(e.target.value);
-  };
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputAnswer(e.target.value);
+    },
+    []
+  );
+
+  // 퀴즈 리셋 함수 구현
+  const resetQuiz = useCallback(() => {
+    setCurrentQuizIndex(0);
+    setSelectedOption(null);
+    setInputAnswer("");
+    setIsCorrect(null);
+    setScore(0);
+    setTimeLeft(INITIAL_TIME_LEFT);
+    setIsGameOver(false);
+    setAnsweredQuizzes([]);
+    setStartTime(null);
+    setCompletionTime(0);
+  }, []);
 
   // Context 값
-  const value = {
+  const value: QuizContextType = {
     quizzes,
     currentQuiz,
     currentQuizIndex,
@@ -267,11 +293,12 @@ export const QuizProvider = ({
     totalQuizzes: quizzes.length,
     quizType,
     completionTime,
-    answeredQuizzes, // context value에 추가
+    answeredQuizzes,
     handleOptionSelect,
     handleSubmitAnswer,
     handleNextQuiz,
     handleInputChange,
+    resetQuiz,
   };
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
