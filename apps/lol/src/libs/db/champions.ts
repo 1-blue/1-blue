@@ -36,6 +36,10 @@ const saveChampionToDB = async (championData: ChampionData) => {
         LOL_API_ENDPOINT.championSquareImage(championData.id),
       tags: championData.tags,
       version: process.env.NEXT_PUBLIC_LOL_API_VERSION,
+      lore: championData.lore,
+      blurb: championData.blurb,
+      allytips: championData.allytips,
+      enemytips: championData.enemytips,
     };
 
     const { error, ...props } = await supabase

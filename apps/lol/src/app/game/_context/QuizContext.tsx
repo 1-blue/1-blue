@@ -13,6 +13,18 @@ import { type IQuiz, useQuiz } from "#src/app/game/_hooks/useQuiz";
 // 퀴즈 타입 정의
 export type QuizType = "multiple-choice" | "short-answer";
 
+// 개별 정답/오답 기록 타입
+export interface AnsweredQuiz {
+  quizId: string;
+  questionText: string; // 문제 텍스트 (보통 정답과 동일한 내용)
+  userAnswer: string;
+  correctAnswer: string;
+  isCorrect: boolean;
+  splashImageUrl: string;
+  options?: string[]; // 객관식인 경우 선택지
+  quizType: QuizType;
+}
+
 // Context 타입 정의
 interface QuizContextType {
   // 상태
@@ -31,6 +43,7 @@ interface QuizContextType {
   totalQuizzes: number;
   quizType: QuizType;
   completionTime: number;
+  answeredQuizzes: AnsweredQuiz[]; // 정답/오답 기록 추가
 
   // 메서드
   handleOptionSelect: (option: string) => void;
@@ -66,6 +79,7 @@ export const QuizProvider = ({
   const [timeLeft, setTimeLeft] = useState(15);
   const [isGameOver, setIsGameOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [answeredQuizzes, setAnsweredQuizzes] = useState<AnsweredQuiz[]>([]); // 정답/오답 기록 상태 초기화
 
   // 퀴즈 시작 및 완료 시간 추적
   const [startTime, setStartTime] = useState<number | null>(null);
@@ -97,19 +111,32 @@ export const QuizProvider = ({
       return;
 
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
           clearInterval(timer);
-          // 시간 초과 시 오답 처리
-          if (quizType === "multiple-choice") {
-            setSelectedOption("");
-          } else {
-            setInputAnswer("");
+          const answerTimedOutCorrect = false;
+          setIsCorrect(answerTimedOutCorrect);
+          if (currentQuiz) {
+            setAnsweredQuizzes((prevAnswered) => [
+              ...prevAnswered,
+              {
+                quizId: currentQuiz.id,
+                questionText: currentQuiz.correctAnswer, // IQuiz의 correctAnswer를 문제 텍스트로 우선 사용
+                userAnswer:
+                  quizType === "multiple-choice"
+                    ? "시간 초과"
+                    : inputAnswer || "시간 초과", // 주관식도 시간 초과 시 빈 문자열 대신 명시
+                correctAnswer: currentQuiz.correctAnswer,
+                isCorrect: answerTimedOutCorrect,
+                splashImageUrl: currentQuiz.splashImageUrl,
+                options: currentQuiz.options,
+                quizType,
+              },
+            ]);
           }
-          setIsCorrect(false);
           return 0;
         }
-        return prev - 1;
+        return prevTime - 1;
       });
     }, 1000);
 
@@ -121,6 +148,8 @@ export const QuizProvider = ({
     isGameOver,
     isCorrect,
     quizType,
+    currentQuiz,
+    inputAnswer,
   ]);
 
   // 게임 시작 시 시간 기록
@@ -139,33 +168,66 @@ export const QuizProvider = ({
 
   // 객관식 선택지 선택 처리
   const handleOptionSelect = (option: string) => {
-    if (selectedOption !== null || isGameOver || isCorrect !== null) return;
+    if (
+      selectedOption !== null ||
+      isGameOver ||
+      isCorrect !== null ||
+      !currentQuiz
+    )
+      return;
 
     setSelectedOption(option);
-    const correct = option === currentQuiz?.correctAnswer;
+    const correct = option === currentQuiz.correctAnswer;
     setIsCorrect(correct);
 
     if (correct) {
       setScore((prev) => prev + 100);
     }
+    setAnsweredQuizzes((prevAnswered) => [
+      ...prevAnswered,
+      {
+        quizId: currentQuiz.id,
+        questionText: currentQuiz.correctAnswer, // IQuiz의 correctAnswer를 문제 텍스트로 우선 사용
+        userAnswer: option,
+        correctAnswer: currentQuiz.correctAnswer,
+        isCorrect: correct,
+        splashImageUrl: currentQuiz.splashImageUrl,
+        options: currentQuiz.options,
+        quizType: "multiple-choice",
+      },
+    ]);
   };
 
   // 주관식 답변 제출 처리
   const handleSubmitAnswer = () => {
-    if (isCorrect !== null || isGameOver) return;
+    if (isCorrect !== null || isGameOver || !currentQuiz) return;
 
-    // 띄어쓰기를 제외한 정답 체크
-    const userAnswer = inputAnswer.trim().replace(/\s+/g, "").toLowerCase();
-    const correctAnswer = currentQuiz?.correctAnswer
+    const userAnswerTrimmed = inputAnswer
+      .trim()
+      .replace(/\s+/g, "")
+      .toLowerCase();
+    const correctAnswerTrimmed = currentQuiz.correctAnswer
       .replace(/\s+/g, "")
       .toLowerCase();
 
-    const correct = userAnswer === correctAnswer;
+    const correct = userAnswerTrimmed === correctAnswerTrimmed;
     setIsCorrect(correct);
 
     if (correct) {
       setScore((prev) => prev + 100);
     }
+    setAnsweredQuizzes((prevAnswered) => [
+      ...prevAnswered,
+      {
+        quizId: currentQuiz.id,
+        questionText: currentQuiz.correctAnswer, // IQuiz의 correctAnswer를 문제 텍스트로 우선 사용
+        userAnswer: inputAnswer,
+        correctAnswer: currentQuiz.correctAnswer,
+        isCorrect: correct,
+        splashImageUrl: currentQuiz.splashImageUrl,
+        quizType: "short-answer",
+      },
+    ]);
   };
 
   // 다음 문제로 이동
@@ -173,10 +235,8 @@ export const QuizProvider = ({
     const nextIndex = currentQuizIndex + 1;
 
     if (nextIndex >= quizzes.length) {
-      // 게임 종료
       setIsGameOver(true);
     } else {
-      // 다음 문제로
       setCurrentQuizIndex(nextIndex);
       setSelectedOption(null);
       setInputAnswer("");
@@ -207,6 +267,7 @@ export const QuizProvider = ({
     totalQuizzes: quizzes.length,
     quizType,
     completionTime,
+    answeredQuizzes, // context value에 추가
     handleOptionSelect,
     handleSubmitAnswer,
     handleNextQuiz,

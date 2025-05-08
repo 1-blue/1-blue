@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Button } from "@1-blue/ui/components/button";
 import { Input } from "@1-blue/ui/components/input";
@@ -12,12 +14,12 @@ interface RankingFormProps {
   onSubmit: () => void;
 }
 
-const RankingForm = ({
+const RankingForm: React.FC<RankingFormProps> = ({
   score,
   completionTime,
   quizType,
   onSubmit,
-}: RankingFormProps) => {
+}) => {
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

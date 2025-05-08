@@ -5,14 +5,17 @@ import {
   TabsList,
   TabsTrigger,
 } from "@1-blue/ui/components/tabs";
+import Link from "next/link";
+import routeMap from "#src/libs/routeMap";
 
 const HowToPlayTabs: React.FC = () => {
   return (
     <Tabs defaultValue="basics" className="mb-4">
-      <TabsList className="grid grid-cols-3 gap-2 w-full">
+      <TabsList className="grid grid-cols-4 gap-2 w-full">
         <TabsTrigger value="basics">기본 규칙</TabsTrigger>
         <TabsTrigger value="multiple-choice">객관식</TabsTrigger>
         <TabsTrigger value="short-answer">주관식</TabsTrigger>
+        <TabsTrigger value="contact">문의사항</TabsTrigger>
       </TabsList>
 
       <TabsContent value="basics">
@@ -139,6 +142,34 @@ const HowToPlayTabs: React.FC = () => {
             </ul>
           </motion.div>
         </div>
+      </TabsContent>
+
+      <TabsContent value="contact">
+        <motion.div
+          className="bg-card/80 border border-border rounded-lg p-6 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-2xl font-semibold text-card-foreground mb-4">
+            💬 문의 및 소통
+          </h2>
+          <p className="text-card-foreground/80 mb-6">
+            퀴즈 관련 문의사항, 버그 제보, 건의사항
+            <br />
+            또는 자유로운 소통은 언제든지 환영합니다!
+            <br />
+            아래 오픈 채팅방 링크를 통해 참여해주세요.
+          </p>
+          <Link
+            href={routeMap.openKakao.index}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
+          >
+            오픈 채팅방 바로가기
+          </Link>
+        </motion.div>
       </TabsContent>
     </Tabs>
   );

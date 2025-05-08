@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import SkinCard from "#src/app/skins/_components/SkinCard";
-import useSkins from "#src/app/skins/_hooks/useSkins";
+import SkinCard from "#src/app/champions/skins/_components/SkinCard";
+import useSkins from "#src/app/champions/skins/_hooks/useSkins";
 import {
   Carousel,
   CarouselContent,

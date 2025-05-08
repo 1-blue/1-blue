@@ -26,6 +26,9 @@ importers:
 
   apps/lol:
     dependencies:
+      '@1-blue/libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
       '@1-blue/supabase':
         specifier: workspace:*
         version: link:../../packages/supabase
@@ -147,6 +150,12 @@ importers:
       typescript-eslint:
         specifier: ^8.24.1
         version: 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
+
+  packages/libs:
+    dependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.4)(typescript@5.7.3)
 
   packages/supabase:
     dependencies:

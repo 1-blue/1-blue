@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Separator } from "@1-blue/ui/components/separator";
+import routeMap from "#src/libs/routeMap";
 
 const Footer: React.FC = () => {
   return (
@@ -9,12 +10,15 @@ const Footer: React.FC = () => {
           <p>&copy; 2025 박상은(1-blue) All rights reserved</p>
         </div>
         <nav className="flex items-center gap-x-4 sm:gap-x-6">
-          <Link href="#" className="hover:text-primary transition-colors">
+          <Link
+            href={routeMap.privacy.index}
+            className="hover:text-primary transition-colors"
+          >
             저작권 처리 방침
           </Link>
           <Separator orientation="vertical" className="h-4 hidden sm:block" />
           <Link
-            href="https://open.kakao.com/o/grPNDavh"
+            href={routeMap.openKakao.index}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary transition-colors"

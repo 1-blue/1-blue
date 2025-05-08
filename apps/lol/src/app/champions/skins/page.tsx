@@ -12,6 +12,7 @@ import { Button } from "@1-blue/ui/components/button";
 import SkinCard from "./_components/SkinCard";
 import { VirtuosoGridComponent } from "./_components/VirtuosoGridComponent";
 import useSkins from "./_hooks/useSkins";
+import routeMap from "#src/libs/routeMap";
 
 const OVERSCAN_PX = 2000;
 const INCREASE_VIEWPORT_BY_PX = 2000;
@@ -51,7 +52,7 @@ const Page: NextPage = () => {
       {/* 헤더 영역 */}
       <div className="mb-6 px-4 relative">
         <div className="mb-4 px-4">
-          <Link href="/" passHref>
+          <Link href={routeMap.home.index} passHref>
             <Button
               variant="outline"
               size="default"

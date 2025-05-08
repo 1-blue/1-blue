@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@1-blue/ui/components/button";
 import HowToPlayTabs from "./_components/HowToPlayTabs";
+import { makeURLQueries } from "@1-blue/libs";
+import routeMap from "#src/libs/routeMap";
 
 const Page: NextPage = () => {
   return (
@@ -42,17 +44,25 @@ const Page: NextPage = () => {
 
         <div className="flex flex-col gap-4">
           <div className="grid grid-cols-2 gap-3">
-            <Link href="/game?type=multiple-choice">
+            <Link
+              href={makeURLQueries(routeMap.game.index, {
+                type: "multiple-choice",
+              })}
+            >
               <Button className="w-full h-12 font-bold">객관식 시작</Button>
             </Link>
-            <Link href="/game?type=short-answer">
+            <Link
+              href={makeURLQueries(routeMap.game.index, {
+                type: "short-answer",
+              })}
+            >
               <Button variant="outline" className="w-full h-12 font-bold">
                 주관식 시작
               </Button>
             </Link>
           </div>
 
-          <Link href="/" className="block w-full">
+          <Link href={routeMap.home.index} className="block w-full">
             <Button variant="outline" className="w-full">
               메인으로 돌아가기
             </Button>

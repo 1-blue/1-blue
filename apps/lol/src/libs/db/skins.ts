@@ -64,17 +64,37 @@ export async function saveChampionSkinsToDb(championData: ChampionData) {
     }
 
     // 더 이상 존재하지 않는 스킨 삭제
-    const existingSkinIds = championData.skins.map((skin) => skin.id);
-    if (existingSkinIds.length > 0) {
+    const existingSkinIdsInPayload = championData.skins.map((skin) => skin.id);
+    if (existingSkinIdsInPayload.length > 0) {
+      // PostgREST 'in' 연산자를 위한 문자열 형식으로 변환: (id1,id2,id3)
+      const skinIdsString = `(${existingSkinIdsInPayload.join(",")})`;
+
       const { error: deleteError } = await supabase
         .schema("lol")
         .from("champion_skins")
         .delete()
         .eq("champion_id", championData.id)
-        .not("skin_id", "in", `(${existingSkinIds.join(",")})`);
+        .not("skin_id", "in", skinIdsString); // 변환된 문자열 사용
 
       if (deleteError) {
         console.warn(`오래된 스킨 데이터 삭제 오류:`, deleteError);
+        // 삭제 오류가 전체 함수의 성공/실패에 영향을 미칠지는 정책에 따라 결정
+      }
+    } else {
+      // championData.skins가 비어있다면 해당 챔피언의 모든 스킨을 삭제
+      console.log(
+        `'${championData.name}'의 API 스킨 목록이 비어있어 DB의 모든 스킨을 삭제합니다.`
+      );
+      const { error: deleteAllSkinsError } = await supabase
+        .schema("lol")
+        .from("champion_skins")
+        .delete()
+        .eq("champion_id", championData.id);
+      if (deleteAllSkinsError) {
+        console.warn(
+          `'${championData.name}'의 모든 스킨 삭제 오류:`,
+          deleteAllSkinsError
+        );
       }
     }
 

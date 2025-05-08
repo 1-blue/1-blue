@@ -1,60 +1,107 @@
-"use client";
-
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@1-blue/ui/components/button";
 import RankingTabs from "./_components/RankingTabs";
-import type { NextPage } from "next";
+import type { Metadata, NextPage } from "next";
 import SkinCarousel from "./_components/SkinCarousel";
+import { makeURLQueries } from "@1-blue/libs";
+import routeMap from "#src/libs/routeMap";
+
+interface IProps {
+  searchParams: {
+    correctAnswers?: string;
+    total?: string;
+    timeMin?: string;
+    timeSec?: string;
+    type?: string;
+  };
+}
+
+export const generateMetadata = async ({
+  searchParams,
+}: IProps): Promise<Metadata> => {
+  const { correctAnswers, total, timeMin, timeSec, type } = searchParams;
+
+  // 기본 메타데이터 값
+  const title = "리그오브레전드(lol) 스킨 퀴즈 결과";
+  const description = `[모드: ${type}] 정답: ${correctAnswers} / ${total} 소요시간: ${timeMin}분 ${timeSec}초`;
+  const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Bard_35.jpg`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      "퀴즈",
+      "리그오브레전드",
+      "스킨",
+      "챔피언",
+      "스킬",
+      "아이템",
+      "퀴즈",
+      "맞히기",
+      "맞추기",
+      "리그오브레전드 스킨 퀴즈",
+      "리그오브레전드 스킨 맞추기",
+    ],
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: "리그오브레전드 스킨 퀴즈 대표 이미지",
+        },
+      ],
+      type: "website",
+      siteName: "리그오브레전드 스킨 퀴즈",
+    },
+  };
+};
 
 const Home: NextPage = () => {
-  const queryClient = useQueryClient();
-  const router = useRouter();
-
-  // 퀴즈 타입에 따라 라우팅 및 쿼리 무효화
-  const handleStartQuiz = (quizType: "multiple-choice" | "short-answer") => {
-    // 기존 퀴즈 데이터 캐시 무효화
-    queryClient.invalidateQueries({ queryKey: ["quizzes"] });
-
-    // 게임 페이지로 이동
-    router.push(`/game?type=${quizType}`);
-  };
-
   return (
     <div className="min-h-screen flex flex-col items-center">
       <section className="text-center mb-10 max-w-3xl w-full px-4 pt-8">
         <h1 className="text-4xl font-bold mb-3">리그오브레전드 스킨 퀴즈</h1>
-        <p className="text-xl text-gray-600 mb-6">
+        <p className="text-xl text-gray-500 mb-6">
           리그 오브 레전드 챔피언 스킨을 맞춰보세요!
+          <br />
+          현재 사용중인 버전은 <b>{process.env.NEXT_PUBLIC_LOL_API_VERSION}</b>
+          입니다.
         </p>
 
         <div className="flex gap-4 justify-center mb-8">
-          <Button
-            className="text-lg"
-            size="lg"
-            onClick={() => handleStartQuiz("multiple-choice")}
+          <Link
+            href={makeURLQueries(routeMap.game.index, {
+              type: "multiple-choice",
+            })}
           >
-            객관식 모드 시작
-          </Button>
+            <Button className="text-lg" size="lg">
+              객관식 모드 시작
+            </Button>
+          </Link>
 
-          <Button
-            className="text-lg"
-            size="lg"
-            variant="outline"
-            onClick={() => handleStartQuiz("short-answer")}
+          <Link
+            href={makeURLQueries(routeMap.game.index, {
+              type: "short-answer",
+            })}
           >
-            주관식 모드 시작
-          </Button>
+            <Button className="text-lg" size="lg" variant="outline">
+              주관식 모드 시작
+            </Button>
+          </Link>
         </div>
 
         <div className="flex justify-center mt-4">
           <Button asChild variant="link">
-            <Link href="/how-to-play">게임 방법 자세히 알아보기</Link>
+            <Link href={routeMap.howToPlay.index}>
+              게임 방법 자세히 알아보기
+            </Link>
           </Button>
 
           <Button asChild variant="link">
-            <Link href="/skins">스킨 갤러리 보기</Link>
+            <Link href={routeMap.champions.skins.index}>스킨 갤러리 보기</Link>
           </Button>
         </div>
       </section>
@@ -67,7 +114,7 @@ const Home: NextPage = () => {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">🏆 랭킹</h2>
           <Button asChild variant="outline" size="sm">
-            <Link href="/rankings">전체 랭킹 보기</Link>
+            <Link href={routeMap.rankings.index}>전체 랭킹 보기</Link>
           </Button>
         </div>
 

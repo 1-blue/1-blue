@@ -3,7 +3,6 @@
 import ErrorDisplay from "#src/components/game/ErrorDisplay";
 import LoadingSpinner from "#src/components/game/LoadingSpinner";
 import { useQuizContext } from "#src/app/game/_context/QuizContext";
-import GameResult from "#src/app/game/_components/GameResult";
 import { Button } from "@1-blue/ui/components/button";
 import GameHeader from "#src/app/game/_components/GameHeader";
 import QuizImage from "#src/app/game/_components/QuizImage";
@@ -12,6 +11,8 @@ import ShortAnswerQuiz from "#src/app/game/_components/ShortAnswerQuiz";
 import NextButton from "#src/app/game/_components/NextButton";
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import routeMap from "#src/libs/routeMap";
 
 const GameContent: React.FC = () => {
   const { currentQuiz, isCorrect, isGameOver, isLoading, error, quizType } =
@@ -29,7 +30,7 @@ const GameContent: React.FC = () => {
 
   // 게임 종료 시
   if (isGameOver) {
-    return <GameResult />;
+    return redirect("/game/result");
   }
 
   // 퀴즈 없을 때
@@ -37,7 +38,7 @@ const GameContent: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-svh bg-gradient-to-b from-background to-muted/50 text-foreground p-4">
         <p className="text-xl text-muted-foreground">퀴즈 데이터가 없습니다.</p>
-        <Link href="/" className="mt-4">
+        <Link href={routeMap.home.index} className="mt-4">
           <Button variant="outline">메인으로 돌아가기</Button>
         </Link>
       </div>
@@ -66,7 +67,7 @@ const GameContent: React.FC = () => {
 
       {/* 퀴즈 종료 버튼 */}
       <div className="mt-auto w-full max-w-md">
-        <Link href="/" className="block w-full">
+        <Link href={routeMap.home.index} className="block w-full">
           <Button variant="outline" className="w-full">
             퀴즈 종료하기
           </Button>
