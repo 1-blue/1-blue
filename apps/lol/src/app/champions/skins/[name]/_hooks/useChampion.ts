@@ -2,12 +2,10 @@ import { useQuery } from "@supabase-cache-helpers/postgrest-react-query";
 import { getSupabaseFromAnnoRole } from "@1-blue/supabase";
 
 interface UseChampionArgs {
-  championName: string;
-  skinName: string;
+  championName?: string;
 }
 
-// TODO: 각 챔피언 상세 조회 페이지 구현하기
-const useChampion = ({ championName, skinName }: UseChampionArgs) => {
+const useChampion = ({ championName }: UseChampionArgs) => {
   const supabase = getSupabaseFromAnnoRole();
 
   const {
@@ -19,7 +17,11 @@ const useChampion = ({ championName, skinName }: UseChampionArgs) => {
       .schema("lol")
       .from("champions")
       .select("*")
-      .eq("name", championName)
+      .eq("name", championName!)
+      .single(),
+    {
+      enabled: !!championName,
+    }
   );
 
   return { champion, isLoading, error };

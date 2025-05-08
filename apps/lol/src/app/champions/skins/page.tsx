@@ -100,10 +100,14 @@ const Page: NextPage = () => {
           increaseViewportBy={INCREASE_VIEWPORT_BY_PX}
           components={VirtuosoGridComponent}
           itemContent={(index) => (
-            <SkinCard
+            <Link
               key={filteredSkins[index].id}
-              skin={filteredSkins[index]}
-            />
+              href={routeMap.champions.skins.detail(
+                filteredSkins[index].skin_name
+              )}
+            >
+              <SkinCard skin={filteredSkins[index]} />
+            </Link>
           )}
           computeItemKey={(index) => filteredSkins[index]?.id || index}
         />

@@ -7,19 +7,19 @@ import { makeURLQueries } from "@1-blue/libs";
 import routeMap from "#src/libs/routeMap";
 
 interface IProps {
-  searchParams: {
+  searchParams: Promise<{
     correctAnswers?: string;
     total?: string;
     timeMin?: string;
     timeSec?: string;
     type?: string;
-  };
+  }>;
 }
 
 export const generateMetadata = async ({
   searchParams,
 }: IProps): Promise<Metadata> => {
-  const { correctAnswers, total, timeMin, timeSec, type } = searchParams;
+  const { correctAnswers, total, timeMin, timeSec, type } = await searchParams;
 
   // 기본 메타데이터 값
   const title = "리그오브레전드(lol) 스킨 퀴즈 결과";

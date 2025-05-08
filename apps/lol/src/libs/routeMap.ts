@@ -10,8 +10,8 @@ const routeMap = {
   },
   champions: {
     skins: {
-      index: "/skins",
-      detail: (name: string) => `/champions/${name}/skins`,
+      index: "/champions/skins",
+      detail: (name: string) => `/champions/skins/${name}`,
     },
   },
 
