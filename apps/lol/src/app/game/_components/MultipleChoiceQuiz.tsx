@@ -1,10 +1,34 @@
 import { motion } from "framer-motion";
 import { cn } from "@1-blue/ui/lib";
 import { useQuizContext } from "#src/app/game/_context/QuizContext";
+import { useEffect } from "react";
 
 const MultipleChoiceQuiz = () => {
   const { currentQuiz, selectedOption, isCorrect, handleOptionSelect } =
     useQuizContext();
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (isCorrect !== null || !currentQuiz) {
+        return;
+      }
+
+      const keyNumber = parseInt(event.key, 10);
+      if (keyNumber >= 1 && keyNumber <= 5) {
+        const optionIndex = keyNumber - 1;
+        if (currentQuiz.options && optionIndex < currentQuiz.options.length) {
+          const selectedOptionByKeyboard = currentQuiz.options[optionIndex];
+          handleOptionSelect(selectedOptionByKeyboard);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [currentQuiz, isCorrect, handleOptionSelect]);
 
   if (!currentQuiz) return null;
 

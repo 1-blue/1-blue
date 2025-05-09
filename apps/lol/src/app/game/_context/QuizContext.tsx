@@ -187,7 +187,7 @@ export const QuizProvider = ({
       setIsCorrect(correct);
 
       if (correct) {
-        setScore((prev) => prev + 100);
+        setScore((prev) => prev + 1);
       }
       setAnsweredQuizzes((prevAnswered) => [
         ...prevAnswered,
@@ -222,7 +222,7 @@ export const QuizProvider = ({
     setIsCorrect(correct);
 
     if (correct) {
-      setScore((prev) => prev + 100);
+      setScore((prev) => prev + 1);
     }
     setAnsweredQuizzes((prevAnswered) => [
       ...prevAnswered,

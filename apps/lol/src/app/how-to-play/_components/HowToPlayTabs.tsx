@@ -60,7 +60,7 @@ const HowToPlayTabs: React.FC = () => {
               💯 점수 획득
             </h2>
             <p className="text-card-foreground/80">
-              정답을 맞히면 100점을 획득합니다. 총 10문제를 풀어 1000점을 목표로
+              정답을 맞히면 1점을 획득합니다. 총 10문제를 풀어 10점을 목표로
               도전해보세요!
             </p>
           </motion.div>

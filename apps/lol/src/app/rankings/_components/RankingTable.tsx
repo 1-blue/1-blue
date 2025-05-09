@@ -83,8 +83,14 @@ const RankingTable: React.FC<IProps> = ({
           </TableHeader>
           <TableBody>
             {rankings.map((ranking, index) => {
-              const minutes = Math.floor(ranking.completion_time / 60);
-              const seconds = ranking.completion_time % 60;
+              let completionSeconds = (ranking.completion_time / 1000).toFixed(
+                3
+              );
+              completionSeconds = completionSeconds.replace(
+                /(\.\d*?)0+$/,
+                "$1"
+              );
+              completionSeconds = completionSeconds.replace(/\.$/, "");
 
               return (
                 <motion.tr
@@ -112,7 +118,7 @@ const RankingTable: React.FC<IProps> = ({
                     {ranking.score}점
                   </TableCell>
                   <TableCell className="py-3 px-6 text-right whitespace-nowrap min-w-[100px]">
-                    {minutes}분 {seconds}초
+                    {completionSeconds}초
                   </TableCell>
                   {showQuizType && (
                     <TableCell className="py-3 px-6 text-center min-w-[100px]">

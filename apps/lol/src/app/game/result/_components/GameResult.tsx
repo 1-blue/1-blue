@@ -24,11 +24,14 @@ const GameResult = () => {
   const [showRankingForm, setShowRankingForm] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
-  const correctAnswers = Math.floor(score / 100);
+  const correctAnswers = Math.floor(score / 1);
 
-  const seconds = Math.floor(completionTime / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
+  let formattedCompletionTime = (completionTime / 1000).toFixed(3);
+  formattedCompletionTime = formattedCompletionTime.replace(
+    /(\.\d*?)0+$/,
+    "$1"
+  );
+  formattedCompletionTime = formattedCompletionTime.replace(/\.$/, "");
 
   const handleRankingSubmit = () => {
     setIsRegistered(true);
@@ -46,8 +49,8 @@ const GameResult = () => {
       {
         correctAnswers,
         total: quizzes.length,
-        timeMin: minutes,
-        timeSec: remainingSeconds,
+        timeMin: Math.floor(completionTime / 1000 / 60),
+        timeSec: Math.floor((completionTime / 1000) % 60),
         type: quizType === "multiple-choice" ? "객관식" : "주관식",
       }
     );
@@ -62,20 +65,18 @@ const GameResult = () => {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center space-y-6 p-4 md:p-8 w-full"
+      className="flex flex-col items-center justify-center space-y-2 p-4 md:p-8 w-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       <h1 className="text-3xl font-bold text-center">퀴즈 결과</h1>
 
-      <div className="text-xl font-medium text-center space-y-2">
-        <p>
-          총 {quizzes.length}문제 중 {correctAnswers}문제 정답!
-        </p>
-        <p className="text-muted-foreground">
-          소요 시간: {minutes}분 {remainingSeconds}초
-        </p>
+      <div className="text-2xl font-bold">
+        {score}점 / {correctAnswers}개 맞음
+      </div>
+      <div className="text-lg text-muted-foreground">
+        클리어 시간: {formattedCompletionTime}초
       </div>
 
       {!showRankingForm && !isRegistered && (
@@ -87,7 +88,7 @@ const GameResult = () => {
       {showRankingForm && (
         <RankingForm
           score={score}
-          completionTime={seconds}
+          completionTime={completionTime}
           quizType={quizType}
           onSubmit={handleRankingSubmit}
         />

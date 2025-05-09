@@ -12,6 +12,10 @@ import {
 } from "@1-blue/ui/components/accordion";
 import { AspectRatio } from "@1-blue/ui/components/aspect-ratio";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@1-blue/ui/components/button";
+import routeMap from "#src/libs/routeMap";
+import { makeURLQueries } from "@1-blue/libs";
 
 const SkinPage: React.FC = () => {
   const params = useParams();
@@ -94,6 +98,32 @@ const SkinPage: React.FC = () => {
           <div className="text-xs text-muted-foreground">
             <p>스킨 버전: {skin.version}</p>
             <p>챔피언 데이터 버전: {champion.version}</p>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-2">
+            <Link href={routeMap.home.index}>
+              <Button variant="outline" className="w-full">
+                홈으로 가기
+              </Button>
+            </Link>
+            <Link
+              href={makeURLQueries(routeMap.game.index, {
+                type: "multiple-choice",
+              })}
+            >
+              <Button variant="outline" className="w-full">
+                객관식 문제 풀러 가기
+              </Button>
+            </Link>
+            <Link
+              href={makeURLQueries(routeMap.game.index, {
+                type: "short-answer",
+              })}
+            >
+              <Button variant="outline" className="w-full">
+                주관식 문제 풀러 가기
+              </Button>
+            </Link>
           </div>
         </div>
 
