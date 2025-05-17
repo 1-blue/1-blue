@@ -59,6 +59,12 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+        {/* 네이버 웹마스터 등록 */}
+        <meta
+          name="naver-site-verification"
+          content="066fc78dc4389cd2ae177c7460988a38886a392d"
+        />
       </head>
       <body className="flex flex-col min-h-screen bg-background text-foreground">
         <TanstackQueryProvider>
