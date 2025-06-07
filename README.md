@@ -1,3 +1,7 @@
+<a href="https://hhpluscertificateofcompletion.oopy.io/">
+  <img src="https://static.spartacodingclub.kr/hanghae99/plus/completion/badge_purple.svg" />
+</a>
+
 <img src="https://capsule-render.vercel.app/api?type=waving&section=header&height=200&color=timeGradient&text=FrontEnd%20Developer&fontSize=40&fontColor=FFFFFF&fontAlign=32&fontAlignY=36&animation=fadeIn&desc=1-blue&descSize=36&descAlign=86&descAlignY=36" style="width: 100%;" />
 
 `TypeScript`와 `TailwindCss`를 좋아하는 프론트엔드 개발자 박상은입니다.<br />
