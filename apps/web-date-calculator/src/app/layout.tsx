@@ -33,6 +33,16 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ko" className={`${notoSans.variable} ${GeistMono.variable}`}>
+      <head>
+        {/* 네이버 서치 어드바이저 */}
+        <meta name="naver-site-verification" content="363159e34f6b3c71fc34d4d805b0427f4e251f19" />
+
+        {/* 구글 서치 콘솔 */}
+        <meta
+          name="google-site-verification"
+          content="p2Ms1Y47Y1AAQkm2jbrRv3JQW7JklbdW5ua9MGjI7SU"
+        />
+      </head>
       <body className="min-h-screen font-sans antialiased">{children}</body>
     </html>
   );
