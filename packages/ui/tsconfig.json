@@ -4,10 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@1-blue/ui/*": ["./src/*"]
-    },
-    "module": "esnext",
-    "moduleResolution": "bundler"
+    }
   },
-  "include": ["."],
+  "include": ["src", ".storybook"],
   "exclude": ["node_modules", "dist"]
 }

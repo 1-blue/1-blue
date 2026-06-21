@@ -1,0 +1,11 @@
+{
+  "extends": "@1-blue/typescript-config/react-library.json",
+  "compilerOptions": {
+    "jsx": "react-native",
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+}

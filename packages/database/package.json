@@ -1,0 +1,38 @@
+{
+  "name": "@1-blue/database",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "type-gen": "pnpm dlx supabase gen types typescript --linked --schema public > src/types/database.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.0"
+  },
+  "devDependencies": {
+    "@1-blue/eslint-config": "workspace:*",
+    "@1-blue/typescript-config": "workspace:*",
+    "@types/node": "^22.15.29",
+    "eslint": "^9.28.0",
+    "supabase": "^2.26.9",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}

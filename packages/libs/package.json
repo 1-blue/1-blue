@@ -1,19 +1,31 @@
 {
   "name": "@1-blue/libs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
-  },
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js"
     }
   },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
   "dependencies": {
-    "tsup": "^8.0.2"
+    "date-fns": "^4.1.0"
+  },
+  "devDependencies": {
+    "@1-blue/eslint-config": "workspace:*",
+    "@1-blue/test-config": "workspace:*",
+    "@1-blue/typescript-config": "workspace:*",
+    "eslint": "^9.28.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.3"
   }
 }

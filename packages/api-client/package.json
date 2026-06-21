@@ -1,0 +1,32 @@
+{
+  "name": "@1-blue/api-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "generate": "orval --config orval.config.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.80.7"
+  },
+  "devDependencies": {
+    "@1-blue/eslint-config": "workspace:*",
+    "@1-blue/typescript-config": "workspace:*",
+    "eslint": "^9.28.0",
+    "orval": "^7.10.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

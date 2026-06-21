@@ -1,0 +1,39 @@
+name: Test Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_slug:
+        description: App slug (e.g. my-app for web-my-app)
+        required: true
+        type: string
+      template:
+        description: Template prefix
+        required: true
+        type: choice
+        default: web-static
+        options:
+          - web-static
+          - web-api
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Run tests for web app
+        run: pnpm turbo run test lint typecheck --filter=web-${{ inputs.app_slug }}

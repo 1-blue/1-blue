@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+dist
+.turbo
+coverage
+pnpm-lock.yaml
+storybook-static
+*.ait
+.expo
+android
+ios

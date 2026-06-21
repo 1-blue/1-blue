@@ -1,0 +1,12 @@
+{
+  "name": "@1-blue/test-config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./vitest": "./vitest.config.mjs"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.3"
+  }
+}

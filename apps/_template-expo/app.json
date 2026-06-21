@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "{{APP_NAME}}",
+    "slug": "expo-{{SLUG}}",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "expo{{APP_NAME_CAMEL}}",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
+          "iosAppId": "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy"
+        }
+      ]
+    ],
+    "android": {
+      "package": "com.oneblue.expo{{APP_NAME_CAMEL}}",
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "extra": {
+      "webViewUrl": "https://web-{{SLUG}}.vercel.app",
+      "eas": {
+        "projectId": "00000000-0000-0000-0000-000000000000"
+      }
+    }
+  }
+}

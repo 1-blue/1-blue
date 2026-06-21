@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "apps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "displayName", "templates", "status", "createdAt"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "displayName": { "type": "string" },
+          "templates": {
+            "type": "array",
+            "items": { "enum": ["web-static", "web-api", "ait", "expo"] }
+          },
+          "channels": {
+            "type": "object",
+            "properties": {
+              "vercel": { "type": "boolean" },
+              "ait": { "type": "boolean" },
+              "playStore": { "type": "boolean" }
+            }
+          },
+          "hasDatabase": { "type": "boolean" },
+          "monetization": {
+            "type": "object",
+            "properties": {
+              "adsense": { "type": "boolean" },
+              "admob": { "type": "boolean" },
+              "aitAds": { "type": "boolean" }
+            }
+          },
+          "vercelProjectId": { "type": ["string", "null"] },
+          "adsenseClientId": { "type": ["string", "null"] },
+          "createdAt": { "type": "string", "format": "date" },
+          "status": { "enum": ["draft", "dev", "staging", "live"] },
+          "ports": {
+            "type": "object",
+            "properties": {
+              "web": { "type": "integer", "minimum": 7000, "maximum": 7599 },
+              "ait": { "type": "integer", "minimum": 7000, "maximum": 7599 },
+              "expo": { "type": "integer", "minimum": 8000, "maximum": 8599 }
+            }
+          }
+        }
+      }
+    }
+  }
+}
