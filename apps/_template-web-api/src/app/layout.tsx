@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { createSiteMetadata } from "@1-blue/seo";
 import { SITE_KEYWORDS } from "@/app/_config/site-seo";
+import { AdSenseScript } from "@/app/_components/AdSenseScript";
 import { QueryProvider } from "@/app/_components/QueryProvider";
 
 const notoSans = Noto_Sans_KR({
@@ -24,6 +25,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ko" className={`${notoSans.variable} ${GeistMono.variable}`}>
       <body className="min-h-screen font-sans antialiased">
+        <AdSenseScript />
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

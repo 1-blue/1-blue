@@ -11,7 +11,7 @@ description: 웹 BM AdSense. Add ads.
 
 ## Steps
 
-Add ads.txt, AdSensePlaceholder slot, ensure /privacy /terms from @1-blue/legal.
+Add ads.txt, AdSenseScript in layout, AdSensePlaceholder slot (shared NEXT_PUBLIC_ADSENSE_SLOT_ID), ensure /privacy /terms from @1-blue/legal.
 
 ## Reference
 

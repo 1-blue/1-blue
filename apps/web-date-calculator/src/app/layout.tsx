@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { createSiteMetadata } from "@1-blue/seo";
 import { SITE_KEYWORDS } from "@/app/_config/site-seo";
+import { AdSenseScript } from "@/app/_components/AdSenseScript";
 
 const notoSans = Noto_Sans_KR({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="ko" className={`${notoSans.variable} ${GeistMono.variable}`}>
       <head>
         {/* 네이버 서치 어드바이저 */}
-        <meta name="naver-site-verification" content="363159e34f6b3c71fc34d4d805b0427f4e251f19" />
+        <meta name="naver-site-verification" content="1ebf961fc4256cb9377909b8b2c0b6ff03483dde" />
 
         {/* 구글 서치 콘솔 */}
         <meta
@@ -43,7 +44,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           content="p2Ms1Y47Y1AAQkm2jbrRv3JQW7JklbdW5ua9MGjI7SU"
         />
       </head>
-      <body className="min-h-screen font-sans antialiased">{children}</body>
+      <body className="min-h-screen font-sans antialiased">
+        <AdSenseScript />
+        {children}
+      </body>
     </html>
   );
 };
