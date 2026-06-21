@@ -12,6 +12,7 @@ import {
 import { Input } from "@1-blue/ui/components/input";
 import { Label } from "@1-blue/ui/components/label";
 import { AdSensePlaceholder } from "@/app/_components/AdSensePlaceholder";
+import { FaqSection } from "@/app/_components/FaqSection";
 
 export const HomePage = () => {
   const [input, setInput] = useState("");
@@ -45,13 +46,14 @@ export const HomePage = () => {
         </CardContent>
       </Card>
       <AdSensePlaceholder slotId="template-slot" />
+      <FaqSection />
       <footer className="text-muted-foreground text-center text-xs">
         <a href="/privacy" className="underline">
-          Privacy
+          개인정보처리방침
         </a>
         {" · "}
         <a href="/terms" className="underline">
-          Terms
+          이용약관
         </a>
       </footer>
     </main>

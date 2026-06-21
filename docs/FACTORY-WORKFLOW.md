@@ -68,6 +68,21 @@ pnpm --filter web-{slug} typecheck
 pnpm --filter web-{slug} build
 ```
 
+## SEO 표준 (web-static)
+
+APP.md 롱테일 전략을 `_config/site-seo.ts` 한곳에 반영합니다.
+
+| 항목 | 구현 |
+|------|------|
+| keywords meta | `layout.tsx` → `createSiteMetadata({ keywords })` |
+| sitemap.xml | `app/sitemap.ts` |
+| robots.txt | `app/robots.ts` |
+| FAQ UI | `_components/FaqSection.tsx` |
+| FAQ JSON-LD | `_components/FaqJsonLd.tsx` + `(home)/page.tsx` |
+| site URL | `_config/site-url.ts` |
+
+공통 헬퍼: `@1-blue/seo` — `createSiteMetadata`, `createFaqJsonLd`, `createSitemapEntries`
+
 ## Cursor skills map
 
 | Skill | Phase |

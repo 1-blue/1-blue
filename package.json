@@ -12,7 +12,8 @@
     "ui:add": "pnpm --filter @1-blue/ui ui:add",
     "format": "prettier --write \"**/*.{ts,tsx,js,mjs,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,mjs,json,md,css}\"",
-    "clean": "rm -rf .turbo && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name '.next' -type d -prune -exec rm -rf '{}' + && pnpm install"
+    "clean": "rm -rf .turbo && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name '.next' -type d -prune -exec rm -rf '{}' + && pnpm install",
+    "dev:date-calculator": "pnpm --filter web-date-calculator dev"
   },
   "devDependencies": {
     "@1-blue/eslint-config": "workspace:*",

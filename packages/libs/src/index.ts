@@ -1,6 +1,17 @@
 export type QueryValue = string | number | boolean | null | undefined;
 
-export { formatDate, formatDateTime, format, parseISO, isValid, ko } from "./date";
+export {
+  addDays,
+  differenceInCalendarDays,
+  format,
+  formatDate,
+  formatDateTime,
+  isValid,
+  ko,
+  parseISO,
+  startOfDay,
+  subDays,
+} from "./date";
 
 export const makeURLQueries = (params: Record<string, QueryValue>): string => {
   const searchParams = new URLSearchParams();

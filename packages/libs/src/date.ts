@@ -1,7 +1,16 @@
 import { format, isValid, parseISO } from "date-fns";
 import { ko as koLocale } from "date-fns/locale";
 
-export { addDays, endOfDay, format, isValid, parseISO, startOfDay, subDays } from "date-fns";
+export {
+  addDays,
+  differenceInCalendarDays,
+  endOfDay,
+  format,
+  isValid,
+  parseISO,
+  startOfDay,
+  subDays,
+} from "date-fns";
 export { ko } from "date-fns/locale";
 
 export const formatDate = (

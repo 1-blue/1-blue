@@ -114,7 +114,8 @@ When user approves:
 4. Implement `@1-blue/core` + Vitest
 5. Implement UI via `apply-design` (`_components`, `@1-blue/ui`)
 6. SEO metadata + FAQ section on page
-7. `pnpm --filter web-{slug} test` / `lint` / `typecheck` / `build`
+7. Wire SEO infra: `SITE_KEYWORDS`, `FAQ_ITEMS`, `SITEMAP_PATHS` in `_config/site-seo.ts`; `sitemap.ts`, `robots.ts`, `FaqJsonLd`
+8. `pnpm --filter web-{slug} test` / `lint` / `typecheck` / `build`
 
 ## Do NOT (Phase 1)
 

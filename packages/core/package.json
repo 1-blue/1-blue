@@ -11,6 +11,10 @@
     "./geo": {
       "types": "./dist/geo/index.d.ts",
       "import": "./dist/geo/index.js"
+    },
+    "./date": {
+      "types": "./dist/date/index.d.ts",
+      "import": "./dist/date/index.js"
     }
   },
   "scripts": {
@@ -21,6 +25,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@1-blue/libs": "workspace:*",
     "zod": "^3.25.51"
   },
   "devDependencies": {

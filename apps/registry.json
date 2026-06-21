@@ -1,4 +1,30 @@
 {
   "$schema": "./registry.schema.json",
-  "apps": []
+  "apps": [
+    {
+      "slug": "date-calculator",
+      "displayName": "날짜 계산기",
+      "templates": [
+        "web-static"
+      ],
+      "channels": {
+        "vercel": true,
+        "ait": false,
+        "playStore": false
+      },
+      "hasDatabase": false,
+      "monetization": {
+        "adsense": true,
+        "admob": false,
+        "aitAds": false
+      },
+      "ports": {
+        "web": 7001
+      },
+      "vercelProjectId": null,
+      "adsenseClientId": null,
+      "createdAt": "2026-06-21",
+      "status": "draft"
+    }
+  ]
 }

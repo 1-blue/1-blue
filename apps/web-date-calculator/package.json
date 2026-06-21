@@ -1,0 +1,39 @@
+{
+  "name": "web-date-calculator",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbopack --port 7001",
+    "build": "next build",
+    "start": "next start -p 7001",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@1-blue/core": "workspace:*",
+    "@1-blue/legal": "workspace:*",
+    "@1-blue/libs": "workspace:*",
+    "@1-blue/seo": "workspace:*",
+    "@1-blue/ui": "workspace:*",
+    "geist": "^1.4.2",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@1-blue/eslint-config": "workspace:*",
+    "@1-blue/typescript-config": "workspace:*",
+    "@playwright/test": "^1.52.0",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "eslint": "^9.28.0",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.3"
+  }
+}

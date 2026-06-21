@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
-import "@1-blue/ui/globals.css";
+import "./globals.css";
 import { createSiteMetadata } from "@1-blue/seo";
+import { SITE_KEYWORDS } from "@/app/_config/site-seo";
 import { QueryProvider } from "@/app/_components/QueryProvider";
 
 const notoSans = Noto_Sans_KR({
@@ -16,6 +17,7 @@ export const metadata: Metadata = createSiteMetadata({
   title: "{{APP_NAME}}",
   description: "{{APP_DESCRIPTION}}",
   siteUrl,
+  keywords: [...SITE_KEYWORDS],
 });
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {

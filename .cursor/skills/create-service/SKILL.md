@@ -31,7 +31,8 @@ If user only mentions an idea with no approval → use **plan-service** first, n
 5. Implement pure logic in `packages/core` + Vitest
 6. Implement UI in app `_components` via [apply-design](../apply-design/SKILL.md)
 7. SEO: metadata, H1, FAQ from APP.md
-8. Verify: `test`, `lint`, `typecheck`, `build` for the app filter
+8. SEO infra: `_config/site-seo.ts` (keywords, FAQ, sitemap paths), `sitemap.ts`, `robots.ts`, `FaqJsonLd` on home page
+9. Verify: `test`, `lint`, `typecheck`, `build` for the app filter
 
 ## Reference
 
