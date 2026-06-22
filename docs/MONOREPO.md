@@ -75,3 +75,7 @@ pnpm dev:my-app
 | `NEXT_PUBLIC_SUPABASE_URL`      | web-api                | `@1-blue/database` browser client |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | web-api                | `@1-blue/database` browser client |
 | `SUPABASE_SERVICE_ROLE_KEY`     | web-api server         | Route Handlers only               |
+
+### Operator contact (`@1-blue/legal`)
+
+문의 이메일·카카오 오픈채팅·운영자명은 [`packages/legal/src/operator.ts`](../packages/legal/src/operator.ts)의 `SITE_OPERATOR`에서 한 번만 수정합니다. 푸터(`OperatorContactLinks`), `/privacy`, `/terms`에 자동 반영됩니다. 상세: [packages/legal/README.md](../packages/legal/README.md).

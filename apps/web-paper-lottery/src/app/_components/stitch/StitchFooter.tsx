@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { OperatorContactLinks } from "@1-blue/ui/components/operator-contact-links";
 
 type StitchFooterProps = {
   showHomeLink?: boolean;
@@ -23,10 +24,12 @@ export const StitchFooter = ({ showHomeLink = false }: StitchFooterProps) => {
         <a href="/privacy" className="hover:text-white underline">
           개인정보처리방침
         </a>
-        <a href="mailto:contact@example.com" className="hover:text-white underline">
-          문의하기
-        </a>
       </div>
+      <OperatorContactLinks
+        className="mt-3 w-full gap-x-4 text-xs"
+        linkClassName="text-white/75 hover:text-white underline"
+        separator=""
+      />
     </footer>
   );
 };

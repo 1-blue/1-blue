@@ -11,6 +11,10 @@
     "./content": {
       "types": "./dist/content.d.ts",
       "import": "./dist/content.js"
+    },
+    "./operator": {
+      "types": "./dist/operator.d.ts",
+      "import": "./dist/operator.js"
     }
   },
   "scripts": {
