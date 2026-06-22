@@ -1,15 +1,17 @@
 import { getTermsSections } from "@1-blue/legal/content";
+import { createLegalPageProps } from "@1-blue/legal/operator";
 
 const TermsPage = () => {
-  const sections = getTermsSections({
-    serviceName: "{{APP_NAME}}",
-    contactEmail: "contact@example.com",
-    effectiveDate: "2026-01-01",
-  });
+  const sections = getTermsSections(
+    createLegalPageProps({
+      serviceName: "{{APP_NAME}}",
+      effectiveDate: "2026-01-01",
+    }),
+  );
 
   return (
     <main className="mx-auto max-w-2xl space-y-6 p-6">
-      <h1 className="text-2xl font-bold">Terms of Service</h1>
+      <h1 className="text-2xl font-bold">이용약관</h1>
       {sections.map((section) => (
         <section key={section.title}>
           <h2 className="mb-2 font-semibold">{section.title}</h2>

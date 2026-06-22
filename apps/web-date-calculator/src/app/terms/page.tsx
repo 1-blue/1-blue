@@ -1,11 +1,13 @@
 import { getTermsSections } from "@1-blue/legal/content";
+import { createLegalPageProps } from "@1-blue/legal/operator";
 
 const TermsPage = () => {
-  const sections = getTermsSections({
-    serviceName: "날짜 계산기",
-    contactEmail: "contact@example.com",
-    effectiveDate: "2026-01-01",
-  });
+  const sections = getTermsSections(
+    createLegalPageProps({
+      serviceName: "날짜 계산기",
+      effectiveDate: "2026-01-01",
+    }),
+  );
 
   return (
     <main className="mx-auto max-w-2xl space-y-6 p-6">

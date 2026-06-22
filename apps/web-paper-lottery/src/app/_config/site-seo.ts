@@ -1,4 +1,5 @@
 import type { FaqItem } from "@1-blue/seo";
+import { SITE_OPERATOR } from "@1-blue/legal/operator";
 
 export const SITE_KEYWORDS = [
   "온라인 종이뽑기",
@@ -29,6 +30,10 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "QR 코드는 어떻게 쓰나요?",
     answer:
       "관리자 페이지에서 참가자별 QR을 생성해 출력하거나 공유하면, 스마트폰으로 스캔해 바로 뽑기 페이지로 이동할 수 있습니다.",
+  },
+  {
+    question: "문의는 어떻게 하나요?",
+    answer: `이메일(${SITE_OPERATOR.contactEmail}) 또는 카카오 오픈채팅으로 문의해 주세요. ${SITE_OPERATOR.responseNotice}됩니다.`,
   },
 ];
 

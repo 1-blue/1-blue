@@ -15,6 +15,7 @@ import {
 } from "@1-blue/ui/components/accordion";
 import { FAQ_ITEMS } from "@/app/_config/site-seo";
 import { stitchDialogContentClass } from "@/app/_components/stitch/stitch-dialog";
+import { OperatorContactLinks } from "@1-blue/ui/components/operator-contact-links";
 
 export type StitchPageVariant = "landing" | "admin" | "play" | "result";
 
@@ -53,6 +54,10 @@ export const StitchHelpSheet = ({
             </AccordionItem>
           ))}
         </Accordion>
+        <OperatorContactLinks
+          className="border-t border-[#e8dcc8] pt-4 text-sm"
+          linkClassName="text-ink/70 hover:text-ink underline"
+        />
       </DialogContent>
     </Dialog>
   );

@@ -1,12 +1,14 @@
-export type LegalPageProps = {
-  serviceName: string;
-  contactEmail: string;
-  effectiveDate: string;
-};
+import type { LegalPageProps } from "./operator";
+
+export type { LegalPageInput, LegalPageProps } from "./operator";
+export { createLegalPageProps, getOperatorContactLine, SITE_OPERATOR } from "./operator";
 
 export const getPrivacyPolicySections = ({
   serviceName,
   contactEmail,
+  operatorName,
+  privacyOfficerTitle,
+  kakaoOpenChatUrl,
   effectiveDate,
 }: LegalPageProps) => [
   {
@@ -15,7 +17,7 @@ export const getPrivacyPolicySections = ({
   },
   {
     title: "2. 수집하는 개인정보 항목",
-    body: `서비스는 별도의 회원가입 없이 대부분의 기능을 제공합니다. (1) 자동 수집: 서비스 이용 과정에서 IP 주소, 쿠키, 접속 일시, 브라우저·OS 정보, 이용 기록, 광고 식별자 등이 서버·분석·광고 도구를 통해 자동으로 생성·수집될 수 있습니다. (2) 이용자 입력: 문의 시 이메일 주소, 문의 내용 등 이용자가 직접 입력한 정보. (3) 날짜 계산 등 핵심 기능은 브라우저에서 처리되며, 입력한 날짜 값을 서버에 저장하지 않습니다.`,
+    body: `서비스는 별도의 회원가입 없이 대부분의 기능을 제공합니다. (1) 자동 수집: 서비스 이용 과정에서 IP 주소, 쿠키, 접속 일시, 브라우저·OS 정보, 이용 기록, 광고 식별자 등이 서버·분석·광고 도구를 통해 자동으로 생성·수집될 수 있습니다. (2) 이용자 입력: 문의 시 이메일 주소, 문의 내용 등 이용자가 직접 입력한 정보. (3) 일부 핵심 기능은 브라우저에서 처리되며, 입력값을 서버에 저장하지 않을 수 있습니다.`,
   },
   {
     title: "3. 개인정보의 수집·이용 목적",
@@ -55,11 +57,16 @@ export const getPrivacyPolicySections = ({
   },
   {
     title: "12. 개인정보 보호책임자 및 문의",
-    body: `개인정보 관련 문의, 열람·정정·삭제 요청은 아래로 연락해 주세요. 이메일: ${contactEmail} / 담당: ${serviceName} 운영팀`,
+    body: `개인정보 관련 문의, 열람·정정·삭제 요청은 아래로 연락해 주세요. 개인정보 보호책임자: ${operatorName} (${privacyOfficerTitle}) / 이메일: ${contactEmail} / 카카오 오픈채팅: ${kakaoOpenChatUrl}`,
   },
 ];
 
-export const getTermsSections = ({ serviceName, contactEmail, effectiveDate }: LegalPageProps) => [
+export const getTermsSections = ({
+  serviceName,
+  contactEmail,
+  kakaoOpenChatUrl,
+  effectiveDate,
+}: LegalPageProps) => [
   {
     title: "1. 목적",
     body: `본 이용약관(이하 "약관")은 ${serviceName}(이하 "서비스")의 이용 조건 및 절차, 운영자와 이용자의 권리·의무 및 책임 사항을 규정함을 목적으로 합니다. 시행일: ${effectiveDate}`,
@@ -74,15 +81,15 @@ export const getTermsSections = ({ serviceName, contactEmail, effectiveDate }: L
   },
   {
     title: "4. 서비스의 제공",
-    body: `${serviceName}은(는) 날짜·일수 계산 등 웹 기반 유틸리티 기능을 무료로 제공합니다. 서비스는 연중무휴를 원칙으로 하나, 시스템 점검, 장애, 기술적 사유, 운영상 필요에 따라 일시 중단될 수 있습니다. 운영자는 서비스의 내용, 기능, UI를 사전 통지 없이 변경·중단할 수 있습니다.`,
+    body: `${serviceName}은(는) 웹 기반 서비스 기능을 무료로 제공합니다. 서비스는 연중무휴를 원칙으로 하나, 시스템 점검, 장애, 기술적 사유, 운영상 필요에 따라 일시 중단될 수 있습니다. 운영자는 서비스의 내용, 기능, UI를 사전 통지 없이 변경·중단할 수 있습니다.`,
   },
   {
     title: "5. 이용자의 의무",
     body: "이용자는 다음 행위를 해서는 안 됩니다. (1) 타인의 정보 도용, 허위 정보 입력 (2) 서비스·서버·네트워크의 정상 운영을 방해하는 행위 (3) 자동화 도구를 이용한 과도한 요청, 크롤링, 역공학 (4) 운영자 또는 제3자의 지식재산권·명예·프라이버시 침해 (5) 불법·유해 정보의 게시·전송 (6) 광고·스크립트 등을 임의로 조작하는 행위. 위반 시 서비스 이용 제한 및 법적 조치를 취할 수 있습니다.",
   },
   {
-    title: "6. 계산 결과 및 정보의 정확성",
-    body: "서비스는 편의를 위해 날짜·일수 계산 결과를 제공하나, 법적·의료·금융·행정 등 전문적 판단이 필요한 용도에 그대로 의존해서는 안 됩니다. 윤년, 시간대, 공휴일, 시작일 포함 여부 등 설정에 따라 결과가 달라질 수 있으며, 운영자는 계산 결과의 완전한 정확성을 보증하지 않습니다.",
+    title: "6. 서비스 결과 및 정보의 정확성",
+    body: "서비스는 편의를 위해 정보·결과를 제공하나, 법적·의료·금융·행정 등 전문적 판단이 필요한 용도에 그대로 의존해서는 안 됩니다. 설정·환경에 따라 결과가 달라질 수 있으며, 운영자는 서비스 결과의 완전한 정확성을 보증하지 않습니다.",
   },
   {
     title: "7. 지식재산권",
@@ -106,6 +113,6 @@ export const getTermsSections = ({ serviceName, contactEmail, effectiveDate }: L
   },
   {
     title: "12. 문의",
-    body: `서비스·약관 관련 문의: ${contactEmail}`,
+    body: `서비스·약관 관련 문의: 이메일 ${contactEmail} / 카카오 오픈채팅 ${kakaoOpenChatUrl}`,
   },
 ];

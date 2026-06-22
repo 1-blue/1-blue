@@ -1,11 +1,13 @@
 import { getPrivacyPolicySections } from "@1-blue/legal/content";
+import { createLegalPageProps } from "@1-blue/legal/operator";
 
 const PrivacyPage = () => {
-  const sections = getPrivacyPolicySections({
-    serviceName: "날짜 계산기",
-    contactEmail: "contact@example.com",
-    effectiveDate: "2026-01-01",
-  });
+  const sections = getPrivacyPolicySections(
+    createLegalPageProps({
+      serviceName: "날짜 계산기",
+      effectiveDate: "2026-01-01",
+    }),
+  );
 
   return (
     <main className="mx-auto max-w-2xl space-y-6 p-6">

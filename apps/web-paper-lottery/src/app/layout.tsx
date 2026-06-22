@@ -37,7 +37,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="ko" className={`${notoSans.variable} ${GeistMono.variable}`}>
       <head>
         {/* 네이버 서치 어드바이저 */}
-        <meta name="naver-site-verification" content="1ebf961fc4256cb9377909b8b2c0b6ff03483dde" />
+        <meta name="naver-site-verification" content="4a7d13859758b22b9118cdc25c0fead27f68d2d3" />
 
         {/* 구글 서치 콘솔 */}
         <meta
