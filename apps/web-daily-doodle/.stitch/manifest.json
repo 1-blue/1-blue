@@ -1,0 +1,41 @@
+{
+  "projectId": "13232009227563314820",
+  "capturedAt": "2026-06-22",
+  "screens": [
+    {
+      "name": "landing-canvas",
+      "nodeId": "6c6033007b2b4f21ba2dd81d8a358433",
+      "path": "/",
+      "url": "https://stitch.withgoogle.com/projects/13232009227563314820?node-id=6c6033007b2b4f21ba2dd81d8a358433",
+      "screenshot": ".stitch/01-landing.png"
+    },
+    {
+      "name": "canvas-mobile",
+      "nodeId": "3bac12de39794612af1b5c39f45b46a6",
+      "path": "/#canvas",
+      "url": "https://stitch.withgoogle.com/projects/13232009227563314820?node-id=3bac12de39794612af1b5c39f45b46a6",
+      "screenshot": ".stitch/02-canvas.png"
+    },
+    {
+      "name": "nickname-dialog",
+      "nodeId": "fba0f22f215d4c96900c5e7c3ca37c4e",
+      "path": "/",
+      "url": "https://stitch.withgoogle.com/projects/13232009227563314820?node-id=fba0f22f215d4c96900c5e7c3ca37c4e",
+      "screenshot": ".stitch/03-nickname.png"
+    },
+    {
+      "name": "archive-list",
+      "nodeId": "a03c82fb2f7a42899b20100a1c4d438a",
+      "path": "/archive",
+      "url": "https://stitch.withgoogle.com/projects/13232009227563314820?node-id=a03c82fb2f7a42899b20100a1c4d438a",
+      "screenshot": ".stitch/04-archive-list.png"
+    },
+    {
+      "name": "archive-detail",
+      "nodeId": "3cc6eb98d71b4e0880f8223789ae2448",
+      "path": "/archive/[date]",
+      "url": "https://stitch.withgoogle.com/projects/13232009227563314820?node-id=3cc6eb98d71b4e0880f8223789ae2448",
+      "screenshot": ".stitch/05-archive-detail.png"
+    }
+  ]
+}

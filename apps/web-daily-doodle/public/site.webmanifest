@@ -1,0 +1,16 @@
+{
+  "name": "오늘의 낙서",
+  "short_name": "낙서",
+  "description": "매일 함께 그리는 공유 낙서장",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5EDD6",
+  "theme_color": "#E85D4C",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

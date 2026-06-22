@@ -1,1 +1,1 @@
-export type { Database, Json } from "./database";
+export type { AppSchema, Database, Json } from "./database";

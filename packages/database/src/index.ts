@@ -1,2 +1,8 @@
-export { createBrowserClient, getSchemaName } from "./client";
-export type { CreateBrowserClientOptions } from "./client";
+export {
+  createBrowserClient,
+  getSchemaName,
+  type AppSchema,
+  type CreateBrowserClientOptions,
+  type Database,
+  type SchemaClient,
+} from "./client";

@@ -50,6 +50,31 @@
       "adsenseClientId": null,
       "createdAt": "2026-06-22",
       "status": "draft"
+    },
+    {
+      "slug": "daily-doodle",
+      "displayName": "오늘의 낙서",
+      "templates": [
+        "web-api"
+      ],
+      "channels": {
+        "vercel": true,
+        "ait": false,
+        "playStore": false
+      },
+      "hasDatabase": true,
+      "monetization": {
+        "adsense": true,
+        "admob": false,
+        "aitAds": false
+      },
+      "ports": {
+        "web": 7003
+      },
+      "vercelProjectId": null,
+      "adsenseClientId": null,
+      "createdAt": "2026-06-22",
+      "status": "draft"
     }
   ]
 }
