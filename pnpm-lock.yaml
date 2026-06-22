@@ -283,6 +283,88 @@ importers:
         specifier: ^3.2.3
         version: 3.2.6(@types/node@22.20.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0)
 
+  apps/web-daily-doodle:
+    dependencies:
+      '@1-blue/api-client':
+        specifier: workspace:*
+        version: link:../../packages/api-client
+      '@1-blue/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@1-blue/database':
+        specifier: workspace:*
+        version: link:../../packages/database
+      '@1-blue/legal':
+        specifier: workspace:*
+        version: link:../../packages/legal
+      '@1-blue/libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
+      '@1-blue/seo':
+        specifier: workspace:*
+        version: link:../../packages/seo
+      '@1-blue/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@supabase/supabase-js':
+        specifier: ^2.50.0
+        version: 2.108.2
+      '@tanstack/react-query':
+        specifier: ^5.80.6
+        version: 5.101.0(react@19.2.7)
+      geist:
+        specifier: ^1.4.2
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+      lucide-react:
+        specifier: ^0.511.0
+        version: 0.511.0(react@19.2.7)
+      next:
+        specifier: ^15.3.3
+        version: 15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      perfect-freehand:
+        specifier: ^1.2.2
+        version: 1.2.3
+      react:
+        specifier: ^19.1.0
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.2.7(react@19.2.7)
+    devDependencies:
+      '@1-blue/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@1-blue/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@playwright/test':
+        specifier: ^1.52.0
+        version: 1.61.0
+      '@tailwindcss/postcss':
+        specifier: ^4.1.8
+        version: 4.3.1
+      '@types/node':
+        specifier: ^22.15.29
+        version: 22.20.0
+      '@types/react':
+        specifier: ^19.1.6
+        version: 19.2.17
+      '@types/react-dom':
+        specifier: ^19.1.5
+        version: 19.2.3(@types/react@19.2.17)
+      eslint:
+        specifier: ^9.28.0
+        version: 9.39.4(jiti@2.7.0)
+      tailwindcss:
+        specifier: ^4.1.8
+        version: 4.3.1
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+      vitest:
+        specifier: ^3.2.3
+        version: 3.2.6(@types/node@22.20.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0)
+
   apps/web-date-calculator:
     dependencies:
       '@1-blue/core':
@@ -465,6 +547,9 @@ importers:
       '@1-blue/libs':
         specifier: workspace:*
         version: link:../libs
+      perfect-freehand:
+        specifier: ^1.2.2
+        version: 1.2.3
       zod:
         specifier: ^3.25.51
         version: 3.25.76
@@ -9164,6 +9249,9 @@ packages:
 
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
+
+  perfect-freehand@1.2.3:
+    resolution: {integrity: sha512-bHZSfqDHGNlPpgH2yxXgPHlQSPpEbo+qg7li0M78J9vNAi2yjwLeA4x79BEQhX44lEWpCLSFCeRZwpw0niiXPA==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -23445,6 +23533,8 @@ snapshots:
   pathval@2.0.1: {}
 
   pend@1.2.0: {}
+
+  perfect-freehand@1.2.3: {}
 
   picocolors@1.1.1: {}
 

@@ -1,0 +1,58 @@
+@import "@1-blue/ui/globals.css";
+
+@source "../**/*.{ts,tsx}";
+@source "../../../../packages/ui/src/components/**/*.{ts,tsx}";
+
+@theme inline {
+  --color-notebook-bg: #f5edd6;
+  --color-paper: #fffdf5;
+  --color-paper-line: #e8dfc8;
+  --color-ink: #3d2914;
+  --color-accent: #e85d4c;
+  --color-mint: #5cb88a;
+  --color-footer: #2a1f14;
+}
+
+body {
+  background-color: var(--color-notebook-bg);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgb(255 253 245 / 0.65) 0%, transparent 45%),
+    radial-gradient(circle at 85% 0%, rgb(232 93 76 / 0.06) 0%, transparent 35%);
+  color: var(--color-ink);
+  font-family: var(--font-sans), "Noto Sans KR", sans-serif;
+}
+
+.paper-surface {
+  background-color: var(--color-paper);
+  background-image: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 0.45) 0%,
+    transparent 40%,
+    rgb(61 41 20 / 0.02) 100%
+  );
+}
+
+.stamp-logo {
+  display: inline-block;
+  border: 3px dashed var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.35rem 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  transform: rotate(-2deg);
+}
+
+.canvas-card {
+  border: 2px solid rgb(61 41 20 / 0.12);
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px rgb(61 41 20 / 0.12);
+  overflow: hidden;
+}
+
+.floating-toolbar {
+  backdrop-filter: blur(8px);
+  background: rgb(255 253 245 / 0.92);
+  border: 1px solid rgb(61 41 20 / 0.1);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgb(61 41 20 / 0.12);
+}

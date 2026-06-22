@@ -161,6 +161,123 @@ type PaperLotteryTables = {
   };
 };
 
+type DailyDoodleTables = {
+  boards: {
+    Row: {
+      id: string;
+      board_date: string;
+      status: "open" | "closed";
+      stroke_count: number;
+      created_at: string;
+      closed_at: string | null;
+    };
+    Insert: {
+      id?: string;
+      board_date: string;
+      status?: "open" | "closed";
+      stroke_count?: number;
+      created_at?: string;
+      closed_at?: string | null;
+    };
+    Update: {
+      id?: string;
+      board_date?: string;
+      status?: "open" | "closed";
+      stroke_count?: number;
+      created_at?: string;
+      closed_at?: string | null;
+    };
+    Relationships: [];
+  };
+  strokes: {
+    Row: {
+      id: string;
+      board_id: string;
+      session_id: string;
+      nickname: string;
+      tool: "pen" | "text";
+      color: string;
+      width: number | null;
+      points: Json | null;
+      text_content: string | null;
+      font_family: string | null;
+      x: number | null;
+      y: number | null;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      board_id: string;
+      session_id: string;
+      nickname: string;
+      tool: "pen" | "text";
+      color: string;
+      width?: number | null;
+      points?: Json | null;
+      text_content?: string | null;
+      font_family?: string | null;
+      x?: number | null;
+      y?: number | null;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      board_id?: string;
+      session_id?: string;
+      nickname?: string;
+      tool?: "pen" | "text";
+      color?: string;
+      width?: number | null;
+      points?: Json | null;
+      text_content?: string | null;
+      font_family?: string | null;
+      x?: number | null;
+      y?: number | null;
+      created_at?: string;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "strokes_board_id_fkey";
+        columns: ["board_id"];
+        isOneToOne: false;
+        referencedRelation: "boards";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  snapshots: {
+    Row: {
+      id: string;
+      board_date: string;
+      strokes: Json;
+      participant_count: number;
+      closed_at: string;
+    };
+    Insert: {
+      id?: string;
+      board_date: string;
+      strokes?: Json;
+      participant_count?: number;
+      closed_at?: string;
+    };
+    Update: {
+      id?: string;
+      board_date?: string;
+      strokes?: Json;
+      participant_count?: number;
+      closed_at?: string;
+    };
+    Relationships: [];
+  };
+};
+
+type DailyDoodleSchema = {
+  Tables: DailyDoodleTables;
+  Views: Record<string, never>;
+  Functions: Record<string, never>;
+  Enums: Record<string, never>;
+};
+
 type PaperLotterySchema = {
   Tables: PaperLotteryTables;
   Views: Record<string, never>;
@@ -186,9 +303,10 @@ type EmptySchema = {
   Enums: Record<string, never>;
 };
 
-export type AppSchema = "app_paper_lottery";
+export type AppSchema = "app_paper_lottery" | "app_daily_doodle";
 
 export type Database = {
   public: EmptySchema;
   app_paper_lottery: PaperLotterySchema;
+  app_daily_doodle: DailyDoodleSchema;
 };
