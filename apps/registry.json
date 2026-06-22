@@ -25,6 +25,31 @@
       "adsenseClientId": null,
       "createdAt": "2026-06-21",
       "status": "draft"
+    },
+    {
+      "slug": "paper-lottery",
+      "displayName": "온라인 종이뽑기",
+      "templates": [
+        "web-api"
+      ],
+      "channels": {
+        "vercel": true,
+        "ait": false,
+        "playStore": false
+      },
+      "hasDatabase": true,
+      "monetization": {
+        "adsense": true,
+        "admob": false,
+        "aitAds": false
+      },
+      "ports": {
+        "web": 7002
+      },
+      "vercelProjectId": null,
+      "adsenseClientId": null,
+      "createdAt": "2026-06-22",
+      "status": "draft"
     }
   ]
 }

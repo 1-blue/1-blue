@@ -15,6 +15,10 @@
     "./date": {
       "types": "./dist/date/index.d.ts",
       "import": "./dist/date/index.js"
+    },
+    "./paper-lottery": {
+      "types": "./dist/paper-lottery/index.d.ts",
+      "import": "./dist/paper-lottery/index.js"
     }
   },
   "scripts": {

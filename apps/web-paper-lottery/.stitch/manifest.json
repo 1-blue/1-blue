@@ -1,0 +1,34 @@
+{
+  "projectId": "4725311879240414439",
+  "capturedAt": "2026-06-22",
+  "screens": [
+    {
+      "name": "landing-create",
+      "nodeId": "6ca5143f72d240f988f8df0acb462af5",
+      "path": "/",
+      "url": "https://stitch.withgoogle.com/projects/4725311879240414439?node-id=6ca5143f72d240f988f8df0acb462af5",
+      "screenshot": ".stitch/01-landing.png"
+    },
+    {
+      "name": "admin",
+      "nodeId": "9db019b558e54e3ca6b908b6b8daf249",
+      "path": "/b/[shortCode]/admin",
+      "url": "https://stitch.withgoogle.com/projects/4725311879240414439?node-id=9db019b558e54e3ca6b908b6b8daf249",
+      "screenshot": ".stitch/02-admin.png"
+    },
+    {
+      "name": "play",
+      "nodeId": "e07585771e454f3fabbeb6ff37f4a28c",
+      "path": "/b/[shortCode]/play",
+      "url": "https://stitch.withgoogle.com/projects/4725311879240414439?node-id=e07585771e454f3fabbeb6ff37f4a28c",
+      "screenshot": ".stitch/03-play.png"
+    },
+    {
+      "name": "result",
+      "nodeId": "3b048f10a69c471ebcfde4f6b9402c4a",
+      "path": "/b/[shortCode]/result",
+      "url": "https://stitch.withgoogle.com/projects/4725311879240414439?node-id=3b048f10a69c471ebcfde4f6b9402c4a",
+      "screenshot": ".stitch/04-result.png"
+    }
+  ]
+}
