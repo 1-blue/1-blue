@@ -1,10 +1,11 @@
-import { createBrowserClient } from "@1-blue/database";
+import { createBrowserClient, type SchemaClient } from "@1-blue/database";
+import { SCHEMA } from "@/lib/db";
 
-let browserClient: ReturnType<typeof createBrowserClient> | null = null;
+let browserClient: SchemaClient<typeof SCHEMA> | null = null;
 
 export const getSupabaseBrowser = () => {
   if (!browserClient) {
-    browserClient = createBrowserClient();
+    browserClient = createBrowserClient({ schema: SCHEMA });
   }
 
   return browserClient;
