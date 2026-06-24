@@ -1,0 +1,70 @@
+{
+  "projectId": "639365875578086580",
+  "capturedAt": "2026-06-24",
+  "screens": [
+    {
+      "name": "landing-desktop",
+      "nodeId": "8620b7250e9949c3b5f06379752f7ee1",
+      "path": "/",
+      "state": "intro",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=8620b7250e9949c3b5f06379752f7ee1",
+      "screenshot": ".stitch/01-landing-desktop.png"
+    },
+    {
+      "name": "landing-mobile",
+      "nodeId": "a679550817b0457795427937adaed552",
+      "path": "/",
+      "state": "intro",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=a679550817b0457795427937adaed552",
+      "screenshot": ".stitch/02-landing-mobile.png"
+    },
+    {
+      "name": "memory-desktop",
+      "nodeId": "0d5468a11cde4927a7b329c888de9203",
+      "path": "/",
+      "state": "memory",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=0d5468a11cde4927a7b329c888de9203",
+      "screenshot": ".stitch/03-memory-desktop.png"
+    },
+    {
+      "name": "play-open-desktop",
+      "nodeId": "c0b58c1124ca4e2dae247d1d8609eff4",
+      "path": "/",
+      "state": "play-open",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=c0b58c1124ca4e2dae247d1d8609eff4",
+      "screenshot": ".stitch/04-play-open-desktop.png"
+    },
+    {
+      "name": "result-desktop",
+      "nodeId": "dde9882e0ac84e739efaf3f1e7c5d641",
+      "path": "/",
+      "state": "result",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=dde9882e0ac84e739efaf3f1e7c5d641",
+      "screenshot": ".stitch/05-result-desktop.png"
+    },
+    {
+      "name": "memory-mobile",
+      "nodeId": "822b193480e1414a81fb7be3797220eb",
+      "path": "/",
+      "state": "memory",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=822b193480e1414a81fb7be3797220eb",
+      "screenshot": ".stitch/06-memory-mobile.png"
+    },
+    {
+      "name": "result-mobile",
+      "nodeId": "b6f4fc1887b248579a34c5b110affca7",
+      "path": "/",
+      "state": "result",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=b6f4fc1887b248579a34c5b110affca7",
+      "screenshot": ".stitch/07-result-mobile.png"
+    },
+    {
+      "name": "play-memory-mobile",
+      "nodeId": "bf33760de8004493932f447ba86793e0",
+      "path": "/",
+      "state": "play-memory",
+      "url": "https://stitch.withgoogle.com/projects/639365875578086580?node-id=bf33760de8004493932f447ba86793e0",
+      "screenshot": ".stitch/08-play-memory-mobile.png"
+    }
+  ]
+}

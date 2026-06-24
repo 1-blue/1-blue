@@ -278,6 +278,163 @@ type DailyDoodleSchema = {
   Enums: Record<string, never>;
 };
 
+type DailyDeductionTables = {
+  puzzle_sets: {
+    Row: {
+      id: string;
+      puzzle_date: string;
+      set_type: "mystery" | "alibi" | "theft";
+      title: string;
+      premise: string;
+      memory_minutes: number;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      puzzle_date: string;
+      set_type: "mystery" | "alibi" | "theft";
+      title: string;
+      premise: string;
+      memory_minutes?: number;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      puzzle_date?: string;
+      set_type?: "mystery" | "alibi" | "theft";
+      title?: string;
+      premise?: string;
+      memory_minutes?: number;
+      created_at?: string;
+    };
+    Relationships: [];
+  };
+  clues: {
+    Row: {
+      id: string;
+      puzzle_set_id: string;
+      order_index: number;
+      text: string;
+      is_fake: boolean;
+    };
+    Insert: {
+      id?: string;
+      puzzle_set_id: string;
+      order_index: number;
+      text: string;
+      is_fake?: boolean;
+    };
+    Update: {
+      id?: string;
+      puzzle_set_id?: string;
+      order_index?: number;
+      text?: string;
+      is_fake?: boolean;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "clues_puzzle_set_id_fkey";
+        columns: ["puzzle_set_id"];
+        isOneToOne: false;
+        referencedRelation: "puzzle_sets";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  questions: {
+    Row: {
+      id: string;
+      puzzle_set_id: string;
+      order_index: number;
+      prompt: string;
+      options: Json;
+      correct_option_index: number;
+      explanation: string;
+    };
+    Insert: {
+      id?: string;
+      puzzle_set_id: string;
+      order_index: number;
+      prompt: string;
+      options: Json;
+      correct_option_index: number;
+      explanation: string;
+    };
+    Update: {
+      id?: string;
+      puzzle_set_id?: string;
+      order_index?: number;
+      prompt?: string;
+      options?: Json;
+      correct_option_index?: number;
+      explanation?: string;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "questions_puzzle_set_id_fkey";
+        columns: ["puzzle_set_id"];
+        isOneToOne: false;
+        referencedRelation: "puzzle_sets";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  puzzle_results: {
+    Row: {
+      id: string;
+      puzzle_set_id: string;
+      session_id: string;
+      mode: "memory" | "open";
+      wrong_count: number;
+      time_seconds: number;
+      answers: Json;
+      player_name: string;
+      player_label: string;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      puzzle_set_id: string;
+      session_id: string;
+      mode: "memory" | "open";
+      wrong_count?: number;
+      time_seconds?: number;
+      answers?: Json;
+      player_name?: string;
+      player_label?: string;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      puzzle_set_id?: string;
+      session_id?: string;
+      mode?: "memory" | "open";
+      wrong_count?: number;
+      time_seconds?: number;
+      answers?: Json;
+      player_name?: string;
+      player_label?: string;
+      created_at?: string;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "puzzle_results_puzzle_set_id_fkey";
+        columns: ["puzzle_set_id"];
+        isOneToOne: false;
+        referencedRelation: "puzzle_sets";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+};
+
+type DailyDeductionSchema = {
+  Tables: DailyDeductionTables;
+  Views: Record<string, never>;
+  Functions: Record<string, never>;
+  Enums: Record<string, never>;
+};
+
 type PaperLotterySchema = {
   Tables: PaperLotteryTables;
   Views: Record<string, never>;
@@ -303,10 +460,11 @@ type EmptySchema = {
   Enums: Record<string, never>;
 };
 
-export type AppSchema = "app_paper_lottery" | "app_daily_doodle";
+export type AppSchema = "app_paper_lottery" | "app_daily_doodle" | "app_daily_deduction";
 
 export type Database = {
   public: EmptySchema;
   app_paper_lottery: PaperLotterySchema;
   app_daily_doodle: DailyDoodleSchema;
+  app_daily_deduction: DailyDeductionSchema;
 };
