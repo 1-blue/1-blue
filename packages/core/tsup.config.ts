@@ -7,6 +7,7 @@ export default defineConfig({
     "src/geo/index.ts",
     "src/paper-lottery/index.ts",
     "src/daily-doodle/index.ts",
+    "src/daily-deduction/index.ts",
   ],
   format: ["esm"],
   dts: true,

@@ -23,6 +23,10 @@
     "./daily-doodle": {
       "types": "./dist/daily-doodle/index.d.ts",
       "import": "./dist/daily-doodle/index.js"
+    },
+    "./daily-deduction": {
+      "types": "./dist/daily-deduction/index.d.ts",
+      "import": "./dist/daily-deduction/index.js"
     }
   },
   "scripts": {

@@ -1,0 +1,93 @@
+@import "@1-blue/ui/globals.css";
+
+@source "../**/*.{ts,tsx}";
+@source "../../../../packages/ui/src/components/**/*.{ts,tsx}";
+
+@theme inline {
+  --color-page-bg: #0f1419;
+  --color-surface: #1e232b;
+  --color-clue-paper: #f2ede4;
+  --color-ink: #e8eaed;
+  --color-ink-muted: #9aa4b2;
+  --color-accent: #e69b5d;
+  --color-accent-bright: #f59e0b;
+  --color-danger: #dc2626;
+  --color-success: #22c55e;
+  --color-rank-gold: #f4c430;
+  --color-footer: #0a0e14;
+}
+
+:root {
+  --primary: #e69b5d;
+  --primary-foreground: #1a120b;
+  --ring: #f59e0b;
+  --input: rgb(255 255 255 / 0.2);
+  --border: rgb(232 234 237 / 0.12);
+}
+
+body {
+  background-color: var(--color-page-bg);
+  background-image:
+    radial-gradient(circle at 20% 0%, rgb(230 155 93 / 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 10%, rgb(26 18 11 / 0.6) 0%, transparent 45%);
+  color: var(--color-ink);
+  font-family: var(--font-sans), "Noto Sans KR", sans-serif;
+}
+
+.stamp-logo {
+  display: inline-block;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.3rem 0.9rem;
+  font-family: var(--font-serif), "Noto Serif KR", serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.surface-card {
+  background-color: var(--color-surface);
+  border: 1px solid rgb(232 234 237 / 0.08);
+  border-radius: 1rem;
+}
+
+.clue-card {
+  background-color: var(--color-clue-paper);
+  color: #1a120b;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+}
+
+.fake-stamp {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.fake-stamp span {
+  border: 3px solid var(--color-danger);
+  color: var(--color-danger);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  padding: 0.25rem 0.75rem;
+  transform: rotate(-12deg);
+  opacity: 0.85;
+}
+
+.timer-pill {
+  background: rgb(230 155 93 / 0.15);
+  border: 1px solid rgb(230 155 93 / 0.4);
+  color: var(--color-accent-bright);
+}
+
+.mode-card-selected {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}

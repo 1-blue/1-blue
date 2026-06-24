@@ -20,6 +20,7 @@
 11. **Do not rely on organizeImports on save** — keep import order stable manually
 12. **Before finishing any task:** run `pnpm lint` and `pnpm typecheck` (and `pnpm format:check` if formatting changed)
 13. Dev ports: 7000–7599 (Next), 8000–8599 (Expo). Use `pnpm dev:{slug}` from root after `create:app`
+14. Slack cron/admin 알림: [docs/SLACK.md](../../docs/SLACK.md), [slack-notifications.mdc](./slack-notifications.mdc)
 
 ## Templates
 - `web-static` — Vercel + AdSense, no DB
