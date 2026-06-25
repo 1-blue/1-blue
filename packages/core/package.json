@@ -27,6 +27,10 @@
     "./daily-deduction": {
       "types": "./dist/daily-deduction/index.d.ts",
       "import": "./dist/daily-deduction/index.js"
+    },
+    "./siheomform": {
+      "types": "./dist/siheomform/index.d.ts",
+      "import": "./dist/siheomform/index.js"
     }
   },
   "scripts": {

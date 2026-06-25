@@ -435,6 +435,304 @@ type DailyDeductionSchema = {
   Enums: Record<string, never>;
 };
 
+type SiheomformTables = {
+  cbts: {
+    Row: {
+      id: string;
+      title: string;
+      description: string | null;
+      cover_image_url: string | null;
+      admin_token: string;
+      public_id: string;
+      time_limit_minutes: number | null;
+      shuffle_questions: boolean;
+      shuffle_choices: boolean;
+      show_explanation: boolean;
+      passing_score: number;
+      is_public: boolean;
+      total_points: number;
+      created_at: string;
+      updated_at: string;
+    };
+    Insert: {
+      id?: string;
+      title: string;
+      description?: string | null;
+      cover_image_url?: string | null;
+      admin_token: string;
+      public_id: string;
+      time_limit_minutes?: number | null;
+      shuffle_questions?: boolean;
+      shuffle_choices?: boolean;
+      show_explanation?: boolean;
+      passing_score?: number;
+      is_public?: boolean;
+      total_points?: number;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Update: {
+      id?: string;
+      title?: string;
+      description?: string | null;
+      cover_image_url?: string | null;
+      admin_token?: string;
+      public_id?: string;
+      time_limit_minutes?: number | null;
+      shuffle_questions?: boolean;
+      shuffle_choices?: boolean;
+      show_explanation?: boolean;
+      passing_score?: number;
+      is_public?: boolean;
+      total_points?: number;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Relationships: [];
+  };
+  questions: {
+    Row: {
+      id: string;
+      cbt_id: string;
+      order_index: number;
+      content: string;
+      image_url: string | null;
+      correct_choice_id: string | null;
+      explanation: string | null;
+      explanation_image_url: string | null;
+      points: number | null;
+      created_at: string;
+      updated_at: string;
+    };
+    Insert: {
+      id?: string;
+      cbt_id: string;
+      order_index: number;
+      content?: string;
+      image_url?: string | null;
+      correct_choice_id?: string | null;
+      explanation?: string | null;
+      explanation_image_url?: string | null;
+      points?: number | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Update: {
+      id?: string;
+      cbt_id?: string;
+      order_index?: number;
+      content?: string;
+      image_url?: string | null;
+      correct_choice_id?: string | null;
+      explanation?: string | null;
+      explanation_image_url?: string | null;
+      points?: number | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "questions_cbt_id_fkey";
+        columns: ["cbt_id"];
+        isOneToOne: false;
+        referencedRelation: "cbts";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  choices: {
+    Row: {
+      id: string;
+      question_id: string;
+      order_index: number;
+      content: string;
+      image_url: string | null;
+      created_at: string;
+      updated_at: string;
+    };
+    Insert: {
+      id?: string;
+      question_id: string;
+      order_index: number;
+      content?: string;
+      image_url?: string | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Update: {
+      id?: string;
+      question_id?: string;
+      order_index?: number;
+      content?: string;
+      image_url?: string | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "choices_question_id_fkey";
+        columns: ["question_id"];
+        isOneToOne: false;
+        referencedRelation: "questions";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  attempts: {
+    Row: {
+      id: string;
+      cbt_id: string;
+      nickname: string;
+      score: number | null;
+      total_questions: number | null;
+      started_at: string;
+      submitted_at: string | null;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      cbt_id: string;
+      nickname: string;
+      score?: number | null;
+      total_questions?: number | null;
+      started_at?: string;
+      submitted_at?: string | null;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      cbt_id?: string;
+      nickname?: string;
+      score?: number | null;
+      total_questions?: number | null;
+      started_at?: string;
+      submitted_at?: string | null;
+      created_at?: string;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "attempts_cbt_id_fkey";
+        columns: ["cbt_id"];
+        isOneToOne: false;
+        referencedRelation: "cbts";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  answers: {
+    Row: {
+      id: string;
+      attempt_id: string;
+      question_id: string;
+      selected_choice_id: string | null;
+      is_correct: boolean | null;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      attempt_id: string;
+      question_id: string;
+      selected_choice_id?: string | null;
+      is_correct?: boolean | null;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      attempt_id?: string;
+      question_id?: string;
+      selected_choice_id?: string | null;
+      is_correct?: boolean | null;
+      created_at?: string;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "answers_attempt_id_fkey";
+        columns: ["attempt_id"];
+        isOneToOne: false;
+        referencedRelation: "attempts";
+        referencedColumns: ["id"];
+      },
+      {
+        foreignKeyName: "answers_question_id_fkey";
+        columns: ["question_id"];
+        isOneToOne: false;
+        referencedRelation: "questions";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  cbt_comments: {
+    Row: {
+      id: string;
+      cbt_id: string;
+      attempt_id: string;
+      content: string;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      cbt_id: string;
+      attempt_id: string;
+      content: string;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      cbt_id?: string;
+      attempt_id?: string;
+      content?: string;
+      created_at?: string;
+    };
+    Relationships: [];
+  };
+  cbt_likes: {
+    Row: {
+      id: string;
+      cbt_id: string;
+      attempt_id: string;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      cbt_id: string;
+      attempt_id: string;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      cbt_id?: string;
+      attempt_id?: string;
+      created_at?: string;
+    };
+    Relationships: [];
+  };
+  comment_likes: {
+    Row: {
+      comment_id: string;
+      attempt_id: string;
+      created_at: string;
+    };
+    Insert: {
+      comment_id: string;
+      attempt_id: string;
+      created_at?: string;
+    };
+    Update: {
+      comment_id?: string;
+      attempt_id?: string;
+      created_at?: string;
+    };
+    Relationships: [];
+  };
+};
+
+type SiheomformSchema = {
+  Tables: SiheomformTables;
+  Views: Record<string, never>;
+  Functions: Record<string, never>;
+  Enums: Record<string, never>;
+};
+
 type PaperLotterySchema = {
   Tables: PaperLotteryTables;
   Views: Record<string, never>;
@@ -460,11 +758,12 @@ type EmptySchema = {
   Enums: Record<string, never>;
 };
 
-export type AppSchema = "app_paper_lottery" | "app_daily_doodle" | "app_daily_deduction";
+export type AppSchema = "app_paper_lottery" | "app_daily_doodle" | "app_daily_deduction" | "app_siheomform";
 
 export type Database = {
   public: EmptySchema;
   app_paper_lottery: PaperLotterySchema;
   app_daily_doodle: DailyDoodleSchema;
   app_daily_deduction: DailyDeductionSchema;
+  app_siheomform: SiheomformSchema;
 };

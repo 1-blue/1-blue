@@ -100,6 +100,31 @@
       "adsenseClientId": null,
       "createdAt": "2026-06-24",
       "status": "draft"
+    },
+    {
+      "slug": "siheomform",
+      "displayName": "시험폼",
+      "templates": [
+        "web-api"
+      ],
+      "channels": {
+        "vercel": true,
+        "ait": false,
+        "playStore": false
+      },
+      "hasDatabase": true,
+      "monetization": {
+        "adsense": true,
+        "admob": false,
+        "aitAds": false
+      },
+      "ports": {
+        "web": 7005
+      },
+      "vercelProjectId": null,
+      "adsenseClientId": null,
+      "createdAt": "2026-06-25",
+      "status": "draft"
     }
   ]
 }

@@ -1,0 +1,94 @@
+{
+  "projectId": "11575694827715051887",
+  "projectUrl": "https://stitch.withgoogle.com/projects/11575694827715051887",
+  "screens": [
+    {
+      "id": "01-landing-desktop",
+      "name": "랜딩 desktop",
+      "nodeId": "c475d718390f4f98a2f4d95ce6302bde",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=c475d718390f4f98a2f4d95ce6302bde",
+      "route": "/",
+      "file": "01-landing-desktop.png"
+    },
+    {
+      "id": "02-landing-mobile",
+      "name": "랜딩 mobile",
+      "nodeId": "c31cbb04efec407884f63e9b3a1fc68d",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=c31cbb04efec407884f63e9b3a1fc68d",
+      "route": "/",
+      "file": "02-landing-mobile.png"
+    },
+    {
+      "id": "03-create-metadata",
+      "name": "CBT 만들기",
+      "nodeId": "fb69ffd5a62643b68c8a1a488d3bc44e",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=fb69ffd5a62643b68c8a1a488d3bc44e",
+      "route": "/create",
+      "file": "03-create-metadata.png"
+    },
+    {
+      "id": "04-editor",
+      "name": "문제 편집",
+      "nodeId": "78fc7adb78154accb6ac99cb471ea23c",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=78fc7adb78154accb6ac99cb471ea23c",
+      "route": "/create/questions",
+      "file": "04-editor.png"
+    },
+    {
+      "id": "05-create-complete",
+      "name": "생성 완료",
+      "nodeId": "8156cecc8b8c464a982f306d61eaac05",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=8156cecc8b8c464a982f306d61eaac05",
+      "route": "/create/complete",
+      "file": "05-create-complete.png"
+    },
+    {
+      "id": "06-manage",
+      "name": "관리 대시보드",
+      "nodeId": "7064fdb164a147a8bfa0ac123481993a",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=7064fdb164a147a8bfa0ac123481993a",
+      "route": "/manage/[admin_token]",
+      "file": "06-manage.png"
+    },
+    {
+      "id": "07-manage-edit",
+      "name": "CBT 수정",
+      "nodeId": "b88c3f29b8294af6b59f36872906aa29",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=b88c3f29b8294af6b59f36872906aa29",
+      "route": "/manage/[admin_token]/edit",
+      "file": "07-manage-edit.png"
+    },
+    {
+      "id": "08-stats",
+      "name": "통계",
+      "nodeId": "d8232a6216d04dc190b41779faff0f08",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=d8232a6216d04dc190b41779faff0f08",
+      "route": "/manage/[admin_token]/stats",
+      "file": "08-stats.png"
+    },
+    {
+      "id": "09-exam-intro",
+      "name": "응시 랜딩",
+      "nodeId": "348be789b1f141acb4c746451ebcd0fe",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=348be789b1f141acb4c746451ebcd0fe",
+      "route": "/cbt/[public_id]",
+      "file": "09-exam-intro.png"
+    },
+    {
+      "id": "10-exam-take",
+      "name": "시험 풀이",
+      "nodeId": "52cb6b26c8aa469eb53bb4cefbd5e174",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=52cb6b26c8aa469eb53bb4cefbd5e174",
+      "route": "/cbt/[public_id]/take",
+      "file": "10-exam-take.png"
+    },
+    {
+      "id": "11-exam-result",
+      "name": "결과·리뷰",
+      "nodeId": "73d18705add44dc29cb19d42510ef7b9",
+      "nodeUrl": "https://stitch.withgoogle.com/projects/11575694827715051887?node-id=73d18705add44dc29cb19d42510ef7b9",
+      "route": "/cbt/[public_id]/result/[attempt_id]",
+      "file": "11-exam-result.png"
+    }
+  ]
+}

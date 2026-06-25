@@ -1,0 +1,52 @@
+@import "@1-blue/ui/globals.css";
+
+@source "../**/*.{ts,tsx}";
+@source "../../../../packages/ui/src/components/**/*.{ts,tsx}";
+
+@theme inline {
+  --color-page-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-ink: #111827;
+  --color-ink-muted: #6b7280;
+  --color-primary: #2563eb;
+  --color-border: #e5e7eb;
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-footer: #1f2937;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --ring: #2563eb;
+  --input: #e5e7eb;
+  --border: #e5e7eb;
+  --background: #fafafa;
+  --foreground: #111827;
+  --muted-foreground: #6b7280;
+}
+
+body {
+  background-color: var(--color-page-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans), "Noto Sans KR", sans-serif;
+}
+
+.surface-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.editor-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .editor-sidebar {
+    width: 100%;
+  }
+}

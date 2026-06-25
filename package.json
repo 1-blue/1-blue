@@ -16,7 +16,8 @@
     "dev:daily-deduction": "pnpm --filter web-daily-deduction dev",
     "dev:daily-doodle": "pnpm --filter web-daily-doodle dev",
     "dev:date-calculator": "pnpm --filter web-date-calculator dev",
-    "dev:paper-lottery": "pnpm --filter web-paper-lottery dev"
+    "dev:paper-lottery": "pnpm --filter web-paper-lottery dev",
+    "dev:siheomform": "pnpm --filter web-siheomform dev"
   },
   "devDependencies": {
     "@1-blue/eslint-config": "workspace:*",
