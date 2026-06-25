@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@1-blue/ui/components/button";
 import { toast } from "sonner";
+import { AdSensePlaceholder } from "@/app/_components/AdSensePlaceholder";
 import { CommentsSection } from "@/app/_components/CommentsSection";
 import { LikeButton } from "@/app/_components/LikeButton";
 import { PageShell } from "@/app/_components/PageShell";
@@ -161,6 +162,8 @@ const ResultPageClient = () => {
           </p>
         </div>
 
+        <AdSensePlaceholder slotId="result-after-summary" />
+
         <div className="pointer-events-none fixed -left-[9999px] top-0" aria-hidden>
           <ResultShareCard
             ref={shareRef}
@@ -211,6 +214,8 @@ const ResultPageClient = () => {
             );
           })}
         </div>
+
+        <AdSensePlaceholder slotId="result-bottom" />
 
         <Button asChild variant="outline" className="w-full">
           <Link href={`/cbt/${params.public_id}`}>다시 응시하기</Link>

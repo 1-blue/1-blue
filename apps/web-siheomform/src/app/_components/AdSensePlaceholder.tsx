@@ -4,12 +4,13 @@ import { useEffect, useRef } from "react";
 
 type AdSensePlaceholderProps = {
   slotId: string;
+  className?: string;
 };
 
 const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 const adSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_ID;
 
-export const AdSensePlaceholder = ({ slotId }: AdSensePlaceholderProps) => {
+export const AdSensePlaceholder = ({ slotId, className = "" }: AdSensePlaceholderProps) => {
   const insRef = useRef<HTMLModElement>(null);
 
   useEffect(() => {
@@ -30,7 +31,9 @@ export const AdSensePlaceholder = ({ slotId }: AdSensePlaceholderProps) => {
 
   if (!clientId || !adSlot) {
     return (
-      <div className="border-muted bg-muted/30 text-muted-foreground rounded-lg border border-dashed p-4 text-center text-xs">
+      <div
+        className={`border-muted bg-muted/30 text-muted-foreground rounded-lg border border-dashed p-4 text-center text-xs ${className}`}
+      >
         AdSense placeholder ({slotId}) — set NEXT_PUBLIC_ADSENSE_CLIENT_ID and
         NEXT_PUBLIC_ADSENSE_SLOT_ID
       </div>
@@ -38,11 +41,14 @@ export const AdSensePlaceholder = ({ slotId }: AdSensePlaceholderProps) => {
   }
 
   return (
-    <div className="flex min-h-[50px] w-full justify-center overflow-hidden" aria-label="advertisement">
+    <div
+      className={`flex min-h-[50px] w-full justify-center overflow-hidden ${className}`}
+      aria-label="advertisement"
+    >
       <ins
         ref={insRef}
         className="adsbygoogle"
-        style={{ display: "inline-block", width: 1024, height: 50 }}
+        style={{ display: "inline-block", width: "100%", minHeight: 50 }}
         data-ad-client={clientId}
         data-ad-slot={adSlot}
       />

@@ -48,10 +48,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="ko" className={`${notoSans.variable} ${GeistMono.variable}`}>
       <head>
         {/* 네이버 서치 어드바이저 */}
-        <meta name="naver-site-verification" content="" />
+        <meta name="naver-site-verification" content="82ede62759eff58ed1aac3c425a8f36000c97dea" />
 
         {/* 구글 서치 콘솔 */}
-        <meta name="google-site-verification" content="" />
+        <meta
+          name="google-site-verification"
+          content="p2Ms1Y47Y1AAQkm2jbrRv3JQW7JklbdW5ua9MGjI7SU"
+        />
       </head>
       <body className="flex min-h-dvh flex-col font-sans antialiased">
         <AdSenseScript />

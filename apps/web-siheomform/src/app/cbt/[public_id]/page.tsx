@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@1-blue/ui/components/button";
 import { Input } from "@1-blue/ui/components/input";
 import { Label } from "@1-blue/ui/components/label";
+import { AdSensePlaceholder } from "@/app/_components/AdSensePlaceholder";
 import { CommentsSection } from "@/app/_components/CommentsSection";
 import { LikeButton } from "@/app/_components/LikeButton";
 import { MetaChips } from "@/app/_components/MetaChips";
@@ -133,6 +134,7 @@ const CbtIntroPageClient = () => {
           timeLimitMinutes={cbt.metadata.timeLimitMinutes}
           passingScore={cbt.metadata.passingScore}
         />
+        <AdSensePlaceholder slotId="exam-intro-top" />
         {cbt.metadata.isPublic && (
           <LikeButton
             liked={likedByMe}

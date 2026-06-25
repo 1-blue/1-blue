@@ -151,6 +151,10 @@ export const HomePage = () => {
       </section>
 
       <FaqSection />
+
+      <div className="mt-8">
+        <AdSensePlaceholder slotId="landing-below-faq" />
+      </div>
     </PageShell>
   );
 };

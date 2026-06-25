@@ -7,6 +7,7 @@ import {
   TERMS_PAGE_DESCRIPTION,
   TERMS_PAGE_TITLE,
 } from "@/app/_config/site-seo";
+import { LegalPageLayout } from "@/app/_components/LegalPageLayout";
 import { getAppSiteUrl } from "@/app/_config/site-url";
 
 export const metadata: Metadata = createSiteMetadata({
@@ -26,15 +27,14 @@ const TermsPage = () => {
   );
 
   return (
-    <main className="mx-auto max-w-2xl space-y-6 p-6">
-      <h1 className="text-2xl font-bold">이용약관</h1>
+    <LegalPageLayout title="이용약관">
       {sections.map((section) => (
         <section key={section.title}>
           <h2 className="mb-2 font-semibold">{section.title}</h2>
           <p className="text-muted-foreground text-sm">{section.body}</p>
         </section>
       ))}
-    </main>
+    </LegalPageLayout>
   );
 };
 
