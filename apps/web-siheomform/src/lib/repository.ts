@@ -301,52 +301,79 @@ export const listPublicCbts = async (
   const db = getDb();
   const { data: cbts, error } = await db
     .from("cbts")
-    .select("*")
-    .eq("is_public", true)
-    .order(sort === "recent" ? "updated_at" : "updated_at", { ascending: false });
+    .select(
+      "id, public_id, title, description, cover_image_url, time_limit_minutes, passing_score, updated_at",
+    )
+    .eq("is_public", true);
 
-  if (error || !cbts) {
+  if (error || !cbts?.length) {
     return [];
   }
 
-  const summaries: CbtSummary[] = [];
+  const cbtIds = cbts.map((cbt) => cbt.id);
 
-  for (const cbt of cbts as DbCbtRow[]) {
-    const { questions } = await fetchQuestionsAndChoices(cbt.id);
-    const { data: attempts } = await db
-      .from("attempts")
-      .select("score, submitted_at")
-      .eq("cbt_id", cbt.id);
-    const submitted = (attempts ?? []).filter((a) => a.submitted_at);
-    const attemptCount = submitted.length;
-    const scored = submitted.filter((a) => typeof a.score === "number");
+  const [questionsRes, attemptsRes, likesRes] = await Promise.all([
+    db.from("questions").select("cbt_id").in("cbt_id", cbtIds),
+    db.from("attempts").select("cbt_id, score, submitted_at").in("cbt_id", cbtIds),
+    db.from("cbt_likes").select("cbt_id").in("cbt_id", cbtIds),
+  ]);
+
+  const questionCountByCbtId = new Map<string, number>();
+  for (const row of questionsRes.data ?? []) {
+    questionCountByCbtId.set(row.cbt_id, (questionCountByCbtId.get(row.cbt_id) ?? 0) + 1);
+  }
+
+  const attemptStatsByCbtId = new Map<string, { count: number; scoreSum: number; scoredCount: number }>();
+  for (const row of attemptsRes.data ?? []) {
+    if (!row.submitted_at) {
+      continue;
+    }
+    const stats = attemptStatsByCbtId.get(row.cbt_id) ?? { count: 0, scoreSum: 0, scoredCount: 0 };
+    stats.count += 1;
+    if (typeof row.score === "number") {
+      stats.scoreSum += row.score;
+      stats.scoredCount += 1;
+    }
+    attemptStatsByCbtId.set(row.cbt_id, stats);
+  }
+
+  const likeCountByCbtId = new Map<string, number>();
+  for (const row of likesRes.data ?? []) {
+    likeCountByCbtId.set(row.cbt_id, (likeCountByCbtId.get(row.cbt_id) ?? 0) + 1);
+  }
+
+  const summaries: CbtSummary[] = cbts.map((cbt) => {
+    const attemptStats = attemptStatsByCbtId.get(cbt.id);
+    const attemptCount = attemptStats?.count ?? 0;
+    const scoredCount = attemptStats?.scoredCount ?? 0;
     const averageScore =
-      scored.length > 0
-        ? Math.round(scored.reduce((sum, a) => sum + (a.score ?? 0), 0) / scored.length)
+      scoredCount > 0 && attemptStats
+        ? Math.round(attemptStats.scoreSum / scoredCount)
         : null;
 
-    const { data: likes } = await db.from("cbt_likes").select("id").eq("cbt_id", cbt.id);
-    const likeCount = likes?.length ?? 0;
-
-    summaries.push({
+    return {
       publicId: cbt.public_id,
       title: cbt.title,
       description: cbt.description,
       coverImageUrl: cbt.cover_image_url,
-      questionCount: questions.length,
+      questionCount: questionCountByCbtId.get(cbt.id) ?? 0,
       timeLimitMinutes: cbt.time_limit_minutes,
       passingScore: cbt.passing_score,
       attemptCount,
       averageScore,
-      likeCount,
+      likeCount: likeCountByCbtId.get(cbt.id) ?? 0,
       updatedAt: cbt.updated_at,
-    });
-  }
+    };
+  });
 
   if (sort === "popular") {
-    summaries.sort((a, b) => b.attemptCount - a.attemptCount);
+    summaries.sort((a, b) => b.attemptCount - a.attemptCount || b.updatedAt.localeCompare(a.updatedAt));
   } else if (sort === "likes") {
-    summaries.sort((a, b) => b.likeCount - a.likeCount || b.updatedAt.localeCompare(a.updatedAt));
+    summaries.sort(
+      (a, b) => b.likeCount - a.likeCount || b.updatedAt.localeCompare(a.updatedAt),
+    );
+  } else {
+    summaries.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   }
 
   return summaries;
