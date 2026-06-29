@@ -733,6 +733,207 @@ type SiheomformSchema = {
   Enums: Record<string, never>;
 };
 
+type SseoltalkTables = {
+  stories: {
+    Row: {
+      id: string;
+      category: string;
+      title: string;
+      counterpart_name: string | null;
+      published_at: string | null;
+      view_count: number;
+      is_published: boolean;
+      quality_score: number | null;
+      quality_issues: Json | null;
+      generation_model: string | null;
+      validation_model: string | null;
+      created_at: string;
+      updated_at: string;
+    };
+    Insert: {
+      id?: string;
+      category: string;
+      title: string;
+      counterpart_name?: string | null;
+      published_at?: string | null;
+      view_count?: number;
+      is_published?: boolean;
+      quality_score?: number | null;
+      quality_issues?: Json | null;
+      generation_model?: string | null;
+      validation_model?: string | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Update: {
+      id?: string;
+      category?: string;
+      title?: string;
+      counterpart_name?: string | null;
+      published_at?: string | null;
+      view_count?: number;
+      is_published?: boolean;
+      quality_score?: number | null;
+      quality_issues?: Json | null;
+      generation_model?: string | null;
+      validation_model?: string | null;
+      created_at?: string;
+      updated_at?: string;
+    };
+    Relationships: [];
+  };
+  messages: {
+    Row: {
+      id: string;
+      story_id: string;
+      sender: string;
+      is_me: boolean;
+      content: string;
+      order_index: number;
+    };
+    Insert: {
+      id?: string;
+      story_id: string;
+      sender: string;
+      is_me?: boolean;
+      content: string;
+      order_index: number;
+    };
+    Update: {
+      id?: string;
+      story_id?: string;
+      sender?: string;
+      is_me?: boolean;
+      content?: string;
+      order_index?: number;
+    };
+    Relationships: [
+      {
+        foreignKeyName: "messages_story_id_fkey";
+        columns: ["story_id"];
+        isOneToOne: false;
+        referencedRelation: "stories";
+        referencedColumns: ["id"];
+      },
+    ];
+  };
+  reactions: {
+    Row: {
+      id: string;
+      story_id: string;
+      session_id: string;
+      type: string;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      story_id: string;
+      session_id: string;
+      type: string;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      story_id?: string;
+      session_id?: string;
+      type?: string;
+      created_at?: string;
+    };
+    Relationships: [];
+  };
+  comments: {
+    Row: {
+      id: string;
+      story_id: string;
+      parent_comment_id: string | null;
+      session_id: string;
+      nickname: string;
+      password_hash: string;
+      password_salt: string;
+      content: string;
+      like_count: number;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+    Insert: {
+      id?: string;
+      story_id: string;
+      parent_comment_id?: string | null;
+      session_id: string;
+      nickname: string;
+      password_hash: string;
+      password_salt: string;
+      content: string;
+      like_count?: number;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string | null;
+    };
+    Update: {
+      id?: string;
+      story_id?: string;
+      parent_comment_id?: string | null;
+      session_id?: string;
+      nickname?: string;
+      password_hash?: string;
+      password_salt?: string;
+      content?: string;
+      like_count?: number;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string | null;
+    };
+    Relationships: [];
+  };
+  comment_likes: {
+    Row: {
+      id: string;
+      comment_id: string;
+      session_id: string;
+      created_at: string;
+    };
+    Insert: {
+      id?: string;
+      comment_id: string;
+      session_id: string;
+      created_at?: string;
+    };
+    Update: {
+      id?: string;
+      comment_id?: string;
+      session_id?: string;
+      created_at?: string;
+    };
+    Relationships: [];
+  };
+  story_views: {
+    Row: {
+      story_id: string;
+      session_id: string;
+      created_at: string;
+    };
+    Insert: {
+      story_id: string;
+      session_id: string;
+      created_at?: string;
+    };
+    Update: {
+      story_id?: string;
+      session_id?: string;
+      created_at?: string;
+    };
+    Relationships: [];
+  };
+};
+
+type SseoltalkSchema = {
+  Tables: SseoltalkTables;
+  Views: Record<string, never>;
+  Functions: Record<string, never>;
+  Enums: Record<string, never>;
+};
+
 type PaperLotterySchema = {
   Tables: PaperLotteryTables;
   Views: Record<string, never>;
@@ -758,7 +959,12 @@ type EmptySchema = {
   Enums: Record<string, never>;
 };
 
-export type AppSchema = "app_paper_lottery" | "app_daily_doodle" | "app_daily_deduction" | "app_siheomform";
+export type AppSchema =
+  | "app_paper_lottery"
+  | "app_daily_doodle"
+  | "app_daily_deduction"
+  | "app_siheomform"
+  | "app_sseoltalk";
 
 export type Database = {
   public: EmptySchema;
@@ -766,4 +972,5 @@ export type Database = {
   app_daily_doodle: DailyDoodleSchema;
   app_daily_deduction: DailyDeductionSchema;
   app_siheomform: SiheomformSchema;
+  app_sseoltalk: SseoltalkSchema;
 };

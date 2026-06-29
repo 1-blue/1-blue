@@ -9,6 +9,7 @@ export default defineConfig({
     "src/daily-doodle/index.ts",
     "src/daily-deduction/index.ts",
     "src/siheomform/index.ts",
+    "src/sseoltalk/index.ts",
   ],
   format: ["esm"],
   dts: true,

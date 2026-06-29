@@ -46,7 +46,7 @@ importers:
         version: 2.5.0(@apps-in-toss/web-framework@2.9.2(8b7da20449b244e64da316848f3f6167))(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.7))(@toss/tds-mobile@2.5.0(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       next:
         specifier: ^15.3.3
         version: 15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -174,7 +174,7 @@ importers:
         version: 5.101.0(react@19.2.7)
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       next:
         specifier: ^15.3.3
         version: 15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -238,7 +238,7 @@ importers:
         version: link:../../packages/ui
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       next:
         specifier: ^15.3.3
         version: 15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -311,7 +311,7 @@ importers:
         version: 5.101.0(react@19.2.7)
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       html2canvas:
         specifier: ^1.4.1
         version: 1.4.1
@@ -393,7 +393,7 @@ importers:
         version: 5.101.0(react@19.2.7)
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       lucide-react:
         specifier: ^0.511.0
         version: 0.511.0(react@19.2.7)
@@ -463,7 +463,7 @@ importers:
         version: link:../../packages/ui
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       next:
         specifier: ^15.3.3
         version: 15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -539,7 +539,7 @@ importers:
         version: 12.40.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       lucide-react:
         specifier: ^0.511.0
         version: 0.511.0(react@19.2.7)
@@ -633,7 +633,7 @@ importers:
         version: 5.101.0(react@19.2.7)
       geist:
         specifier: ^1.4.2
-        version: 1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
       html2canvas:
         specifier: ^1.4.1
         version: 1.4.1
@@ -686,6 +686,82 @@ importers:
       tsx:
         specifier: ^4.20.3
         version: 4.22.4
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+      vitest:
+        specifier: ^3.2.3
+        version: 3.2.6(@types/node@22.20.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
+
+  apps/web-sseoltalk:
+    dependencies:
+      '@1-blue/api-client':
+        specifier: workspace:*
+        version: link:../../packages/api-client
+      '@1-blue/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@1-blue/database':
+        specifier: workspace:*
+        version: link:../../packages/database
+      '@1-blue/legal':
+        specifier: workspace:*
+        version: link:../../packages/legal
+      '@1-blue/libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
+      '@1-blue/seo':
+        specifier: workspace:*
+        version: link:../../packages/seo
+      '@1-blue/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@tanstack/react-query':
+        specifier: ^5.80.6
+        version: 5.101.0(react@19.2.7)
+      geist:
+        specifier: ^1.4.2
+        version: 1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
+      lucide-react:
+        specifier: ^0.511.0
+        version: 0.511.0(react@19.2.7)
+      next:
+        specifier: ^15.3.3
+        version: 15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      react:
+        specifier: ^19.1.0
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.2.7(react@19.2.7)
+    devDependencies:
+      '@1-blue/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@1-blue/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@playwright/test':
+        specifier: ^1.52.0
+        version: 1.61.0
+      '@tailwindcss/postcss':
+        specifier: ^4.1.8
+        version: 4.3.1
+      '@types/node':
+        specifier: ^22.15.29
+        version: 22.20.0
+      '@types/react':
+        specifier: ^19.1.6
+        version: 19.2.17
+      '@types/react-dom':
+        specifier: ^19.1.5
+        version: 19.2.3(@types/react@19.2.17)
+      eslint:
+        specifier: ^9.28.0
+        version: 9.39.4(jiti@2.7.0)
+      tailwindcss:
+        specifier: ^4.1.8
+        version: 4.3.1
       typescript:
         specifier: ^5.8.3
         version: 5.9.3
@@ -2915,7 +2991,7 @@ packages:
 
   '@expo/bunyan@4.0.1':
     resolution: {integrity: sha512-+Lla7nYSiHZirgK+U/uYzsLv/X+HaJienbD5AKX1UQZHYfWaP+9uuQluRB4GrEVWF0GZ7vEVp/jzaOT9k/SQlg==}
-    engines: {node: '>=0.10.0'}
+    engines: {'0': node >=0.10.0}
 
   '@expo/cli@0.22.28':
     resolution: {integrity: sha512-lvt72KNitGuixYD2l3SZmRKVu2G4zJpmg5V7WfUBNpmUU5oODBw/6qmiJ6kSLAlfDozscUk+BBGknBBzxUrwrA==}
@@ -17882,7 +17958,7 @@ snapshots:
   '@react-native/codegen@0.84.0(@babel/core@7.28.5)':
     dependencies:
       '@babel/core': 7.28.5
-      '@babel/parser': 7.28.5
+      '@babel/parser': 7.29.7
       hermes-parser: 0.32.0
       invariant: 2.2.4
       nullthrows: 1.1.1
@@ -21949,7 +22025,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  geist@1.7.2(next@15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)):
+  geist@1.7.2(next@15.5.19(@playwright/test@1.61.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)):
     dependencies:
       next: 15.5.19(@babel/core@7.28.5)(@playwright/test@1.61.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
 
@@ -23821,7 +23897,7 @@ snapshots:
 
   metro-runtime@0.76.8:
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.29.7
       react-refresh: 0.4.3
 
   metro-runtime@0.81.5:
@@ -23979,7 +24055,7 @@ snapshots:
       '@babel/code-frame': 7.27.1
       '@babel/core': 7.28.5
       '@babel/generator': 7.28.5
-      '@babel/parser': 7.28.5
+      '@babel/parser': 7.29.7
       '@babel/template': 7.27.2
       '@babel/traverse': 7.28.5
       '@babel/types': 7.28.5

@@ -12,14 +12,14 @@
 
 ## Tokens
 
-| Role | Value | Notes |
-|------|-------|-------|
-| canvas | #ffffff | page background |
-| surface-card | #f5f5f5 | main input card |
-| primary | #111111 | primary CTA |
-| ink | #111111 | headings |
-| muted | #6b7280 | secondary text |
-| footer | #101010 | footer background |
+| Role         | Value   | Notes             |
+| ------------ | ------- | ----------------- |
+| canvas       | #ffffff | page background   |
+| surface-card | #f5f5f5 | main input card   |
+| primary      | #111111 | primary CTA       |
+| ink          | #111111 | headings          |
+| muted        | #6b7280 | secondary text    |
+| footer       | #101010 | footer background |
 
 Override per app; default above matches `cal` for date utilities.
 
