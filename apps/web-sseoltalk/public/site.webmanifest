@@ -1,0 +1,17 @@
+{
+  "name": "썰톡",
+  "short_name": "썰톡",
+  "description": "AI 카톡 썰 읽기 · 익명 썰 커뮤니티",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0E1014",
+  "theme_color": "#8B7BFF",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

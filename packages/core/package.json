@@ -31,6 +31,10 @@
     "./siheomform": {
       "types": "./dist/siheomform/index.d.ts",
       "import": "./dist/siheomform/index.js"
+    },
+    "./sseoltalk": {
+      "types": "./dist/sseoltalk/index.d.ts",
+      "import": "./dist/sseoltalk/index.js"
     }
   },
   "scripts": {
