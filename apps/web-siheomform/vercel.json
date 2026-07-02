@@ -1,4 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm build"
+  "buildCommand": "cd ../.. && pnpm turbo run build --filter=web-siheomform..."
 }
