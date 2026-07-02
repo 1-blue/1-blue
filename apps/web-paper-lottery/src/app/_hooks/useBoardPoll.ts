@@ -8,7 +8,11 @@ type UseBoardPollOptions<T> = {
   enabled?: boolean;
 };
 
-export const useBoardPoll = <T>({ fetcher, intervalMs = 3000, enabled = true }: UseBoardPollOptions<T>) => {
+export const useBoardPoll = <T>({
+  fetcher,
+  intervalMs = 3000,
+  enabled = true,
+}: UseBoardPollOptions<T>) => {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);

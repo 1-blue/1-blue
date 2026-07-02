@@ -1,33 +1,86 @@
-# Web API Template
+# 오늘의 추론
 
-Vercel SSR/Route Handlers + Supabase(orval)용 Next.js 15 템플릿입니다. **AIT 배포 불가.**
+## 🔥 프로젝트에 대해
 
-## Before CLI (외부)
+### 1️⃣ 프로젝트 목적
 
-1. Vercel 계정 + GitHub 연동
-2. Supabase 프로젝트 (DB 필요 시)
-3. (선택) OpenAPI spec URL
+매일 새롭게 제공되는 단서와 객관식 문제를 암기 또는 열람 모드로 풀고, 다른 참여자와 기록을 비교하는 일일 추리 퍼즐입니다.
 
-## CLI
+### 2️⃣ 프로젝트 기간
 
-```bash
-pnpm create:app --type web-api --slug my-app --name "My App"
-pnpm --filter web-my-app dev
+- ✏️ 개인 프로젝트
+- ⏱️ 프로젝트 기간: `2025.06.24 ~ 진행 중`
+- ⛓️ 배포: [오늘의 추론](https://ob-daily-deduction.vercel.app)
+
+### 3️⃣ 주요 기술
+
+1. 정답과 FAKE 단서를 서버에 숨긴 채 제출 시 채점하는 Next.js Route Handler 구조
+2. Gemini 생성 결과를 Zod로 검증하고 3일치 퍼즐을 미리 확보하는 자동화 파이프라인
+3. KST 날짜, 참여 세션, 오답 수와 풀이 시간을 활용한 일일 랭킹
+
+## ✨ 주요 기능
+
+1. **두 가지 추론 모드**
+   - 제한 시간 동안 단서를 외우는 암기 모드와 단서를 보며 푸는 열람 모드를 제공합니다.
+2. **채점·랭킹·결과 공유**
+   - 객관식 답안을 서버에서 채점하고 FAKE 단서를 공개하며 결과를 PNG로 저장할 수 있습니다.
+3. **아카이브와 자동 생성**
+   - 지난 퍼즐을 연습용으로 제공하고 Vercel Cron으로 향후 퍼즐을 생성합니다.
+
+## 🛠️ 기술 스택
+
+|                                            `Next.js`                                            |                                             `Tailwind CSS`                                             |                                           `Supabase`                                            |                                          `Vercel`                                           |
+| :---------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+| <img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="Next.js" width="75" height="75" /> | <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind CSS" width="75" height="75" /> | <img src="https://cdn.simpleicons.org/supabase/3FCF8E" alt="Supabase" width="75" height="75" /> | <img src="https://cdn.simpleicons.org/vercel/000000" alt="Vercel" width="75" height="75" /> |
+
+- FrontEnd: TypeScript, React 19, TanStack Query, html2canvas, Sonner
+- BackEnd & Data: Next.js Route Handlers, Supabase, Gemini, Vercel Cron
+- 품질: Zod, Vitest, Playwright, ESLint, TypeScript
+
+## 🗺️ 주요 페이지
+
+| 경로             | 설명             | 검색 노출 |
+| ---------------- | ---------------- | --------- |
+| `/`              | 오늘의 추론      | O         |
+| `/archive`       | 지난 추론 목록   | O         |
+| `/archive/:date` | 지난 추론 플레이 | O         |
+| `/ranking`       | 일일 랭킹        | O         |
+| `/privacy`       | 개인정보처리방침 | O         |
+| `/terms`         | 이용약관         | O         |
+
+## 📁 프로젝트 구조
+
+```text
+apps/web-daily-deduction/
+├── src/app/       # 게임 화면, Route Handlers, cron 및 SEO
+├── src/core/      # 퍼즐 타입·검증·생성 파이프라인
+├── src/lib/       # repository, DB 및 Slack adapter
+├── scripts/       # 퍼즐 seed 도구
+├── e2e/           # Playwright 사용자 흐름
+├── APP.md
+├── DESIGN.md
+└── vercel.json    # 퍼즐 선행 생성 cron
 ```
 
-스키마 마이그레이션 스텁이 `supabase/migrations/`에 자동 생성됩니다.
+## 🚀 실행 방법
 
-## After CLI (외부)
+```bash
+pnpm install
+pnpm dev:daily-deduction
+```
 
-1. `supabase db push` 또는 migration 적용
-2. Vercel env: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
-3. (orval) `pnpm --filter @1-blue/api-client generate`
-4. Vercel 배포 (Root: `apps/web-{slug}`)
+운영 시 사이트 URL, Supabase, Gemini, 관리자·cron secret 및 Slack 관련 환경변수를 설정해야 합니다.
 
-## Before Launch
+## ✅ 검증
 
-- RLS 정책 테스트
-- API rate limit 설정
-- AdSense + legal 페이지 (web-static과 동일)
+```bash
+pnpm --filter web-daily-deduction test
+pnpm --filter web-daily-deduction lint
+pnpm --filter web-daily-deduction typecheck
+pnpm --filter web-daily-deduction build
+```
 
-통합 체크리스트: [docs/EXTERNAL-CHECKLIST.md](../../docs/EXTERNAL-CHECKLIST.md)
+## 📚 문서
+
+- [제품 요구사항](./APP.md)
+- [디자인 가이드](./DESIGN.md)

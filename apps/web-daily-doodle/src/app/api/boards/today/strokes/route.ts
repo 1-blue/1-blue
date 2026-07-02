@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { StrokeInput } from "@1-blue/core/daily-doodle";
+import type { StrokeInput } from "@/core";
 import { createStroke } from "@/lib/repository";
 
 type CreateStrokeBody = {

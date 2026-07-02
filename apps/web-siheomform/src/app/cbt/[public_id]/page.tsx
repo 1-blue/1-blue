@@ -1,5 +1,7 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -7,8 +9,8 @@ import { Button } from "@1-blue/ui/components/button";
 import { Input } from "@1-blue/ui/components/input";
 import { Label } from "@1-blue/ui/components/label";
 import { AdSensePlaceholder } from "@/app/_components/AdSensePlaceholder";
-import { CommentsSection } from "@/app/_components/CommentsSection";
-import { LikeButton } from "@/app/_components/LikeButton";
+import { CommentsSection } from "@/app/cbt/[public_id]/_components/CommentsSection";
+import { LikeButton } from "@/app/cbt/[public_id]/_components/LikeButton";
 import { MetaChips } from "@/app/_components/MetaChips";
 import { PageShell } from "@/app/_components/PageShell";
 
@@ -55,9 +57,7 @@ const CbtIntroPageClient = () => {
         setLikedByMe(data.likedByMe);
       }
       if (attemptId) {
-        const attemptRes = await fetch(
-          `/api/cbts/${params.public_id}/attempts/${attemptId}`,
-        );
+        const attemptRes = await fetch(`/api/cbts/${params.public_id}/attempts/${attemptId}`);
         if (attemptRes.ok) {
           const attempt = (await attemptRes.json()) as { submittedAt: string | null };
           setCanInteract(Boolean(attempt.submittedAt));
@@ -87,7 +87,7 @@ const CbtIntroPageClient = () => {
         throw new Error(data.error ?? "시작에 실패했습니다");
       }
       sessionStorage.setItem(`siheomform:attempt:${params.public_id}`, data.attemptId);
-      router.push(`/cbt/${params.public_id}/take`);
+      router.push(ROUTES.CBT.DETAIL.TAKE.path(params.public_id));
     } finally {
       setLoading(false);
     }
@@ -121,7 +121,11 @@ const CbtIntroPageClient = () => {
     <PageShell wide>
       <div className="mx-auto mt-6 max-w-lg space-y-6 md:max-w-2xl">
         {cbt.metadata.coverImageUrl && (
-          <img src={cbt.metadata.coverImageUrl} alt="" className="h-40 w-full rounded-xl object-cover" />
+          <img
+            src={cbt.metadata.coverImageUrl}
+            alt=""
+            className="h-40 w-full rounded-xl object-cover"
+          />
         )}
         <div>
           <h1 className="text-2xl font-bold">{cbt.metadata.title}</h1>
@@ -152,7 +156,11 @@ const CbtIntroPageClient = () => {
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
           />
-          <Button className="w-full" onClick={() => void handleStart()} disabled={loading || !nickname.trim()}>
+          <Button
+            className="w-full"
+            onClick={() => void handleStart()}
+            disabled={loading || !nickname.trim()}
+          >
             시험 시작 →
           </Button>
         </div>
@@ -165,7 +173,7 @@ const CbtIntroPageClient = () => {
           />
         )}
         <Button asChild variant="link" className="w-full">
-          <Link href="/">홈으로</Link>
+          <Link href={ROUTES.HOME.path}>홈으로</Link>
         </Button>
       </div>
     </PageShell>

@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@1-blue/api-client": "workspace:*",
-    "@1-blue/core": "workspace:*",
     "@1-blue/database": "workspace:*",
     "@1-blue/legal": "workspace:*",
     "@1-blue/libs": "workspace:*",
@@ -33,7 +32,8 @@
     "react-dom": "^19.1.0",
     "recharts": "^2.15.3",
     "html2canvas": "^1.4.1",
-    "sonner": "^2.0.7"
+    "sonner": "^2.0.7",
+    "zod": "^3.25.51"
   },
   "devDependencies": {
     "@1-blue/eslint-config": "workspace:*",

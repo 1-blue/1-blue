@@ -11,10 +11,7 @@ type PatchStrokeBody = {
   dy: number;
 };
 
-export const DELETE = async (
-  request: Request,
-  context: { params: Promise<{ id: string }> },
-) => {
+export const DELETE = async (request: Request, context: { params: Promise<{ id: string }> }) => {
   try {
     const { id } = await context.params;
     const body = (await request.json()) as DeleteStrokeBody;
@@ -27,17 +24,13 @@ export const DELETE = async (
     return NextResponse.json(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : "unknown_error";
-    const status =
-      message === "forbidden" ? 403 : message === "stroke_not_found" ? 404 : 400;
+    const status = message === "forbidden" ? 403 : message === "stroke_not_found" ? 404 : 400;
 
     return NextResponse.json({ error: message }, { status });
   }
 };
 
-export const PATCH = async (
-  request: Request,
-  context: { params: Promise<{ id: string }> },
-) => {
+export const PATCH = async (request: Request, context: { params: Promise<{ id: string }> }) => {
   try {
     const { id } = await context.params;
     const body = (await request.json()) as PatchStrokeBody;

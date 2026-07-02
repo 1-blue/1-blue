@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isStoryCategory } from "@1-blue/core/sseoltalk";
+import { isStoryCategory } from "@/core";
 import { listPublishedStories } from "@/lib/repository";
 
 export const GET = async (request: Request) => {

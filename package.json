@@ -13,10 +13,10 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,mjs,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,mjs,json,md,css}\"",
     "clean": "rm -rf .turbo && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name '.next' -type d -prune -exec rm -rf '{}' + && pnpm install",
-    "dev:daily-deduction": "pnpm --filter web-daily-deduction dev",
-    "dev:daily-doodle": "pnpm --filter web-daily-doodle dev",
     "dev:date-calculator": "pnpm --filter web-date-calculator dev",
     "dev:paper-lottery": "pnpm --filter web-paper-lottery dev",
+    "dev:daily-doodle": "pnpm --filter web-daily-doodle dev",
+    "dev:daily-deduction": "pnpm --filter web-daily-deduction dev",
     "dev:siheomform": "pnpm --filter web-siheomform dev",
     "dev:sseoltalk": "pnpm --filter web-sseoltalk dev"
   },

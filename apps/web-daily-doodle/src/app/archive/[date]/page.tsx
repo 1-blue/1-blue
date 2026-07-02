@@ -1,4 +1,4 @@
-import { ArchiveDetailPage } from "@/app/_components/ArchiveDetailPage";
+import { ArchiveDetailPage } from "@/app/archive/[date]/_components/ArchiveDetailPage";
 
 type PageProps = {
   params: Promise<{ date: string }>;

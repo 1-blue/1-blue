@@ -10,7 +10,10 @@ export const HowItWorksSteps = () => {
       <h2 className="text-ink text-center text-lg font-bold">이렇게 사용해요</h2>
       <div className="grid gap-3 sm:grid-cols-3">
         {steps.map((item) => (
-          <article key={item.step} className="paper-surface rounded-xl border border-[#e8dfc8] p-4 text-center shadow-sm">
+          <article
+            key={item.step}
+            className="paper-surface rounded-xl border border-[#e8dfc8] p-4 text-center shadow-sm"
+          >
             <p className="text-accent mb-1 text-lg font-bold">{item.step}</p>
             <h3 className="text-ink text-sm font-semibold">{item.title}</h3>
             <p className="text-ink/65 mt-1 text-xs leading-relaxed">{item.body}</p>

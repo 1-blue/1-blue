@@ -1,6 +1,6 @@
 "use client";
 
-import { getThemeMeta, type PuzzleThemeId } from "@1-blue/core/daily-deduction";
+import { getThemeMeta, type PuzzleThemeId } from "@/core";
 import { Badge } from "@1-blue/ui/components/badge";
 
 type ThemeBadgeProps = {
@@ -9,7 +9,11 @@ type ThemeBadgeProps = {
   className?: string;
 };
 
-export const ThemeBadge = ({ themeId, showDescription = false, className = "" }: ThemeBadgeProps) => {
+export const ThemeBadge = ({
+  themeId,
+  showDescription = false,
+  className = "",
+}: ThemeBadgeProps) => {
   const theme = getThemeMeta(themeId);
 
   return (

@@ -17,5 +17,3 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: "네. 모바일 브라우저에 최적화되어 있습니다.",
   },
 ];
-
-export const SITEMAP_PATHS = ["/", "/privacy", "/terms"] as const;

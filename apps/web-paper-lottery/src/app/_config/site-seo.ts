@@ -36,5 +36,3 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: `이메일(${SITE_OPERATOR.contactEmail}) 또는 카카오 오픈채팅으로 문의해 주세요. ${SITE_OPERATOR.responseNotice}됩니다.`,
   },
 ];
-
-export const SITEMAP_PATHS = ["/", "/privacy", "/terms"] as const;

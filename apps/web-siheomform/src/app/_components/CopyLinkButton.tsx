@@ -11,7 +11,11 @@ type CopyLinkButtonProps = {
   variant?: "default" | "outline";
 };
 
-export const CopyLinkButton = ({ value, label = "복사", variant = "outline" }: CopyLinkButtonProps) => {
+export const CopyLinkButton = ({
+  value,
+  label = "복사",
+  variant = "outline",
+}: CopyLinkButtonProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

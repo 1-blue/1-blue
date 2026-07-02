@@ -18,7 +18,7 @@
 - FAQ 5개 (SEO)
 - AdSense placeholder 2곳
 
-## Core logic (@1-blue/core)
+## Core logic (`src/core`)
 
 - `countDaysBetween(start, end, { includeStart })`
 - `addCalendarDays(base, days)`

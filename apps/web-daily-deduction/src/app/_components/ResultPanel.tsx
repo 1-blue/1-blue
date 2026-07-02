@@ -1,10 +1,12 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@1-blue/ui/components/button";
 import { Badge } from "@1-blue/ui/components/badge";
-import type { PuzzleMode } from "@1-blue/core/daily-deduction";
+import type { PuzzleMode } from "@/core";
 import { AdSensePlaceholder } from "@/app/_components/AdSensePlaceholder";
 import { FakeClueCard } from "@/app/_components/FakeClueCard";
 import { ShareResultCard } from "@/app/_components/ShareResultCard";
@@ -79,7 +81,8 @@ export const ResultPanel = ({
           <div>
             <p className="text-ink-muted text-xs">시간</p>
             <p className="text-lg font-bold">
-              {Math.floor(result.timeSeconds / 60)}:{String(result.timeSeconds % 60).padStart(2, "0")}
+              {Math.floor(result.timeSeconds / 60)}:
+              {String(result.timeSeconds % 60).padStart(2, "0")}
             </p>
           </div>
         </div>
@@ -129,7 +132,7 @@ export const ResultPanel = ({
             variant="outline"
             className="touch-target border-white/25 bg-white/8 text-ink hover:bg-white/12 flex-1"
           >
-            <Link href="/ranking">랭킹 보기</Link>
+            <Link href={ROUTES.RANKING.path}>랭킹 보기</Link>
           </Button>
         )}
       </div>

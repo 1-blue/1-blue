@@ -38,10 +38,11 @@ Override per app; default above matches `cal` for date utilities.
 - Max content width ~720px centered
 - Touch targets ≥ 44px
 
-## Phase 1
+## Strategy
 
-Strategy (DESIGN pick, Stitch prompt, SEO): use Cursor skill **plan-service**.
+Use Codex skill **plan-service** for product and SEO strategy, then **design-service** for the
+responsive Stitch prompt and development handoff.
 
-## Phase 2
+## Implementation
 
-Implementation: **create-service** + **apply-design**.
+Use Codex skill **build-service** after the strategy and design are approved.

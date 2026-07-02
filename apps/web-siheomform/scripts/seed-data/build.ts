@@ -1,5 +1,5 @@
-import type { CbtDraft, EditorQuestion } from "@1-blue/core/siheomform";
-import { createDefaultMetadata } from "@1-blue/core/siheomform";
+import type { CbtDraft, EditorQuestion } from "@/core";
+import { createDefaultMetadata } from "@/core";
 
 export type SeedQuestionSpec = {
   content: string;

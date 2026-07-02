@@ -38,7 +38,10 @@ export const AdSensePlaceholder = ({ slotId }: AdSensePlaceholderProps) => {
   }
 
   return (
-    <div className="flex min-h-[50px] w-full justify-center overflow-hidden" aria-label="advertisement">
+    <div
+      className="flex min-h-[50px] w-full justify-center overflow-hidden"
+      aria-label="advertisement"
+    >
       <ins
         ref={insRef}
         className="adsbygoogle"

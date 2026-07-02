@@ -8,11 +8,7 @@ export const hashPassword = (password: string): { hash: string; salt: string } =
   return { hash, salt };
 };
 
-export const verifyPassword = (
-  password: string,
-  hash: string,
-  salt: string,
-): boolean => {
+export const verifyPassword = (password: string, hash: string, salt: string): boolean => {
   const derived = scryptSync(password, salt, KEY_LEN);
   const stored = Buffer.from(hash, "hex");
   if (stored.length !== derived.length) {

@@ -4,11 +4,28 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Shuffle, Star } from "lucide-react";
 import { cn } from "@1-blue/ui/lib/index";
+import { ROUTES } from "@/app/_constants/routes";
 
 const NAV_ITEMS = [
-  { href: "/", label: "메인", icon: Home, match: (path: string) => path === "/" || path.startsWith("/category/") },
-  { href: "/popular", label: "인기", icon: Star, match: (path: string) => path === "/popular" },
-  { href: "/random", label: "랜덤", icon: Shuffle, match: (path: string) => path === "/random" },
+  {
+    href: ROUTES.HOME.path,
+    label: "메인",
+    icon: Home,
+    match: (path: string) =>
+      path === ROUTES.HOME.path || path.startsWith(ROUTES.CATEGORY.DETAIL.path("")),
+  },
+  {
+    href: ROUTES.POPULAR.path,
+    label: "인기",
+    icon: Star,
+    match: (path: string) => path === ROUTES.POPULAR.path,
+  },
+  {
+    href: ROUTES.RANDOM.path,
+    label: "랜덤",
+    icon: Shuffle,
+    match: (path: string) => path === ROUTES.RANDOM.path,
+  },
 ] as const;
 
 export const BottomNav = () => {
@@ -27,7 +44,10 @@ export const BottomNav = () => {
               active ? "text-primary font-semibold" : "text-text-secondary",
             )}
           >
-            <Icon className={cn("h-5 w-5", active && "text-primary")} strokeWidth={active ? 2.5 : 2} />
+            <Icon
+              className={cn("h-5 w-5", active && "text-primary")}
+              strokeWidth={active ? 2.5 : 2}
+            />
             {label}
           </Link>
         );

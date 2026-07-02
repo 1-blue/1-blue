@@ -1,6 +1,6 @@
 # 1-blue Monorepo
 
-서비스 팩토리 Monorepo입니다. 템플릿 기반으로 웹(Vercel+AdSense), AIT(토스), Expo(Play Store+AdMob) 앱을 생성합니다.
+템플릿과 공통 패키지로 작은 웹 서비스를 반복 제작하는 pnpm/Turborepo 서비스 팩토리다.
 
 ## Quick Start
 
@@ -11,71 +11,83 @@ cp apps/web-my-app/.env.example apps/web-my-app/.env.local
 pnpm dev:my-app
 ```
 
-## Structure
+새 서비스는 CLI부터 실행하지 않고 [Factory Workflow](./FACTORY-WORKFLOW.md)의 기획·디자인 승인을 먼저 진행한다.
 
-- `apps/_template-*` — 앱 템플릿
-- `apps/web-*`, `apps/ait-*`, `apps/expo-*` — 생성된 앱
-- `packages/core` — 프레임워크 무관 비즈니스 로직
-- `packages/ui` — shadcn/ui + Storybook
-- `packages/database` — Supabase client
-- `tools/create-app` — 앱 스캐폴딩 CLI
+## 구조
 
-## Factory workflow
+- `apps/_template-*`: web, AIT, Expo template
+- `apps/web-*`: Vercel 대상 실제 웹앱
+- `packages/ui`: 여러 앱이 공유하는 shadcn/ui component
+- `packages/database`: Supabase client 기반
+- `packages/seo`: metadata, FAQ JSON-LD, sitemap helper
+- `packages/legal`: 공통 운영자 정보와 법적 문서
+- `packages/libs`: 범용 utility
+- `packages/core`: 두 개 이상의 앱/채널이 실제 공유하는 domain logic만 허용
+- `tools/create-app`: app scaffold와 registry/port 등록 CLI
+- `.agents/skills`: 이 저장소의 Codex workflow
 
-새 앱은 **전략 → Stitch → 구현** 2단계로 진행합니다.
+## 앱 내부 배치
 
-1. **Phase 1** — Cursor skill `plan-service`: DESIGN.md 추천, Stitch 프롬프트, SEO, APP.md 초안 (코드 없음)
-2. **External** — Stitch 디자인, `DESIGN.md` 저장
-3. **Phase 2** — `create-service` + `apply-design`: 승인 후 scaffold·구현
+```text
+apps/web-{slug}/src/
+├── app/
+│   ├── _constants/routes.ts
+│   ├── _components/       # 앱 전체 route가 공유할 때만
+│   └── route/
+│       ├── _components/   # 해당 route에 가장 가까운 UI
+│       ├── _hooks/
+│       ├── _utils/
+│       └── page.tsx
+├── core/                  # 앱 여러 route가 공유하는 순수 domain logic
+└── lib/                   # repository와 외부 adapter
+```
 
-상세: [FACTORY-WORKFLOW.md](./FACTORY-WORKFLOW.md)
+하나의 page가 쓰는 코드는 해당 route에 둔다. 여러 page가 공유하면 가장 가까운 공통 route 부모로 올린다. 미래의 재사용을 예상해 packages로 이동하지 않는다.
 
-## Docs
+## 라우팅
 
-- [FACTORY-WORKFLOW.md](./FACTORY-WORKFLOW.md)
-- [ROADMAP.md](./ROADMAP.md)
-- [ARCHITECTURE.md](./ARCHITECTURE.md)
-- [EXTERNAL-CHECKLIST.md](./EXTERNAL-CHECKLIST.md)
+각 앱은 `src/app/_constants/routes.ts`의 `ROUTES`를 내부 navigation, redirect, canonical, 공유 URL, sitemap의 단일 원본으로 사용한다. 상세 규칙은 [ROUTING.md](./ROUTING.md)를 따른다.
 
 ## Scripts
 
-| Command                | Description                         |
-| ---------------------- | ----------------------------------- |
-| `pnpm create:app`      | 새 앱 생성 (포트·dev 스크립트 자동) |
-| `pnpm dev:{slug}`      | web 앱 dev (없으면 ait/expo)        |
-| `pnpm dev:{slug}:ait`  | ait 앱 dev                          |
-| `pnpm dev:{slug}:expo` | expo 앱 dev                         |
-| `pnpm dev`             | turbo dev (전체)                    |
-| `pnpm test`            | affected tests                      |
-| `pnpm ui:add button`   | shadcn 컴포넌트 추가                |
+| Command              | Description                     |
+| -------------------- | ------------------------------- |
+| `pnpm create:app`    | 새 앱 생성과 registry/port 등록 |
+| `pnpm dev:{slug}`    | 앱 개발 서버                    |
+| `pnpm build`         | 전체 Turbo build                |
+| `pnpm lint`          | 전체 lint                       |
+| `pnpm typecheck`     | 전체 typecheck                  |
+| `pnpm test`          | 전체 unit test                  |
+| `pnpm ui:add button` | 공통 shadcn component 추가      |
 
-## Environment Variables
+앱 작업은 가능한 한 `pnpm --filter web-{slug} ...`로 좁혀 검증한다.
 
-루트 [`.env.example`](../.env.example)는 **색인**입니다. 생성 시 템플릿별 파일이 앱 폴더로 복사됩니다.
+## 환경변수
 
-| Template             | Env file                                      |
-| -------------------- | --------------------------------------------- |
-| web-static / web-api | `apps/web-{slug}/.env.example` → `.env.local` |
-| ait                  | `apps/ait-{slug}/ENV.md`                      |
-| expo                 | `apps/expo-{slug}/ENV.md` + `app.json`        |
+루트 `.env.example`은 색인이다. 실제 값은 앱별 local/hosting environment에 둔다.
 
-### Ports (동시 실행)
+| Template           | Local file                                    |
+| ------------------ | --------------------------------------------- |
+| web-static/web-api | `apps/web-{slug}/.env.example` → `.env.local` |
+| AIT                | `apps/ait-{slug}/ENV.md`                      |
+| Expo               | `apps/expo-{slug}/ENV.md`와 native config     |
 
-| Range         | Usage                      |
-| ------------- | -------------------------- |
-| **7000–7599** | Next.js (`web-*`, `ait-*`) |
-| **8000–8599** | Expo Metro (`expo-*`)      |
+service-role key, provider secret, webhook URL은 client에 노출하거나 커밋하지 않는다.
 
-`apps/registry.json`의 `ports` 필드에 기록됩니다.
+## Codex Skills
 
-| Variable                        | Required               | Used by                           |
-| ------------------------------- | ---------------------- | --------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`          | web apps (recommended) | `http://localhost:{port}`         |
-| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | optional               | AdSense placeholder               |
-| `NEXT_PUBLIC_SUPABASE_URL`      | web-api                | `@1-blue/database` browser client |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | web-api                | `@1-blue/database` browser client |
-| `SUPABASE_SERVICE_ROLE_KEY`     | web-api server         | Route Handlers only               |
+| Skill                    | 역할                         |
+| ------------------------ | ---------------------------- |
+| `plan-service`           | 아이디어·제품·SEO 전략       |
+| `design-service`         | Stitch 디자인과 개발 handoff |
+| `build-service`          | scaffold·구현·로컬 검증      |
+| `manage-supabase-schema` | 앱별 DB schema 관리          |
+| `write-app-readme`       | 실제 구현 기반 README        |
+| `launch-service`         | Vercel·검색·AdSense 출시     |
 
-### Operator contact (`@1-blue/legal`)
+## 관련 문서
 
-문의 이메일·카카오 오픈채팅·운영자명은 [`packages/legal/src/operator.ts`](../packages/legal/src/operator.ts)의 `SITE_OPERATOR`에서 한 번만 수정합니다. 푸터(`OperatorContactLinks`), `/privacy`, `/terms`에 자동 반영됩니다. 상세: [packages/legal/README.md](../packages/legal/README.md).
+- [FACTORY-WORKFLOW.md](./FACTORY-WORKFLOW.md)
+- [ARCHITECTURE.md](./ARCHITECTURE.md)
+- [ROUTING.md](./ROUTING.md)
+- [EXTERNAL-CHECKLIST.md](./EXTERNAL-CHECKLIST.md)

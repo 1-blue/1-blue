@@ -1,6 +1,6 @@
 "use client";
 
-import { formatKstDateLabel } from "@1-blue/core/daily-doodle";
+import { formatKstDateLabel } from "@/core";
 
 type DateChipProps = {
   boardDate: string;

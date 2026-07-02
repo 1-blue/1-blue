@@ -1,8 +1,4 @@
-import {
-  REACTION_EMOJIS,
-  REACTION_TYPES,
-  type ReactionType,
-} from "@1-blue/core/sseoltalk";
+import { REACTION_EMOJIS, REACTION_TYPES, type ReactionType } from "@/core";
 import { formatCount } from "@/app/_config/ui";
 import { cn } from "@1-blue/ui/lib/index";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import type { BoardView } from "@/lib/types";
-import { ResultSummary } from "@/app/_components/ResultSummary";
+import { ResultSummary } from "@/app/b/[shortCode]/_components/ResultSummary";
 import { StitchPageShell } from "@/app/_components/stitch/StitchPageShell";
 
 type ResultPageClientProps = {

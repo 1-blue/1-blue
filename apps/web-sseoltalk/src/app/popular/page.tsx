@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import type { Metadata } from "next";
 import { createSiteMetadata } from "@1-blue/seo";
 import {
@@ -7,7 +8,7 @@ import {
 } from "@/app/_config/site-seo";
 import { ItemListJsonLd } from "@/app/_components/SeoJsonLd";
 import { getAppSiteUrl } from "@/app/_config/site-url";
-import { PopularPageClient } from "@/app/popular/PopularPageClient";
+import { PopularPageClient } from "@/app/popular/_components/PopularPageClient";
 import { listPopularToday } from "@/lib/repository";
 
 export const revalidate = 300;
@@ -15,7 +16,7 @@ export const revalidate = 300;
 export const metadata: Metadata = createSiteMetadata({
   title: POPULAR_PAGE_TITLE,
   description: POPULAR_PAGE_DESCRIPTION,
-  path: "/popular",
+  path: ROUTES.POPULAR.path,
   siteUrl: getAppSiteUrl(),
   keywords: [...SITE_KEYWORDS, "인기 썰 순위", "오늘의 인기 썰"],
 });

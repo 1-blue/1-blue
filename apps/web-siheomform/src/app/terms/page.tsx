@@ -1,19 +1,16 @@
+import { ROUTES } from "@/app/_constants/routes";
 import type { Metadata } from "next";
 import { createSiteMetadata } from "@1-blue/seo";
 import { getTermsSections } from "@1-blue/legal/content";
 import { createLegalPageProps } from "@1-blue/legal/operator";
-import {
-  SITE_KEYWORDS,
-  TERMS_PAGE_DESCRIPTION,
-  TERMS_PAGE_TITLE,
-} from "@/app/_config/site-seo";
+import { SITE_KEYWORDS, TERMS_PAGE_DESCRIPTION, TERMS_PAGE_TITLE } from "@/app/_config/site-seo";
 import { LegalPageLayout } from "@/app/_components/LegalPageLayout";
 import { getAppSiteUrl } from "@/app/_config/site-url";
 
 export const metadata: Metadata = createSiteMetadata({
   title: TERMS_PAGE_TITLE,
   description: TERMS_PAGE_DESCRIPTION,
-  path: "/terms",
+  path: ROUTES.TERMS.path,
   siteUrl: getAppSiteUrl(),
   keywords: [...SITE_KEYWORDS],
 });

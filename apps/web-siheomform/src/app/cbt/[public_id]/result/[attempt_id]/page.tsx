@@ -1,13 +1,15 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@1-blue/ui/components/button";
 import { toast } from "sonner";
 import { AdSensePlaceholder } from "@/app/_components/AdSensePlaceholder";
-import { CommentsSection } from "@/app/_components/CommentsSection";
-import { LikeButton } from "@/app/_components/LikeButton";
+import { CommentsSection } from "@/app/cbt/[public_id]/_components/CommentsSection";
+import { LikeButton } from "@/app/cbt/[public_id]/_components/LikeButton";
 import { PageShell } from "@/app/_components/PageShell";
 import { QuestionReviewCard } from "@/app/cbt/[public_id]/result/_components/QuestionReviewCard";
 import { ResultShareCard } from "@/app/cbt/[public_id]/result/_components/ResultShareCard";
@@ -115,10 +117,10 @@ const ResultPageClient = () => {
             시험을 제출해야 결과를 확인할 수 있습니다. 이어서 풀거나 처음부터 다시 응시해 주세요.
           </p>
           <Button asChild className="w-full">
-            <Link href={`/cbt/${params.public_id}/take`}>시험 이어 풀기</Link>
+            <Link href={ROUTES.CBT.DETAIL.TAKE.path(params.public_id)}>시험 이어 풀기</Link>
           </Button>
           <Button asChild variant="outline" className="w-full">
-            <Link href={`/cbt/${params.public_id}`}>시험 소개로</Link>
+            <Link href={ROUTES.CBT.DETAIL.path(params.public_id)}>시험 소개로</Link>
           </Button>
         </div>
       </PageShell>
@@ -218,7 +220,7 @@ const ResultPageClient = () => {
         <AdSensePlaceholder slotId="result-bottom" />
 
         <Button asChild variant="outline" className="w-full">
-          <Link href={`/cbt/${params.public_id}`}>다시 응시하기</Link>
+          <Link href={ROUTES.CBT.DETAIL.path(params.public_id)}>다시 응시하기</Link>
         </Button>
 
         {result.isPublic && result.submittedAt && (

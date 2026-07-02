@@ -1,4 +1,4 @@
-import { ArchiveListPage } from "@/app/_components/ArchiveListPage";
+import { ArchiveListPage } from "@/app/archive/_components/ArchiveListPage";
 
 const Page = () => {
   return <ArchiveListPage />;

@@ -8,9 +8,6 @@ type PlayAdBannerProps = {
 
 export const PlayAdBanner = ({ slotId }: PlayAdBannerProps) => {
   return (
-    <AdSensePlaceholder
-      slotId={slotId}
-      className="opacity-90 [&_.adsbygoogle]:min-h-[50px]"
-    />
+    <AdSensePlaceholder slotId={slotId} className="opacity-90 [&_.adsbygoogle]:min-h-[50px]" />
   );
 };

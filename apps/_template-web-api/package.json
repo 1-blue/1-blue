@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@1-blue/api-client": "workspace:*",
-    "@1-blue/core": "workspace:*",
     "@1-blue/database": "workspace:*",
     "@1-blue/legal": "workspace:*",
     "@1-blue/libs": "workspace:*",

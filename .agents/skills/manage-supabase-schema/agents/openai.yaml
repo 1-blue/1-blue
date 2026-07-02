@@ -1,0 +1,4 @@
+interface:
+  display_name: "Supabase 스키마 관리"
+  short_description: "앱별 Supabase 스키마와 노출·권한을 안전하게 관리합니다"
+  default_prompt: "Use $manage-supabase-schema to add or repair an app-specific Supabase schema."

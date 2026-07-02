@@ -1,11 +1,12 @@
+import { ROUTES } from "@/app/_constants/routes";
 import type { Metadata } from "next";
 import { createSiteMetadata } from "@1-blue/seo";
-import { resolveCategoryFromSlug } from "@1-blue/core/sseoltalk";
+import { resolveCategoryFromSlug } from "@/core";
 import { SITE_KEYWORDS } from "@/app/_config/site-seo";
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/app/_components/SeoJsonLd";
 import { CATEGORY_SEO } from "@/app/_config/seo-helpers";
 import { getAppSiteUrl } from "@/app/_config/site-url";
-import { CategoryPageClient } from "@/app/category/[name]/CategoryPageClient";
+import { CategoryPageClient } from "@/app/category/[name]/_components/CategoryPageClient";
 import { listPublishedStories } from "@/lib/repository";
 
 type PageProps = {
@@ -24,7 +25,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
   return createSiteMetadata({
     title,
     description,
-    path: `/category/${name}`,
+    path: ROUTES.CATEGORY.DETAIL.path(name),
     siteUrl: getAppSiteUrl(),
     keywords: seo ? [...SITE_KEYWORDS, ...seo.keywords] : [...SITE_KEYWORDS],
   });
@@ -44,8 +45,8 @@ const CategoryPage = async ({ params }: PageProps) => {
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "홈", path: "/" },
-          { name: `${category} 썰`, path: `/category/${name}` },
+          { name: ROUTES.HOME.label, path: ROUTES.HOME.path },
+          { name: `${category} 썰`, path: ROUTES.CATEGORY.DETAIL.path(name) },
         ]}
       />
       <ItemListJsonLd

@@ -1,5 +1,7 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@1-blue/ui/components/button";
@@ -159,7 +161,7 @@ const CbtTakePageClient = () => {
       body: JSON.stringify(payload),
     });
     if (response.ok) {
-      router.push(`/cbt/${params.public_id}/result/${attemptId}`);
+      router.push(ROUTES.CBT.DETAIL.RESULT.path(params.public_id, attemptId));
     }
   };
 
@@ -173,7 +175,7 @@ const CbtTakePageClient = () => {
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col p-4 md:max-w-5xl md:p-6 lg:max-w-6xl">
       <div className="mb-4 flex items-center justify-between">
-        <button type="button" onClick={() => router.push(`/cbt/${params.public_id}`)}>
+        <button type="button" onClick={() => router.push(ROUTES.CBT.DETAIL.path(params.public_id))}>
           ✕
         </button>
         {secondsLeft !== null && (
@@ -194,11 +196,13 @@ const CbtTakePageClient = () => {
               key={q.id}
               type="button"
               onClick={() => setCurrentIndex(index)}
-              className={`relative h-8 w-8 shrink-0 rounded-full text-xs font-semibold ${getNavButtonClass({
-                isCurrent: index === currentIndex,
-                isUnanswered: unansweredIds.has(q.id),
-                isFlagged: Boolean(flags[q.id]),
-              })}`}
+              className={`relative h-8 w-8 shrink-0 rounded-full text-xs font-semibold ${getNavButtonClass(
+                {
+                  isCurrent: index === currentIndex,
+                  isUnanswered: unansweredIds.has(q.id),
+                  isFlagged: Boolean(flags[q.id]),
+                },
+              )}`}
             >
               {index + 1}
               {flags[q.id] && <Flag className="absolute -top-1 -right-1 h-3 w-3 text-amber-500" />}

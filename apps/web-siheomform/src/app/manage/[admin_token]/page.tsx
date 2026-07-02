@@ -1,5 +1,7 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -13,10 +15,7 @@ import { OpenLinkButton } from "@/app/_components/OpenLinkButton";
 import { PageShell } from "@/app/_components/PageShell";
 import { StatusBadge } from "@/app/_components/StatusBadge";
 import { removeMyCbt } from "@/app/_hooks/useMyCbts";
-import {
-  ManageStatsPanel,
-  type ManageStatsData,
-} from "@/app/manage/_components/ManageStatsPanel";
+import { ManageStatsPanel, type ManageStatsData } from "@/app/manage/_components/ManageStatsPanel";
 
 type ManageData = {
   metadata: {
@@ -63,7 +62,7 @@ const ManagePageClient = () => {
     if (response.ok) {
       removeMyCbt(params.admin_token);
       toast.success("삭제되었습니다");
-      router.push("/");
+      router.push(ROUTES.HOME.path);
     }
   };
 
@@ -75,7 +74,7 @@ const ManagePageClient = () => {
     );
   }
 
-  const publicUrl = `${siteUrl}/cbt/${data.publicId}`;
+  const publicUrl = `${siteUrl}${ROUTES.CBT.DETAIL.path(data.publicId)}`;
 
   return (
     <PageShell wide>
@@ -115,7 +114,7 @@ const ManagePageClient = () => {
               <CopyLinkButton value={publicUrl} label="복사" variant="default" />
             </div>
             <Button asChild variant="outline" className="w-full">
-              <Link href={`/manage/${params.admin_token}/edit`}>
+              <Link href={ROUTES.MANAGE.DETAIL.EDIT.path(params.admin_token)}>
                 <Pencil className="mr-2 h-4 w-4" /> 수정하기
               </Link>
             </Button>

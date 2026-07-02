@@ -1,14 +1,15 @@
+import { ROUTES } from "@/app/_constants/routes";
 import { OperatorContactLinks } from "@1-blue/ui/components/operator-contact-links";
 
 export const SiteFooter = () => {
   return (
     <footer className="mt-8 rounded-lg bg-[#101010] px-6 py-8 text-center text-sm text-[#a1a1aa]">
       <nav className="flex justify-center gap-4">
-        <a href="/privacy" className="hover:text-white">
+        <a href={ROUTES.PRIVACY.path} className="hover:text-white">
           개인정보처리방침
         </a>
         <span aria-hidden="true">·</span>
-        <a href="/terms" className="hover:text-white">
+        <a href={ROUTES.TERMS.path} className="hover:text-white">
           이용약관
         </a>
       </nav>

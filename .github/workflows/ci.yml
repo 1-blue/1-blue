@@ -30,4 +30,20 @@ jobs:
 
       - run: pnpm format:check
 
-      - run: pnpm turbo run lint typecheck test --affected
+      - name: Lint affected workspaces
+        env:
+          TURBO_SCM_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          TURBO_SCM_HEAD: ${{ github.sha }}
+        run: pnpm turbo run lint --affected
+
+      - name: Typecheck affected workspaces
+        env:
+          TURBO_SCM_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          TURBO_SCM_HEAD: ${{ github.sha }}
+        run: pnpm turbo run typecheck --affected
+
+      - name: Test affected workspaces
+        env:
+          TURBO_SCM_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          TURBO_SCM_HEAD: ${{ github.sha }}
+        run: pnpm turbo run test --affected

@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import { getAppSiteUrl } from "@/app/_config/site-url";
 
 type ArticleJsonLdProps = {
@@ -24,7 +25,7 @@ export const ArticleJsonLd = ({
     articleSection: category,
     datePublished: publishedAt ?? undefined,
     inLanguage: "ko-KR",
-    url: `${siteUrl}/story/${id}`,
+    url: `${siteUrl}${ROUTES.STORY.DETAIL.path(id)}`,
     publisher: {
       "@type": "Organization",
       name: "썰톡",
@@ -54,7 +55,7 @@ export const ItemListJsonLd = ({ name, items }: ItemListJsonLdProps) => {
       "@type": "ListItem",
       position: index + 1,
       name: item.title,
-      url: `${siteUrl}/story/${item.id}`,
+      url: `${siteUrl}${ROUTES.STORY.DETAIL.path(item.id)}`,
     })),
   };
 

@@ -42,7 +42,9 @@ export const MemoryPhase = ({ clues, memoryMinutes, onComplete }: MemoryPhasePro
           value={progress}
           className="h-2 bg-white/15 [&_[data-slot=progress-indicator]]:bg-accent-bright"
         />
-        <p className="text-ink-muted text-xs">시간이 끝나면 단서가 숨겨집니다. 재열람할 수 없습니다.</p>
+        <p className="text-ink-muted text-xs">
+          시간이 끝나면 단서가 숨겨집니다. 재열람할 수 없습니다.
+        </p>
       </div>
 
       <PlayAdBanner slotId="memory-top" />

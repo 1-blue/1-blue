@@ -1,0 +1,4 @@
+interface:
+  display_name: "서비스 기획"
+  short_description: "단계형·일괄형 서비스 전략과 실행 모드를 기획합니다"
+  default_prompt: "Use $plan-service to plan this service and choose staged or one-shot execution from my request."

@@ -11,10 +11,7 @@ import {
   DialogTitle,
 } from "@1-blue/ui/components/dialog";
 import { Input } from "@1-blue/ui/components/input";
-import {
-  MAX_PLAYER_NAME_LENGTH,
-  validatePlayerName,
-} from "@/app/_hooks/usePlayerName";
+import { MAX_PLAYER_NAME_LENGTH, validatePlayerName } from "@/app/_hooks/usePlayerName";
 
 type PlayerNameGateProps = {
   open: boolean;

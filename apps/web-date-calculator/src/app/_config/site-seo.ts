@@ -36,5 +36,3 @@ export const FAQ_ITEMS: FaqItem[] = [
       "네. 2월 29일이 포함된 윤년도 달력 일수 기준으로 계산합니다. 브라우저와 서버의 표준 날짜 라이브러리를 사용합니다.",
   },
 ];
-
-export const SITEMAP_PATHS = ["/", "/privacy", "/terms"] as const;

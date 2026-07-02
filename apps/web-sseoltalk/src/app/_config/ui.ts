@@ -1,5 +1,5 @@
-import type { StoryCategory } from "@1-blue/core/sseoltalk";
-import { CATEGORY_SLUGS } from "@1-blue/core/sseoltalk";
+import type { StoryCategory } from "@/core";
+import { CATEGORY_SLUGS } from "@/core";
 
 export const CATEGORY_EMOJIS: Record<StoryCategory, string> = {
   가족: "👨‍👩‍👧",

@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import type { Metadata } from "next";
 import { createSiteMetadata } from "@1-blue/seo";
 import { getPrivacyPolicySections } from "@1-blue/legal/content";
@@ -13,7 +14,7 @@ import { getAppSiteUrl } from "@/app/_config/site-url";
 export const metadata: Metadata = createSiteMetadata({
   title: PRIVACY_PAGE_TITLE,
   description: PRIVACY_PAGE_DESCRIPTION,
-  path: "/privacy",
+  path: ROUTES.PRIVACY.path,
   siteUrl: getAppSiteUrl(),
   keywords: [...SITE_KEYWORDS],
 });

@@ -62,15 +62,3 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: `문의 채널(${SITE_OPERATOR.contactEmail})로 신고해 주시면 검토 후 조치합니다. ${SITE_OPERATOR.responseNotice}됩니다.`,
   },
 ];
-
-export const SITEMAP_PATHS = [
-  "/",
-  "/popular",
-  "/category/family",
-  "/category/work",
-  "/category/love",
-  "/category/friend",
-  "/category/jinsang",
-  "/privacy",
-  "/terms",
-] as const;

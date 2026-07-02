@@ -9,7 +9,10 @@ const parseDatesArg = (): string[] | null => {
   if (!value) {
     return null;
   }
-  return value.split(",").map((d) => d.trim()).filter(Boolean);
+  return value
+    .split(",")
+    .map((d) => d.trim())
+    .filter(Boolean);
 };
 
 const main = async () => {

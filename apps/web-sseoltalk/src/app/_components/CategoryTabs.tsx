@@ -1,7 +1,9 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import Link from "next/link";
-import { STORY_CATEGORIES } from "@1-blue/core/sseoltalk";
+import { STORY_CATEGORIES } from "@/core";
 import { CATEGORY_EMOJIS, categoryToSlug } from "@/app/_config/ui";
 import { useDragScroll } from "@/app/_hooks/useDragScroll";
 import { cn } from "@1-blue/ui/lib/index";
@@ -25,7 +27,7 @@ export const CategoryTabs = ({ active = "전체", basePath = "/" }: CategoryTabs
               ? basePath === "/"
                 ? "/"
                 : basePath
-              : `/category/${categoryToSlug(tab)}`;
+              : ROUTES.CATEGORY.DETAIL.path(categoryToSlug(tab));
           const isActive = active === tab;
           return (
             <Link

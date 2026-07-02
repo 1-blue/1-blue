@@ -6,7 +6,7 @@ import {
   createEmptyQuestion,
   type CbtDraft,
   type CbtMetadata,
-} from "@1-blue/core/siheomform";
+} from "@/core";
 
 const DRAFT_KEY = "siheomform:draft";
 

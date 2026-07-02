@@ -9,7 +9,7 @@ import {
   type PuzzleMode,
   type PuzzleThemeId,
   type SubmitPayload,
-} from "@1-blue/core/daily-deduction";
+} from "@/core";
 import { getDb } from "./db";
 import type {
   ArchiveListItem,
@@ -68,7 +68,10 @@ const assertArchiveDate = (puzzleDate: string): void => {
   }
 };
 
-const assignPlayerLabel = async (puzzleSetId: string, displayName: string): Promise<{
+const assignPlayerLabel = async (
+  puzzleSetId: string,
+  displayName: string,
+): Promise<{
   playerName: string;
   playerLabel: string;
 }> => {
@@ -164,7 +167,10 @@ const toPublicPuzzle = (
   })),
 });
 
-export const saveGeneratedPuzzle = async (puzzleDate: string, puzzle: GeneratedPuzzle): Promise<void> => {
+export const saveGeneratedPuzzle = async (
+  puzzleDate: string,
+  puzzle: GeneratedPuzzle,
+): Promise<void> => {
   const db = getDb();
 
   const { data: created, error: setError } = await db
@@ -240,7 +246,10 @@ export const runEnsureLookahead = async () => {
   });
 };
 
-export const getTodayPuzzle = async (sessionId: string, puzzleDate: string): Promise<TodayPuzzleView> => {
+export const getTodayPuzzle = async (
+  sessionId: string,
+  puzzleDate: string,
+): Promise<TodayPuzzleView> => {
   const set = await fetchPuzzleSetByDate(puzzleDate);
   if (!set) {
     throw new Error("puzzle_not_found");
@@ -306,7 +315,9 @@ const computeRank = async (
     .from("puzzle_results")
     .select("id", { count: "exact", head: true })
     .eq("puzzle_set_id", puzzleSetId)
-    .or(`wrong_count.lt.${wrongCount},and(wrong_count.eq.${wrongCount},time_seconds.lt.${timeSeconds})`);
+    .or(
+      `wrong_count.lt.${wrongCount},and(wrong_count.eq.${wrongCount},time_seconds.lt.${timeSeconds})`,
+    );
 
   if (error) {
     throw new Error(error.message);
@@ -338,7 +349,13 @@ export const submitTodayPuzzle = async (
   }
 
   const [clues, questions] = await Promise.all([fetchClues(set.id), fetchQuestions(set.id)]);
-  const result = buildSubmitResult(parsed.mode, parsed.timeSeconds, questions, clues, parsed.answers);
+  const result = buildSubmitResult(
+    parsed.mode,
+    parsed.timeSeconds,
+    questions,
+    clues,
+    parsed.answers,
+  );
   const { playerName, playerLabel } = await assignPlayerLabel(set.id, parsed.displayName);
 
   const { error: insertError } = await db.from("puzzle_results").insert({
@@ -360,10 +377,7 @@ export const submitTodayPuzzle = async (
   return { ...result, rank };
 };
 
-export const getRanking = async (
-  puzzleDate: string,
-  sessionId?: string,
-): Promise<RankingView> => {
+export const getRanking = async (puzzleDate: string, sessionId?: string): Promise<RankingView> => {
   const set = await fetchPuzzleSetByDate(puzzleDate);
   if (!set) {
     return { date: puzzleDate, entries: [] };
@@ -428,9 +442,7 @@ export const getRankingDates = async (): Promise<string[]> => {
 
   const setsWithResults = new Set((results ?? []).map((r) => r.puzzle_set_id));
 
-  return sets
-    .filter((s) => setsWithResults.has(s.id))
-    .map((s) => s.puzzle_date);
+  return sets.filter((s) => setsWithResults.has(s.id)).map((s) => s.puzzle_date);
 };
 
 export const getArchiveList = async (): Promise<ArchiveListItem[]> => {

@@ -30,7 +30,9 @@ export const ResultShareCard = forwardRef<HTMLDivElement, ResultShareCardProps>(
         <p style={{ fontSize: "12px", color: "#9ca3af", margin: 0 }}>
           {new Date().toLocaleDateString("ko-KR")}
         </p>
-        <p style={{ fontSize: "16px", fontWeight: 600, margin: "8px 0 0", lineHeight: 1.4 }}>{title}</p>
+        <p style={{ fontSize: "16px", fontWeight: 600, margin: "8px 0 0", lineHeight: 1.4 }}>
+          {title}
+        </p>
         <p style={{ fontSize: "12px", color: "#9ca3af", margin: "6px 0 0" }}>{nickname}</p>
         <p style={{ fontSize: "36px", fontWeight: 700, margin: "16px 0 0" }}>
           {score}
@@ -42,7 +44,15 @@ export const ResultShareCard = forwardRef<HTMLDivElement, ResultShareCardProps>(
         <p style={{ fontSize: "13px", color: "#d1d5db", margin: "8px 0 0" }}>
           정답 {correctCount}/{totalQuestions}
         </p>
-        <p style={{ fontSize: "11px", color: "#6b7280", margin: "20px 0 0", borderTop: "1px solid #374151", paddingTop: "12px" }}>
+        <p
+          style={{
+            fontSize: "11px",
+            color: "#6b7280",
+            margin: "20px 0 0",
+            borderTop: "1px solid #374151",
+            paddingTop: "12px",
+          }}
+        >
           시험폼
         </p>
       </div>

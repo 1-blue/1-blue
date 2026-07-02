@@ -1,4 +1,4 @@
-import type { PrizeConfigItem, PrizeRemainder } from "@1-blue/core/paper-lottery";
+import type { PrizeConfigItem, PrizeRemainder } from "@/core";
 
 export type SlotView = {
   index: number;

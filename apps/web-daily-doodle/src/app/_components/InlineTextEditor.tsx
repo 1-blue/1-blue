@@ -7,7 +7,7 @@ import {
   MAX_TEXT_LENGTH,
   MAX_TEXT_LINES,
   type TextFont,
-} from "@1-blue/core/daily-doodle";
+} from "@/core";
 
 const textFontFamilyCss: Record<TextFont, string> = {
   hand: '"Nanum Pen Script", "Comic Sans MS", cursive',

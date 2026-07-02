@@ -17,7 +17,9 @@ export const FaqSection = () => {
       <Accordion type="single" collapsible className="surface-card px-4">
         {FAQ_ITEMS.map((item, index) => (
           <AccordionItem key={item.question} value={`faq-${index}`}>
-            <AccordionTrigger className="text-left text-sm font-semibold">{item.question}</AccordionTrigger>
+            <AccordionTrigger className="text-left text-sm font-semibold">
+              {item.question}
+            </AccordionTrigger>
             <AccordionContent className="text-ink-muted text-sm leading-relaxed">
               {item.answer}
             </AccordionContent>

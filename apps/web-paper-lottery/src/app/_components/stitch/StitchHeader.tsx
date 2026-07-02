@@ -1,13 +1,12 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import { useState } from "react";
 import Link from "next/link";
 import { HelpCircle, Settings } from "lucide-react";
 import { Button } from "@1-blue/ui/components/button";
-import {
-  StitchHelpSheet,
-  type StitchPageVariant,
-} from "@/app/_components/stitch/StitchHelpSheet";
+import { StitchHelpSheet, type StitchPageVariant } from "@/app/_components/stitch/StitchHelpSheet";
 import { StitchSettingsSheet } from "@/app/_components/stitch/StitchSettingsSheet";
 
 export type StitchBoardMeta = {
@@ -53,7 +52,7 @@ export const StitchHeader = ({
           <div className="stamp-logo text-sm sm:text-base">{label}</div>
         ) : (
           <Link
-            href="/"
+            href={ROUTES.HOME.path}
             className="stamp-logo text-sm transition-opacity hover:opacity-80 sm:text-base"
             title="홈으로"
           >

@@ -14,11 +14,11 @@ Webhook이 없으면 `notifySlack`은 조용히 skip합니다.
 
 ## 앱별 사용
 
-| 앱 | 트리거 | 메시지 예시 |
-|----|--------|-------------|
-| web-daily-deduction | Cron `generate-ahead` | `오늘의 추론: 퍼즐 3일치 생성 완료 (2026-06-24)` |
-| web-daily-deduction | Admin `generate-puzzles` | `오늘의 추론: 수동 생성 완료 (dates: …)` |
-| web-daily-doodle | Cron `close-day` | (해당 앱 정책에 따름) |
+| 앱                  | 트리거                   | 메시지 예시                                      |
+| ------------------- | ------------------------ | ------------------------------------------------ |
+| web-daily-deduction | Cron `generate-ahead`    | `오늘의 추론: 퍼즐 3일치 생성 완료 (2026-06-24)` |
+| web-daily-deduction | Admin `generate-puzzles` | `오늘의 추론: 수동 생성 완료 (dates: …)`         |
+| web-daily-doodle    | Cron `close-day`         | (해당 앱 정책에 따름)                            |
 
 ## 코드 패턴
 

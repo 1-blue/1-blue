@@ -1,6 +1,6 @@
 "use client";
 
-import type { PuzzleMode } from "@1-blue/core/daily-deduction";
+import type { PuzzleMode } from "@/core";
 import { Label } from "@1-blue/ui/components/label";
 import { DeductionRadioItem } from "@/app/_components/DeductionRadioItem";
 import { RadioGroup } from "@1-blue/ui/components/radio-group";

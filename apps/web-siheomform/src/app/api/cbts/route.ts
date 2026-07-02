@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import type { CbtDraft } from "@1-blue/core/siheomform";
-import { validateCbtDraftForSave } from "@1-blue/core/siheomform";
+import type { CbtDraft } from "@/core";
+import { validateCbtDraftForSave } from "@/core";
 import { createCbt } from "@/lib/repository";
 
 export const POST = async (request: Request) => {

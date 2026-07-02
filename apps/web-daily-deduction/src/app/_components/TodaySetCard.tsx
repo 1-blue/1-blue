@@ -1,8 +1,8 @@
 "use client";
 
 import { ThemeBadge } from "@/app/_components/ThemeBadge";
-import { formatKstDateLabel } from "@1-blue/core/daily-deduction";
-import type { PuzzleThemeId } from "@1-blue/core/daily-deduction";
+import { formatKstDateLabel } from "@/core";
+import type { PuzzleThemeId } from "@/core";
 import { Badge } from "@1-blue/ui/components/badge";
 
 type TodaySetCardProps = {

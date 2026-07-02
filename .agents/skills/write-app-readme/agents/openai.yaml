@@ -1,0 +1,4 @@
+interface:
+  display_name: "앱 README 작성"
+  short_description: "실제 구현을 조사해 포트폴리오형 앱 README를 작성합니다"
+  default_prompt: "Use $write-app-readme to create an accurate portfolio-style README for this app."

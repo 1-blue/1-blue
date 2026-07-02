@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import {
   buildPrizePool,
   computePrizeRemainders,
@@ -7,7 +8,7 @@ import {
   validateBoardInput,
   type BoardInput,
   type PrizeConfigItem,
-} from "@1-blue/core/paper-lottery";
+} from "@/core";
 import { getDb } from "./db";
 import type {
   AdminBoardView,
@@ -288,7 +289,7 @@ export const createBoard = async (input: BoardInput): Promise<CreateBoardRespons
   return {
     shortCode,
     adminToken,
-    adminUrl: `${siteUrl}/b/${shortCode}/admin?token=${adminToken}`,
+    adminUrl: `${siteUrl}${ROUTES.BOARD.ADMIN.path(shortCode)}?token=${adminToken}`,
   };
 };
 
@@ -444,5 +445,5 @@ export const getBoardForResult = async (shortCode: string): Promise<BoardView | 
 };
 
 export const getParticipantPlayUrl = (shortCode: string, participantToken: string): string => {
-  return `${getSiteUrl()}/b/${shortCode}/play?token=${participantToken}`;
+  return `${getSiteUrl()}${ROUTES.BOARD.PLAY.path(shortCode)}?token=${participantToken}`;
 };

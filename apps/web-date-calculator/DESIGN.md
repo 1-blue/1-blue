@@ -12,16 +12,16 @@
 
 ## Tokens
 
-| Role | Value | Notes |
-|------|-------|-------|
-| canvas | #ffffff | page background |
-| surface-card | #f5f5f5 | main input card |
-| primary | #111111 | CTA button |
-| primary-hover | #242424 | CTA hover |
-| ink | #111111 | headings |
-| muted | #6b7280 | secondary text |
-| footer | #101010 | footer background |
-| footer-text | #a1a1aa | footer links |
+| Role          | Value   | Notes             |
+| ------------- | ------- | ----------------- |
+| canvas        | #ffffff | page background   |
+| surface-card  | #f5f5f5 | main input card   |
+| primary       | #111111 | CTA button        |
+| primary-hover | #242424 | CTA hover         |
+| ink           | #111111 | headings          |
+| muted         | #6b7280 | secondary text    |
+| footer        | #101010 | footer background |
+| footer-text   | #a1a1aa | footer links      |
 
 ## Components (@1-blue/ui)
 

@@ -1,5 +1,5 @@
-import type { GeneratedStory } from "@1-blue/core/sseoltalk";
-import { VALIDATION_PROMPT } from "@1-blue/core/sseoltalk";
+import type { GeneratedStory } from "@/core";
+import { VALIDATION_PROMPT } from "@/core";
 
 const extractJson = (text: string): string => {
   const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
