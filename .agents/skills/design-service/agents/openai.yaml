@@ -1,0 +1,4 @@
+interface:
+  display_name: "서비스 디자인"
+  short_description: "Stitch 디자인을 단계형 또는 일괄형으로 생성·검수합니다"
+  default_prompt: "Use $design-service to create and review the Stitch design, pausing or continuing based on my requested mode."

@@ -7,8 +7,8 @@
 ## Phase 1 — Web Static Factory
 
 - `_template-web-static`, `create:app`, CI, Skills
-- **plan-service** → Stitch → **create-service** / **apply-design** ([FACTORY-WORKFLOW.md](./FACTORY-WORKFLOW.md))
-- Date utility examples: `days-between`, `date-after-days` (see plan-service/examples.md)
+- **plan-service** → **design-service** → Stitch → **build-service** ([FACTORY-WORKFLOW.md](./FACTORY-WORKFLOW.md))
+- 앱별 `ROUTES` 표준과 page-private 파일 배치
 
 ## Phase 2 — Web API + DB
 
@@ -27,4 +27,4 @@
 
 ## Phase 5 — Polish
 
-- Vercel deploy workflow, Playwright E2E, Changesets (optional)
+- **write-app-readme**, **launch-service**, Playwright E2E, Changesets (optional)

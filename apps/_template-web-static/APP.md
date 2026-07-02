@@ -57,5 +57,6 @@ See root [`.env.example`](../../.env.example). Run: `pnpm dev:{{SLUG}}`
 ## Workflow
 
 1. **plan-service** — strategy before code
-2. Stitch + save DESIGN.md (external)
-3. **create-service** — scaffold + implement after approval
+2. **design-service** — responsive Stitch prompt and development handoff
+3. Stitch + save DESIGN.md (external)
+4. **build-service** — scaffold, implement, and verify after approval
