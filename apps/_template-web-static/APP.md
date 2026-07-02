@@ -15,7 +15,7 @@
 
 - (Bullet list of user-facing features)
 
-## Core logic (@1-blue/core)
+## Core logic (`src/core`)
 
 - (Pure functions to implement + test)
 
@@ -26,18 +26,18 @@
 - Meta description: (155 chars max, Korean)
 - Keywords: (5 long-tail phrases — `_config/site-seo.ts` → `SITE_KEYWORDS`)
 - FAQ: (3–5 questions — `_config/site-seo.ts` → `FAQ_ITEMS`, `FaqSection` + JSON-LD)
-- Sitemap paths: (default `/`, `/privacy`, `/terms` — `_config/site-seo.ts` → `SITEMAP_PATHS`)
+- Sitemap paths: (default `/`, `/privacy`, `/terms` — `_constants/routes.ts`의 `sitemap` metadata)
 
 ### SEO 구현 체크리스트 (web-static)
 
-| 항목 | 파일 |
-|------|------|
-| keywords meta | `layout.tsx` ← `SITE_KEYWORDS` |
-| sitemap.xml | `app/sitemap.ts` |
-| robots.txt | `app/robots.ts` |
-| FAQ UI | `_components/FaqSection.tsx` |
-| FAQ JSON-LD | `_components/FaqJsonLd.tsx` + `(home)/page.tsx` |
-| 설정 단일 소스 | `_config/site-seo.ts`, `_config/site-url.ts` |
+| 항목           | 파일                                        |
+| -------------- | ------------------------------------------- |
+| keywords meta  | `layout.tsx` ← `SITE_KEYWORDS`              |
+| sitemap.xml    | `app/sitemap.ts`                            |
+| robots.txt     | `app/robots.ts`                             |
+| FAQ UI         | `(home)/_components/FaqSection.tsx`         |
+| FAQ JSON-LD    | `(home)/_components/FaqJsonLd.tsx`          |
+| 설정 단일 소스 | `_constants/routes.ts`, `_config/site-*.ts` |
 
 ## Design
 

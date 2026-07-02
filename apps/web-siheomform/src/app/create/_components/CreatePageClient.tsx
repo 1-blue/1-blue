@@ -1,15 +1,17 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { validateCbtDraftForSave } from "@1-blue/core/siheomform";
+import { validateCbtDraftForSave } from "@/core";
 import { toast } from "sonner";
 import { addMyCbt } from "@/app/_hooks/useMyCbts";
 import { clearDraft, useCbtDraft } from "@/app/create/_hooks/useCbtDraft";
-import { BasicSettingsSidebar } from "@/app/create/_components/editor/BasicSettingsSidebar";
-import { CbtMetadataForm } from "@/app/create/_components/editor/CbtMetadataForm";
-import { CbtQuestionEditor } from "@/app/create/_components/editor/CbtQuestionEditor";
-import { EditorTopBar } from "@/app/create/_components/editor/EditorTopBar";
+import { BasicSettingsSidebar } from "@/app/_components/editor/BasicSettingsSidebar";
+import { CbtMetadataForm } from "@/app/_components/editor/CbtMetadataForm";
+import { CbtQuestionEditor } from "@/app/_components/editor/CbtQuestionEditor";
+import { EditorTopBar } from "@/app/_components/editor/EditorTopBar";
 
 const saveCbt = async (draft: ReturnType<typeof useCbtDraft>["draft"]) => {
   const parsed = validateCbtDraftForSave(draft);
@@ -73,7 +75,12 @@ export const CreatePageClient = () => {
   return (
     <div className="bg-background flex min-h-dvh flex-col">
       <div className="hidden md:block">
-        <EditorTopBar backHref="/" questionCount={draft.questions.length} onSave={handleSave} saving={saving} />
+        <EditorTopBar
+          backHref={ROUTES.HOME.path}
+          questionCount={draft.questions.length}
+          onSave={handleSave}
+          saving={saving}
+        />
         <div className="mx-auto flex w-full max-w-[1084px] flex-1 flex-col gap-4 p-4 md:flex-row md:gap-6 md:p-6">
           <BasicSettingsSidebar metadata={draft.metadata} onChange={setMetadata} />
           <div className="min-w-0 flex-1">
@@ -87,7 +94,7 @@ export const CreatePageClient = () => {
 
       <div className="md:hidden">
         <header className="border-border flex items-center gap-3 border-b px-4 py-3">
-          <button type="button" onClick={() => router.push("/")} className="text-sm">
+          <button type="button" onClick={() => router.push(ROUTES.HOME.path)} className="text-sm">
             ←
           </button>
           <h1 className="text-sm font-semibold">CBT 만들기</h1>
@@ -102,7 +109,7 @@ export const CreatePageClient = () => {
                 toast.error("시험 제목을 입력하세요");
                 return;
               }
-              router.push("/create/questions");
+              router.push(ROUTES.CREATE.QUESTIONS.path);
             }}
           />
         </div>

@@ -115,7 +115,7 @@ sitemap: {
 1. App Router 디렉터리와 실제 공개 페이지를 대조한다.
 2. `ROUTES`에 정적·동적·외부 route를 정의한다.
 3. `Link`, router, redirect, canonical, 공유 URL의 하드코딩을 교체한다.
-4. 기존 `SITEMAP_PATHS`를 제거하고 `ROUTES`의 path와 sitemap metadata를 사용한다.
+4. 기존 별도 sitemap 경로 배열을 제거하고 `ROUTES`의 path와 sitemap metadata를 사용한다.
 5. 동적 sitemap이 repository 결과와 route builder를 사용하는지 확인한다.
 6. route builder 단위 테스트와 주요 navigation E2E를 추가한다.
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isReactionType } from "@1-blue/core/sseoltalk";
+import { isReactionType } from "@/core";
 import { toggleReaction } from "@/lib/repository";
 
 export const runtime = "nodejs";

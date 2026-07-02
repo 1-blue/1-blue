@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, type CSSProperties } from "react";
-import { formatKstDateLabel } from "@1-blue/core/daily-deduction";
+import { formatKstDateLabel } from "@/core";
 import type { SubmitResultView } from "@/lib/types";
 
 type ShareResultCardProps = {
@@ -97,7 +97,9 @@ export const ShareResultCard = forwardRef<HTMLDivElement, ShareResultCardProps>(
             paddingTop: "16px",
           }}
         >
-          <p style={{ fontSize: "11px", color: "#6b7280", margin: 0 }}>daily-deduction.1-blue.dev</p>
+          <p style={{ fontSize: "11px", color: "#6b7280", margin: 0 }}>
+            daily-deduction.1-blue.dev
+          </p>
         </div>
       </div>
     );

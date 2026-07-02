@@ -20,7 +20,7 @@
 - `GET /api/archive/[date]` — 아카이브 상세
 - `GET /api/cron/close-day` — 자정 스냅샷 (CRON_SECRET)
 
-## Core (`@1-blue/core/daily-doodle`)
+## Core (`@/core`)
 
 - KST 날짜, stroke 검증, rate limit, canvas 렌더
 

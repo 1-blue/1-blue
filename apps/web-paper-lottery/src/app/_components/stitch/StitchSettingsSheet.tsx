@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@1-blue/ui/components/dialog";
-import { CopyButton } from "@/app/_components/CopyButton";
+import { CopyButton } from "@/app/b/[shortCode]/_components/CopyButton";
 import { stitchDialogContentClass } from "@/app/_components/stitch/stitch-dialog";
 
 type StitchSettingsSheetProps = {

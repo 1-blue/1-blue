@@ -9,7 +9,7 @@ import {
   renderStrokeRecords,
   type Point,
   type StrokeRecord,
-} from "@1-blue/core/daily-doodle";
+} from "@/core";
 
 export type DoodleCanvasHandle = {
   exportPng: () => void;

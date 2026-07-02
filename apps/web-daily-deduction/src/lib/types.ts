@@ -1,6 +1,6 @@
-import type { PuzzleMode } from "@1-blue/core/daily-deduction";
+import type { PuzzleMode } from "@/core";
 
-import type { PuzzleThemeId } from "@1-blue/core/daily-deduction";
+import type { PuzzleThemeId } from "@/core";
 
 export type ClueView = {
   id: string;

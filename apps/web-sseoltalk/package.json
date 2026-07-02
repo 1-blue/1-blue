@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@1-blue/api-client": "workspace:*",
-    "@1-blue/core": "workspace:*",
     "@1-blue/database": "workspace:*",
     "@1-blue/legal": "workspace:*",
     "@1-blue/libs": "workspace:*",
@@ -25,7 +24,8 @@
     "lucide-react": "^0.511.0",
     "next": "^15.3.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "zod": "^3.25.51"
   },
   "devDependencies": {
     "@1-blue/eslint-config": "workspace:*",

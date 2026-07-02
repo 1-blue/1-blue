@@ -202,7 +202,9 @@ const main = () => {
   const replacements = {
     "{{SLUG}}": slug,
     "{{APP_NAME}}": name,
+    "{{ APP_NAME }}": name,
     "{{APP_DESCRIPTION}}": `${name} service`,
+    "{{ APP_DESCRIPTION }}": `${name} service`,
     "web-template-static": `web-${slug}`,
     "web-template-api": `web-${slug}`,
     "ait-template": `ait-${slug}`,

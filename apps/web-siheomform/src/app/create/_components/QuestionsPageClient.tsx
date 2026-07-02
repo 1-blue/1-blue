@@ -2,12 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { validateCbtDraftForSave } from "@1-blue/core/siheomform";
+import { validateCbtDraftForSave } from "@/core";
+import { ROUTES } from "@/app/_constants/routes";
 import { toast } from "sonner";
 import { addMyCbt } from "@/app/_hooks/useMyCbts";
 import { clearDraft, useCbtDraft } from "@/app/create/_hooks/useCbtDraft";
-import { CbtQuestionEditor } from "@/app/create/_components/editor/CbtQuestionEditor";
-import { EditorTopBar } from "@/app/create/_components/editor/EditorTopBar";
+import { CbtQuestionEditor } from "@/app/_components/editor/CbtQuestionEditor";
+import { EditorTopBar } from "@/app/_components/editor/EditorTopBar";
 
 export const QuestionsPageClient = () => {
   const router = useRouter();
@@ -49,9 +50,12 @@ export const QuestionsPageClient = () => {
           updatedAt: new Date().toISOString(),
         });
         clearDraft();
-        router.push(
-          `/create/complete?admin=${encodeURIComponent(data.adminToken)}&public=${encodeURIComponent(data.publicId)}&title=${encodeURIComponent(data.title ?? draft.metadata.title)}`,
-        );
+        const query = new URLSearchParams({
+          admin: data.adminToken,
+          public: data.publicId,
+          title: data.title ?? draft.metadata.title,
+        });
+        router.push(`${ROUTES.CREATE.COMPLETE.path}?${query}`);
       }
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "저장에 실패했습니다");
@@ -68,7 +72,7 @@ export const QuestionsPageClient = () => {
     <div className="bg-background flex min-h-dvh flex-col md:hidden">
       <EditorTopBar
         questionCount={draft.questions.length}
-        backHref="/create"
+        backHref={ROUTES.CREATE.path}
         onSave={handleSave}
         saving={saving}
       />

@@ -58,10 +58,7 @@ export const QuestionPager = ({
             htmlFor={`${question.id}-${index}`}
             className="touch-target surface-card flex cursor-pointer items-center gap-3 border border-white/10 p-3 has-[[data-state=checked]]:border-accent has-[[data-state=checked]]:bg-accent/10"
           >
-            <DeductionRadioItem
-              id={`${question.id}-${index}`}
-              value={String(index)}
-            />
+            <DeductionRadioItem id={`${question.id}-${index}`} value={String(index)} />
             <span className="text-sm">{option}</span>
           </Label>
         ))}

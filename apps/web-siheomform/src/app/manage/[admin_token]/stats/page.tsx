@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import { redirect } from "next/navigation";
 
 type StatsPageProps = {
@@ -6,7 +7,7 @@ type StatsPageProps = {
 
 const StatsPage = async ({ params }: StatsPageProps) => {
   const { admin_token } = await params;
-  redirect(`/manage/${admin_token}`);
+  redirect(ROUTES.MANAGE.DETAIL.path(admin_token));
 };
 
 export default StatsPage;

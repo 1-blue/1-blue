@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { BoardInput } from "@1-blue/core/paper-lottery";
+import type { BoardInput } from "@/core";
 import { createBoard } from "@/lib/repository";
 
 export const POST = async (request: Request) => {

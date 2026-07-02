@@ -10,7 +10,7 @@ import {
   type StrokeInput,
   type StrokeRecord,
   type TextFont,
-} from "@1-blue/core/daily-doodle";
+} from "@/core";
 import { DateChip } from "@/app/_components/DateChip";
 import {
   DoodleCanvas,
@@ -180,9 +180,7 @@ export const DoodleBoard = ({
 
       try {
         const payload =
-          stroke.tool === "text"
-            ? { ...stroke, fontSize: stroke.fontSize ?? fontSize }
-            : stroke;
+          stroke.tool === "text" ? { ...stroke, fontSize: stroke.fontSize ?? fontSize } : stroke;
 
         const response = await fetch("/api/boards/today/strokes", {
           method: "POST",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { StrokeRecord } from "@1-blue/core/daily-doodle";
+import type { StrokeRecord } from "@/core";
 import { getChannelName } from "@/lib/realtime";
 import { getSupabaseBrowser } from "@/lib/supabase-browser";
 import type { BoardView, BroadcastStrokeEvent } from "@/lib/types";

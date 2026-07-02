@@ -1,4 +1,4 @@
-import { ArchivePlayPage } from "@/app/_components/ArchivePlayPage";
+import { ArchivePlayPage } from "@/app/archive/[date]/_components/ArchivePlayPage";
 
 type PageProps = {
   params: Promise<{ date: string }>;

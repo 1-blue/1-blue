@@ -1,4 +1,4 @@
-import type { CbtDraft } from "@1-blue/core/siheomform";
+import type { CbtDraft } from "@/core";
 import {
   fromDbRows,
   generateAdminToken,
@@ -9,7 +9,7 @@ import {
   type DbCbtRow,
   type DbChoiceRow,
   type DbQuestionRow,
-} from "@1-blue/core/siheomform";
+} from "@/core";
 import { getDb } from "@/lib/db";
 
 export type CbtSummary = {
@@ -38,7 +38,11 @@ export type ManageCbtView = CbtDraft & {
 
 const fetchCbtByAdminToken = async (adminToken: string) => {
   const db = getDb();
-  const { data: cbt, error } = await db.from("cbts").select("*").eq("admin_token", adminToken).single();
+  const { data: cbt, error } = await db
+    .from("cbts")
+    .select("*")
+    .eq("admin_token", adminToken)
+    .single();
   if (error || !cbt) {
     throw new Error("cbt_not_found");
   }
@@ -195,7 +199,10 @@ export const getManageCbt = async (adminToken: string): Promise<ManageCbtView> =
   const draft = fromDbRows(cbt, questions, choices);
 
   const db = getDb();
-  const { data: attempts } = await db.from("attempts").select("score, submitted_at").eq("cbt_id", cbt.id);
+  const { data: attempts } = await db
+    .from("attempts")
+    .select("score, submitted_at")
+    .eq("cbt_id", cbt.id);
   const submitted = (attempts ?? []).filter((a) => a.submitted_at);
   const attemptCount = submitted.length;
   const scored = submitted.filter((a) => typeof a.score === "number");
@@ -243,12 +250,13 @@ export const updateCbt = async (adminToken: string, draft: CbtDraft) => {
     throw new Error(updateError.message);
   }
 
-  await db.from("choices").delete().in(
-    "question_id",
-    (
-      await db.from("questions").select("id").eq("cbt_id", cbt.id)
-    ).data?.map((q) => q.id) ?? [],
-  );
+  await db
+    .from("choices")
+    .delete()
+    .in(
+      "question_id",
+      (await db.from("questions").select("id").eq("cbt_id", cbt.id)).data?.map((q) => q.id) ?? [],
+    );
   await db.from("questions").delete().eq("cbt_id", cbt.id);
 
   await persistQuestionBatch(db, cbt.id, payload.questions);
@@ -323,7 +331,10 @@ export const listPublicCbts = async (
     questionCountByCbtId.set(row.cbt_id, (questionCountByCbtId.get(row.cbt_id) ?? 0) + 1);
   }
 
-  const attemptStatsByCbtId = new Map<string, { count: number; scoreSum: number; scoredCount: number }>();
+  const attemptStatsByCbtId = new Map<
+    string,
+    { count: number; scoreSum: number; scoredCount: number }
+  >();
   for (const row of attemptsRes.data ?? []) {
     if (!row.submitted_at) {
       continue;
@@ -347,9 +358,7 @@ export const listPublicCbts = async (
     const attemptCount = attemptStats?.count ?? 0;
     const scoredCount = attemptStats?.scoredCount ?? 0;
     const averageScore =
-      scoredCount > 0 && attemptStats
-        ? Math.round(attemptStats.scoreSum / scoredCount)
-        : null;
+      scoredCount > 0 && attemptStats ? Math.round(attemptStats.scoreSum / scoredCount) : null;
 
     return {
       publicId: cbt.public_id,
@@ -367,11 +376,11 @@ export const listPublicCbts = async (
   });
 
   if (sort === "popular") {
-    summaries.sort((a, b) => b.attemptCount - a.attemptCount || b.updatedAt.localeCompare(a.updatedAt));
-  } else if (sort === "likes") {
     summaries.sort(
-      (a, b) => b.likeCount - a.likeCount || b.updatedAt.localeCompare(a.updatedAt),
+      (a, b) => b.attemptCount - a.attemptCount || b.updatedAt.localeCompare(a.updatedAt),
     );
+  } else if (sort === "likes") {
+    summaries.sort((a, b) => b.likeCount - a.likeCount || b.updatedAt.localeCompare(a.updatedAt));
   } else {
     summaries.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   }
@@ -569,9 +578,7 @@ export const getStats = async (adminToken: string) => {
     scores.length > 0 ? Math.round(scores.reduce((s, v) => s + v, 0) / scores.length) : 0;
   const passRate =
     scores.length > 0
-      ? Math.round(
-          (scores.filter((s) => s >= cbt.passing_score).length / scores.length) * 100,
-        )
+      ? Math.round((scores.filter((s) => s >= cbt.passing_score).length / scores.length) * 100)
       : 0;
 
   const { data: allAnswers } = await db
@@ -777,7 +784,11 @@ export const createCbtComment = async (publicId: string, attemptId: string, cont
     throw new Error(error?.message ?? "comment_create_failed");
   }
 
-  const { data: attempt } = await db.from("attempts").select("nickname").eq("id", attemptId).single();
+  const { data: attempt } = await db
+    .from("attempts")
+    .select("nickname")
+    .eq("id", attemptId)
+    .single();
 
   return {
     id: data.id,

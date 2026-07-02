@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createSiteMetadata } from "@1-blue/seo";
@@ -6,7 +7,7 @@ import { ArticleJsonLd, BreadcrumbJsonLd } from "@/app/_components/SeoJsonLd";
 import { buildStoryMetaDescription } from "@/app/_config/seo-helpers";
 import { getAppSiteUrl } from "@/app/_config/site-url";
 import { getStoryDetail, getStoryForMetadata } from "@/lib/repository";
-import { StoryPageClient } from "@/app/story/[id]/StoryPageClient";
+import { StoryPageClient } from "@/app/story/[id]/_components/StoryPageClient";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -22,7 +23,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
     return createSiteMetadata({
       title: "썰을 찾을 수 없습니다",
       description: "요청한 썰을 찾을 수 없습니다.",
-      path: `/story/${id}`,
+      path: ROUTES.STORY.DETAIL.path(id),
       siteUrl: getAppSiteUrl(),
       keywords: [...SITE_KEYWORDS],
     });
@@ -37,7 +38,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
   return createSiteMetadata({
     title: story.title,
     description,
-    path: `/story/${id}`,
+    path: ROUTES.STORY.DETAIL.path(id),
     siteUrl: getAppSiteUrl(),
     keywords: [...SITE_KEYWORDS, story.category, "카톡 썰"],
   });
@@ -72,8 +73,8 @@ const StoryPage = async ({ params }: PageProps) => {
       />
       <BreadcrumbJsonLd
         items={[
-          { name: "홈", path: "/" },
-          { name: story.title, path: `/story/${id}` },
+          { name: ROUTES.HOME.label, path: ROUTES.HOME.path },
+          { name: story.title, path: ROUTES.STORY.DETAIL.path(id) },
         ]}
       />
       <StoryPageClient storyId={id} initialStory={story} />

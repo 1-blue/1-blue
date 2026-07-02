@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getKstPuzzleDate } from "@1-blue/core/daily-deduction";
+import { getKstPuzzleDate } from "@/core";
 import { generatePuzzleForDate } from "@/lib/repository";
 import { notifySlack } from "@/lib/slack";
 

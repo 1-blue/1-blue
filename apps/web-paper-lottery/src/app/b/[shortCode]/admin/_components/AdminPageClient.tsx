@@ -1,9 +1,11 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { AdminBoardView } from "@/lib/types";
-import { AdminDashboard } from "@/app/_components/AdminDashboard";
+import { AdminDashboard } from "@/app/b/[shortCode]/_components/AdminDashboard";
 import { StitchPageShell } from "@/app/_components/stitch/StitchPageShell";
 import { useBoardPoll } from "@/app/_hooks/useBoardPoll";
 
@@ -32,13 +34,12 @@ export const AdminPageClient = ({ shortCode, token, initialBoard }: AdminPageCli
   const handleClose = async () => {
     setClosing(true);
     try {
-      const res = await fetch(
-        `/api/boards/${shortCode}/close?token=${encodeURIComponent(token)}`,
-        { method: "PATCH" },
-      );
+      const res = await fetch(`/api/boards/${shortCode}/close?token=${encodeURIComponent(token)}`, {
+        method: "PATCH",
+      });
       if (res.ok) {
         await refresh();
-        router.push(`/b/${shortCode}/result`);
+        router.push(ROUTES.BOARD.RESULT.path(shortCode));
       }
     } finally {
       setClosing(false);
@@ -50,17 +51,12 @@ export const AdminPageClient = ({ shortCode, token, initialBoard }: AdminPageCli
     shortCode: current.shortCode,
     title: current.title,
     expiresAt: current.expiresAt,
-    resultUrl: `${origin}/b/${current.shortCode}/result`,
-    adminUrl: `${origin}/b/${current.shortCode}/admin?token=${token}`,
+    resultUrl: `${origin}${ROUTES.BOARD.RESULT.path(current.shortCode)}`,
+    adminUrl: `${origin}${ROUTES.BOARD.ADMIN.path(current.shortCode)}?token=${token}`,
   };
 
   return (
-    <StitchPageShell
-      headerLabel="문방구 뽑기"
-      variant="admin"
-      showSettings
-      boardMeta={boardMeta}
-    >
+    <StitchPageShell headerLabel="문방구 뽑기" variant="admin" showSettings boardMeta={boardMeta}>
       <AdminDashboard board={current} onClose={handleClose} closing={closing} />
     </StitchPageShell>
   );

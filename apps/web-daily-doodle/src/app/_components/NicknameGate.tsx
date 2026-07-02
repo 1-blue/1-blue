@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MAX_NICKNAME_LENGTH, MIN_NICKNAME_LENGTH } from "@1-blue/core/daily-doodle";
+import { MAX_NICKNAME_LENGTH, MIN_NICKNAME_LENGTH } from "@/core";
 import { Button } from "@1-blue/ui/components/button";
 import {
   Dialog,
@@ -58,7 +58,11 @@ export const NicknameGate = ({ open, onSubmit }: NicknameGateProps) => {
           {error && <p className="text-accent text-xs">{error}</p>}
         </div>
         <DialogFooter>
-          <Button type="button" className="bg-accent hover:bg-accent/90 h-11 w-full" onClick={handleSubmit}>
+          <Button
+            type="button"
+            className="bg-accent hover:bg-accent/90 h-11 w-full"
+            onClick={handleSubmit}
+          >
             시작하기
           </Button>
         </DialogFooter>

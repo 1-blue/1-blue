@@ -29,8 +29,7 @@ export const POST = async (request: Request, context: RouteContext) => {
     return NextResponse.json(comment);
   } catch (error) {
     const message = error instanceof Error ? error.message : "unknown_error";
-    const status =
-      message === "reply_depth_exceeded" || message.startsWith("invalid_") ? 400 : 404;
+    const status = message === "reply_depth_exceeded" || message.startsWith("invalid_") ? 400 : 404;
     return NextResponse.json({ error: message }, { status });
   }
 };

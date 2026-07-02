@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { countDaysBetween } from "@1-blue/core/date";
+import { countDaysBetween } from "@/core";
 
 export const useDaysBetween = () => {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);

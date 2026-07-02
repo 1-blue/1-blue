@@ -1,4 +1,4 @@
-import type { Point, StrokeInput, StrokeRecord, TextFont } from "@1-blue/core/daily-doodle";
+import type { Point, StrokeInput, StrokeRecord, TextFont } from "@/core";
 
 export type BoardView = {
   id: string;

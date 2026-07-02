@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  MAX_PLAYER_NAME_LENGTH,
-  MIN_PLAYER_NAME_LENGTH,
-} from "@1-blue/core/daily-deduction";
+import { MAX_PLAYER_NAME_LENGTH, MIN_PLAYER_NAME_LENGTH } from "@/core";
 
 const STORAGE_KEY = "deduction_player_name";
 

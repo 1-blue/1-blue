@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { addCalendarDays } from "@1-blue/core/date";
+import { addCalendarDays } from "@/core";
 import type { DateOffsetDirection } from "@/app/_types/date-calculator";
 
 export const useDateOffset = () => {

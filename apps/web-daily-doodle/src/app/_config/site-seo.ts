@@ -12,7 +12,8 @@ export const SITE_KEYWORDS = [
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "매일 언제 초기화되나요?",
-    answer: "한국 시간 기준 매일 자정(00:00)에 오늘의 캔버스가 비워지고, 전날 낙서는 아카이브에 저장됩니다.",
+    answer:
+      "한국 시간 기준 매일 자정(00:00)에 오늘의 캔버스가 비워지고, 전날 낙서는 아카이브에 저장됩니다.",
   },
   {
     question: "회원가입이 필요한가요?",
@@ -31,5 +32,3 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: `이메일(${SITE_OPERATOR.contactEmail}) 또는 카카오 오픈채팅으로 문의해 주세요. ${SITE_OPERATOR.responseNotice}됩니다.`,
   },
 ];
-
-export const SITEMAP_PATHS = ["/", "/archive", "/privacy", "/terms"] as const;

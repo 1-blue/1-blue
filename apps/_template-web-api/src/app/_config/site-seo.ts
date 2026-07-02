@@ -4,5 +4,3 @@ import type { FaqItem } from "@1-blue/seo";
 export const SITE_KEYWORDS = ["{{APP_NAME}}"] as const;
 
 export const FAQ_ITEMS: FaqItem[] = [];
-
-export const SITEMAP_PATHS = ["/", "/privacy", "/terms"] as const;

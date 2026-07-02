@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { createSiteMetadata } from "@1-blue/seo";
-import { StoryFeed } from "@/app/_components/StoryFeed";
-import { FaqJsonLd } from "@/app/_components/FaqJsonLd";
+import { StoryFeed } from "@/app/(home)/_components/StoryFeed";
+import { FaqJsonLd } from "@/app/(home)/_components/FaqJsonLd";
 import { ItemListJsonLd } from "@/app/_components/SeoJsonLd";
 import { WebSiteJsonLd } from "@/app/_components/WebSiteJsonLd";
 import { FAQ_ITEMS, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from "@/app/_config/site-seo";

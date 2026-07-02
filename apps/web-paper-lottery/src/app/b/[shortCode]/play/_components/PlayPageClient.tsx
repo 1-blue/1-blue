@@ -1,12 +1,14 @@
 "use client";
 
+import { ROUTES } from "@/app/_constants/routes";
+
 import { useState } from "react";
 import Link from "next/link";
 import type { PlayBoardView } from "@/lib/types";
 import { Button } from "@1-blue/ui/components/button";
-import { PaperBoardGrid } from "@/app/_components/PaperBoardGrid";
-import { PickConfirmSheet } from "@/app/_components/PickConfirmSheet";
-import { TearRevealDialog } from "@/app/_components/TearRevealDialog";
+import { PaperBoardGrid } from "@/app/b/[shortCode]/_components/PaperBoardGrid";
+import { PickConfirmSheet } from "@/app/b/[shortCode]/_components/PickConfirmSheet";
+import { TearRevealDialog } from "@/app/b/[shortCode]/_components/TearRevealDialog";
 import { StitchPageShell } from "@/app/_components/stitch/StitchPageShell";
 import { useBoardPoll } from "@/app/_hooks/useBoardPoll";
 
@@ -121,8 +123,11 @@ export const PlayPageClient = ({ shortCode, token, initialBoard }: PlayPageClien
       )}
 
       {current.revealed && (
-        <Button asChild className="bg-stamp hover:bg-stamp/90 mt-6 h-12 w-full font-bold text-white">
-          <Link href={`/b/${shortCode}/result`}>전체 결과 보기</Link>
+        <Button
+          asChild
+          className="bg-stamp hover:bg-stamp/90 mt-6 h-12 w-full font-bold text-white"
+        >
+          <Link href={ROUTES.BOARD.RESULT.path(shortCode)}>전체 결과 보기</Link>
         </Button>
       )}
 

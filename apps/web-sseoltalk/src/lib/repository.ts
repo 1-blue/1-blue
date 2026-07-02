@@ -11,7 +11,7 @@ import {
   type GeneratedStory,
   type ReactionType,
   type StoryCategory,
-} from "@1-blue/core/sseoltalk";
+} from "@/core";
 import { getKstDaysAgo, getKstToday } from "@/lib/kst";
 import { hashPassword, verifyPassword } from "@/lib/password";
 import { generateStoryWithGemini, validateStoryWithGemini } from "@/lib/ai/gemini";
@@ -120,14 +120,13 @@ const buildStoryListItems = async (
       .in("story_id", ids)
       .order("order_index"),
     db.from("reactions").select("story_id, type").in("story_id", ids),
-    db
-      .from("comments")
-      .select("story_id, id")
-      .in("story_id", ids)
-      .is("deleted_at", null),
+    db.from("comments").select("story_id, id").in("story_id", ids).is("deleted_at", null),
   ]);
 
-  const previewByStory = new Map<string, Array<{ sender: string; isMe: boolean; content: string }>>();
+  const previewByStory = new Map<
+    string,
+    Array<{ sender: string; isMe: boolean; content: string }>
+  >();
   for (const row of messagesRes.data ?? []) {
     const list = previewByStory.get(row.story_id) ?? [];
     if (list.length < 2) {
@@ -346,7 +345,12 @@ export const toggleReaction = async (
   type: ReactionType,
 ): Promise<{ active: boolean; reactionCounts: Record<ReactionType, number> }> => {
   const db = getDb();
-  const { data: story } = await db.from("stories").select("id").eq("id", storyId).eq("is_published", true).single();
+  const { data: story } = await db
+    .from("stories")
+    .select("id")
+    .eq("id", storyId)
+    .eq("is_published", true)
+    .single();
   if (!story) {
     throw new Error("story_not_found");
   }
@@ -384,7 +388,12 @@ export const createComment = async (
   const validated = validateCommentInput(input);
   const db = getDb();
 
-  const { data: story } = await db.from("stories").select("id").eq("id", storyId).eq("is_published", true).single();
+  const { data: story } = await db
+    .from("stories")
+    .select("id")
+    .eq("id", storyId)
+    .eq("is_published", true)
+    .single();
   if (!story) {
     throw new Error("story_not_found");
   }
@@ -497,11 +506,7 @@ export const deleteComment = async (storyId: string, commentId: string, password
   return { ok: true };
 };
 
-export const toggleCommentLike = async (
-  storyId: string,
-  commentId: string,
-  sessionId: string,
-) => {
+export const toggleCommentLike = async (storyId: string, commentId: string, sessionId: string) => {
   const db = getDb();
   const { data: comment } = await db
     .from("comments")
@@ -568,7 +573,10 @@ export const listPopularToday = async (): Promise<StoryListItem[]> => {
   }
 
   const ids = pool.map((s) => s.id);
-  const { data: reactions } = await db.from("reactions").select("story_id, type").in("story_id", ids);
+  const { data: reactions } = await db
+    .from("reactions")
+    .select("story_id, type")
+    .in("story_id", ids);
 
   const scoreMap = new Map<string, number>();
   for (const row of reactions ?? []) {
@@ -727,10 +735,7 @@ export const hasPublishedStoryOn = async (date: string): Promise<boolean> => {
   return (count ?? 0) > 0;
 };
 
-export const publishStoryById = async (
-  id: string,
-  publishedAt: string,
-): Promise<void> => {
+export const publishStoryById = async (id: string, publishedAt: string): Promise<void> => {
   const db = getDb();
   const { error } = await db
     .from("stories")

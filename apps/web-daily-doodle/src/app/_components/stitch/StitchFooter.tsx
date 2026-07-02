@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import Link from "next/link";
 import { OperatorContactLinks } from "@1-blue/ui/components/operator-contact-links";
 
@@ -10,7 +11,7 @@ export const StitchFooter = ({ showHomeLink = false }: StitchFooterProps) => {
     <footer className="bg-footer -mx-6 mt-10 px-6 py-8 text-center text-sm text-white/75">
       {showHomeLink && (
         <Link
-          href="/"
+          href={ROUTES.HOME.path}
           className="bg-accent hover:bg-accent/90 mb-4 inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
         >
           오늘 낙서하러 가기
@@ -18,10 +19,10 @@ export const StitchFooter = ({ showHomeLink = false }: StitchFooterProps) => {
       )}
       <p className="mb-3 text-xs text-white/50">© 오늘의 낙서. All rights reserved.</p>
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs">
-        <a href="/terms" className="hover:text-white underline">
+        <a href={ROUTES.TERMS.path} className="hover:text-white underline">
           이용약관
         </a>
-        <a href="/privacy" className="hover:text-white underline">
+        <a href={ROUTES.PRIVACY.path} className="hover:text-white underline">
           개인정보처리방침
         </a>
       </div>

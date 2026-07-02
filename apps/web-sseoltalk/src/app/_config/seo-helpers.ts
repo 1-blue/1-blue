@@ -1,9 +1,6 @@
-import type { StoryCategory } from "@1-blue/core/sseoltalk";
+import type { StoryCategory } from "@/core";
 
-export const CATEGORY_SEO: Record<
-  StoryCategory,
-  { description: string; keywords: string[] }
-> = {
+export const CATEGORY_SEO: Record<StoryCategory, { description: string; keywords: string[] }> = {
   가족: {
     description:
       "엄마·아빠·형제와의 은근한 반전이 있는 가족 카톡 썰 모음. 집안 대화의 웃픈 순간을 채팅처럼 읽어보세요.",

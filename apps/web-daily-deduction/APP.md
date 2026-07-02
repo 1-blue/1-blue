@@ -24,7 +24,7 @@
 - `POST /api/admin/generate-puzzles` — ADMIN_SECRET
 - `GET /api/cron/generate-ahead` — CRON_SECRET + Slack
 
-## Core (`@1-blue/core/daily-deduction`)
+## Core (`@/core`)
 
 - KST 날짜, 3일 lookahead, zod 검증, Gemini 파이프라인
 

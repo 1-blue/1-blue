@@ -30,4 +30,11 @@ jobs:
 
       - run: pnpm format:check
 
-      - run: pnpm turbo run lint typecheck test --affected
+      - name: Lint affected workspaces
+        run: pnpm turbo run lint --affected
+
+      - name: Typecheck affected workspaces
+        run: pnpm turbo run typecheck --affected
+
+      - name: Test affected workspaces
+        run: pnpm turbo run test --affected

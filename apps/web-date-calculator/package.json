@@ -13,7 +13,6 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@1-blue/core": "workspace:*",
     "@1-blue/legal": "workspace:*",
     "@1-blue/libs": "workspace:*",
     "@1-blue/seo": "workspace:*",

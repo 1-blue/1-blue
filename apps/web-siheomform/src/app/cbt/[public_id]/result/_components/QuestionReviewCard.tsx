@@ -15,8 +15,10 @@ type QuestionReviewCardProps = {
   onToggle: () => void;
 };
 
-const findChoiceText = (choices: QuestionReviewCardProps["choices"], id: string | null | undefined) =>
-  choices.find((c) => c.id === id)?.content ?? "(미응답)";
+const findChoiceText = (
+  choices: QuestionReviewCardProps["choices"],
+  id: string | null | undefined,
+) => choices.find((c) => c.id === id)?.content ?? "(미응답)";
 
 export const QuestionReviewCard = ({
   orderIndex,
@@ -38,7 +40,11 @@ export const QuestionReviewCard = ({
     <div
       className={`surface-card overflow-hidden border-l-4 ${correct ? "border-emerald-500" : "border-red-500"}`}
     >
-      <button type="button" className="flex w-full items-start justify-between gap-3 p-4 text-left" onClick={onToggle}>
+      <button
+        type="button"
+        className="flex w-full items-start justify-between gap-3 p-4 text-left"
+        onClick={onToggle}
+      >
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold">Q{orderIndex + 1}</span>

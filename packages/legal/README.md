@@ -23,10 +23,10 @@ const sections = getPrivacyPolicySections(
 
 ## Export
 
-| 경로 | 용도 |
-|------|------|
-| `@1-blue/legal` | content + operator re-export |
-| `@1-blue/legal/content` | `getPrivacyPolicySections`, `getTermsSections` |
-| `@1-blue/legal/operator` | `SITE_OPERATOR`, `createLegalPageProps` |
+| 경로                     | 용도                                           |
+| ------------------------ | ---------------------------------------------- |
+| `@1-blue/legal`          | content + operator re-export                   |
+| `@1-blue/legal/content`  | `getPrivacyPolicySections`, `getTermsSections` |
+| `@1-blue/legal/operator` | `SITE_OPERATOR`, `createLegalPageProps`        |
 
 변경 후 `pnpm --filter @1-blue/legal build`를 실행하세요.

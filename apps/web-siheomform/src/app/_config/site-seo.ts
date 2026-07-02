@@ -26,10 +26,12 @@ export const CREATE_PAGE_DESCRIPTION =
   "객관식 문제를 추가하고 시험 제목·제한 시간·합격 점수를 설정하세요. 완료 후 응시자·관리자 링크를 바로 받을 수 있습니다.";
 
 export const PRIVACY_PAGE_TITLE = "개인정보처리방침";
-export const PRIVACY_PAGE_DESCRIPTION = "시험폼 서비스의 개인정보 수집·이용·보관에 관한 안내입니다.";
+export const PRIVACY_PAGE_DESCRIPTION =
+  "시험폼 서비스의 개인정보 수집·이용·보관에 관한 안내입니다.";
 
 export const TERMS_PAGE_TITLE = "이용약관";
-export const TERMS_PAGE_DESCRIPTION = "시험폼 서비스 이용 조건과 운영자·이용자의 권리·의무를 안내합니다.";
+export const TERMS_PAGE_DESCRIPTION =
+  "시험폼 서비스 이용 조건과 운영자·이용자의 권리·의무를 안내합니다.";
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
@@ -57,7 +59,5 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: `이메일(${SITE_OPERATOR.contactEmail}) 또는 카카오 오픈채팅으로 문의해 주세요. ${SITE_OPERATOR.responseNotice}됩니다.`,
   },
 ];
-
-export const SITEMAP_PATHS = ["/", "/create", "/privacy", "/terms"] as const;
 
 export const ROBOTS_NOINDEX = { index: false, follow: false } as const;

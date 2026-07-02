@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import type { CbtDraft } from "@1-blue/core/siheomform";
-import { validateCbtDraftForSave } from "@1-blue/core/siheomform";
+import type { CbtDraft } from "@/core";
+import { validateCbtDraftForSave } from "@/core";
 import { deleteCbt, getManageCbt, updateCbt } from "@/lib/repository";
 
 type RouteContext = { params: Promise<{ admin_token: string }> };

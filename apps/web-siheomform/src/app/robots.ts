@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ROUTES } from "@/app/_constants/routes";
 import { getAppSiteUrl } from "@/app/_config/site-url";
 
 export const dynamic = "force-static";
@@ -11,12 +12,12 @@ const robots = (): MetadataRoute.Robots => {
       userAgent: "*",
       allow: "/",
       disallow: [
-        "/manage/",
+        ROUTES.MANAGE.DETAIL.path("*"),
         "/api/",
-        "/cbt/*/take",
-        "/cbt/*/result/",
-        "/create/complete",
-        "/create/questions",
+        ROUTES.CBT.DETAIL.TAKE.path("*"),
+        ROUTES.CBT.DETAIL.RESULT.path("*", "*"),
+        ROUTES.CREATE.COMPLETE.path,
+        ROUTES.CREATE.QUESTIONS.path,
       ],
     },
     sitemap: `${siteUrl}/sitemap.xml`,

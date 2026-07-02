@@ -2,13 +2,13 @@
 
 ## Stitch
 
-| 화면 | URL |
-|------|-----|
+| 화면      | URL                                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------------------- |
 | 메인 피드 | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=b096c4ca5bc34d958ab62fbc01a77620 |
-| 인기 | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=49583af918b94f3581df0c75652230b9 |
-| 카테고리 | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=323fb2fa137b484299a239d646a76e99 |
-| 상세 | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=a7f484bd738540efacb6150656519f3f |
-| 상태 | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=a884d3f7b320406eb2fb7c0dac061c23 |
+| 인기      | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=49583af918b94f3581df0c75652230b9 |
+| 카테고리  | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=323fb2fa137b484299a239d646a76e99 |
+| 상세      | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=a7f484bd738540efacb6150656519f3f |
+| 상태      | https://stitch.withgoogle.com/projects/10675356784138371733?node-id=a884d3f7b320406eb2fb7c0dac061c23 |
 
 ## 톤
 
@@ -18,14 +18,14 @@
 
 ## 한국어 라벨 치환
 
-| Stitch (EN) | UI (KO) |
-|-------------|---------|
-| SseolTalk | 썰톡 |
-| Home | 메인 |
-| Popular | 인기 |
-| Category | 카테고리 |
-| Random | 랜덤 |
-| Comments | 댓글 |
+| Stitch (EN)         | UI (KO)   |
+| ------------------- | --------- |
+| SseolTalk           | 썰톡      |
+| Home                | 메인      |
+| Popular             | 인기      |
+| Category            | 카테고리  |
+| Random              | 랜덤      |
+| Comments            | 댓글      |
 | Advertisement Space | 광고 영역 |
 
 ## Ad slots

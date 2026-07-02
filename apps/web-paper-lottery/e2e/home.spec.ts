@@ -1,7 +1,8 @@
+import { ROUTES } from "../src/app/_constants/routes";
 import { test, expect } from "@playwright/test";
 
 test("home page loads", async ({ page }) => {
-  await page.goto("/");
+  await page.goto(ROUTES.HOME.path);
   await expect(page.getByRole("heading", { name: "온라인 종이뽑기" })).toBeVisible();
   await expect(page.getByRole("button", { name: "뽑기판 만들기" })).toBeVisible();
 });
@@ -73,6 +74,6 @@ test("multi-pick flow with auto-reveal", async ({ page, request }) => {
   const finalData = (await finalAdmin.json()) as { revealed: boolean };
   expect(finalData.revealed).toBe(true);
 
-  await page.goto(`/b/${shortCode}/result`);
+  await page.goto(ROUTES.BOARD.RESULT.path(shortCode));
   await expect(page.getByText("전체 결과가 공개되었습니다")).toBeVisible();
 });

@@ -7,10 +7,15 @@ import {
   validateNickname,
   validateStrokeInput,
   type StrokeInput,
-} from "@1-blue/core/daily-doodle";
+} from "@/core";
 import { getDb } from "./db";
 import { broadcastBoardEvent } from "./realtime";
-import { mapDbStrokeToRecord, type ArchiveDetailView, type ArchiveListItem, type BoardView } from "./types";
+import {
+  mapDbStrokeToRecord,
+  type ArchiveDetailView,
+  type ArchiveListItem,
+  type BoardView,
+} from "./types";
 
 type DbBoard = {
   id: string;
@@ -176,10 +181,7 @@ export const createStroke = async (params: {
   return strokeRecord;
 };
 
-export const deleteOwnStroke = async (params: {
-  strokeId: string;
-  sessionId: string;
-}) => {
+export const deleteOwnStroke = async (params: { strokeId: string; sessionId: string }) => {
   const boardDate = getKstBoardDate();
   const db = getDb();
 

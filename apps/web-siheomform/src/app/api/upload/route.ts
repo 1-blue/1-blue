@@ -37,7 +37,10 @@ export const POST = async (request: Request) => {
   const config = getS3Config();
   if (!config) {
     return NextResponse.json(
-      { error: "S3 upload is not configured. Set APP_AWS_REGION, APP_AWS_ACCESS_KEY, APP_AWS_SECRET_ACCESS_KEY, and APP_AWS_S3_BUCKET." },
+      {
+        error:
+          "S3 upload is not configured. Set APP_AWS_REGION, APP_AWS_ACCESS_KEY, APP_AWS_SECRET_ACCESS_KEY, and APP_AWS_S3_BUCKET.",
+      },
       { status: 503 },
     );
   }
@@ -50,7 +53,10 @@ export const POST = async (request: Request) => {
   }
 
   if (!ALLOWED_TYPES.has(file.type)) {
-    return NextResponse.json({ error: "Only jpg, png, gif, and webp images are allowed" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Only jpg, png, gif, and webp images are allowed" },
+      { status: 400 },
+    );
   }
 
   if (file.size > MAX_BYTES) {

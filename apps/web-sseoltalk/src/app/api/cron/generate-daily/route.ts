@@ -1,9 +1,5 @@
 import { NextResponse } from "next/server";
-import {
-  generateStories,
-  hasPublishedStoryOn,
-  publishStoryById,
-} from "@/lib/repository";
+import { generateStories, hasPublishedStoryOn, publishStoryById } from "@/lib/repository";
 import { getKstToday } from "@/lib/kst";
 
 export const runtime = "nodejs";
@@ -20,7 +16,11 @@ export const GET = async (request: Request) => {
 
   try {
     if (await hasPublishedStoryOn(today)) {
-      return NextResponse.json({ status: "skipped", reason: "already_published_today", date: today });
+      return NextResponse.json({
+        status: "skipped",
+        reason: "already_published_today",
+        date: today,
+      });
     }
 
     const { created, discarded } = await generateStories({ count: 1 });

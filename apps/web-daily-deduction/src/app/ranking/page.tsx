@@ -1,4 +1,4 @@
-import { RankingPage } from "@/app/_components/RankingPage";
+import { RankingPage } from "@/app/ranking/_components/RankingPage";
 
 const RankingRoutePage = () => {
   return <RankingPage />;

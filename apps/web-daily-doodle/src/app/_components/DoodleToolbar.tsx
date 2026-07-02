@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Download, MousePointer2, RotateCcw, Trash2, Type } from "lucide-react";
 import {
-  DEFAULT_FONT_SIZE,
-  MAX_FONT_SIZE,
-  MIN_FONT_SIZE,
-  PEN_COLORS,
-  type TextFont,
-} from "@1-blue/core/daily-doodle";
+  ChevronDown,
+  ChevronUp,
+  Download,
+  MousePointer2,
+  RotateCcw,
+  Trash2,
+  Type,
+} from "lucide-react";
+import { DEFAULT_FONT_SIZE, MAX_FONT_SIZE, MIN_FONT_SIZE, PEN_COLORS, type TextFont } from "@/core";
 import { Button } from "@1-blue/ui/components/button";
 import { Slider } from "@1-blue/ui/components/slider";
 import { cn } from "@1-blue/ui/lib/index";
@@ -57,9 +59,7 @@ export const DoodleToolbar = ({
 
   const toolbarClass = cn(
     "pointer-events-auto flex flex-col gap-2 px-3 py-2.5",
-    isDocked
-      ? "border-ink/10 bg-paper/95 w-full border-t"
-      : "floating-toolbar mx-3 mb-3 sm:mx-4",
+    isDocked ? "border-ink/10 bg-paper/95 w-full border-t" : "floating-toolbar mx-3 mb-3 sm:mx-4",
   );
 
   const toolLabel = tool === "pen" ? "펜" : tool === "text" ? "텍스트" : "선택";
@@ -119,7 +119,9 @@ export const DoodleToolbar = ({
       <div
         className={cn(
           "flex items-center gap-1.5",
-          isDocked ? "overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" : "flex-wrap justify-center",
+          isDocked
+            ? "overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            : "flex-wrap justify-center",
         )}
       >
         {PEN_COLORS.map((penColor) => (
@@ -151,7 +153,10 @@ export const DoodleToolbar = ({
           type="button"
           size="sm"
           variant={tool === "text" ? "default" : "outline"}
-          className={cn("h-10 rounded-full px-4", tool === "text" && "bg-accent hover:bg-accent/90")}
+          className={cn(
+            "h-10 rounded-full px-4",
+            tool === "text" && "bg-accent hover:bg-accent/90",
+          )}
           onClick={() => onToolChange("text")}
         >
           <Type className="mr-1 size-4" />
@@ -161,7 +166,10 @@ export const DoodleToolbar = ({
           type="button"
           size="sm"
           variant={tool === "select" ? "default" : "outline"}
-          className={cn("h-10 rounded-full px-4", tool === "select" && "bg-accent hover:bg-accent/90")}
+          className={cn(
+            "h-10 rounded-full px-4",
+            tool === "select" && "bg-accent hover:bg-accent/90",
+          )}
           onClick={() => onToolChange("select")}
         >
           <MousePointer2 className="mr-1 size-4" />
@@ -239,7 +247,13 @@ export const DoodleToolbar = ({
           되돌리기
         </Button>
 
-        <Button type="button" size="sm" variant="ghost" className="h-10 rounded-full px-3" onClick={onExport}>
+        <Button
+          type="button"
+          size="sm"
+          variant="ghost"
+          className="h-10 rounded-full px-3"
+          onClick={onExport}
+        >
           <Download className="size-4" />
         </Button>
 

@@ -18,6 +18,14 @@ export type SitemapEntry = {
   priority?: number;
 };
 
+type SitemapMetadata = Pick<SitemapEntry, "changeFrequency" | "priority">;
+
+type RouteNode = {
+  path?: string | ((...args: never[]) => string);
+  sitemap?: SitemapMetadata;
+  [key: string]: unknown;
+};
+
 export const createSiteMetadata = ({
   title,
   description,
@@ -72,4 +80,29 @@ export const createSitemapEntries = (
     changeFrequency,
     priority: path === "/" ? 1 : priority,
   }));
+};
+
+/** ROUTES에서 공개 정적 경로만 수집한다. 동적 builder와 외부 URL은 제외한다. */
+export const createSitemapEntriesFromRoutes = (
+  siteUrl: string,
+  routes: RouteNode,
+): SitemapEntry[] => {
+  const base = siteUrl.replace(/\/$/, "");
+  const entries: SitemapEntry[] = [];
+
+  const visit = (node: unknown) => {
+    if (!node || typeof node !== "object" || Array.isArray(node)) return;
+
+    const route = node as RouteNode;
+    if (typeof route.path === "string" && route.path.startsWith("/") && route.sitemap) {
+      entries.push({ url: `${base}${route.path}`, ...route.sitemap });
+    }
+
+    for (const [key, child] of Object.entries(route)) {
+      if (key !== "sitemap") visit(child);
+    }
+  };
+
+  visit(routes);
+  return entries;
 };

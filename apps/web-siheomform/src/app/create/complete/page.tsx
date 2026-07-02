@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import CompletePageInner from "@/app/create/complete/CompletePageInner";
+import CompletePageInner from "@/app/create/complete/_components/CompletePageInner";
 
 const CompletePage = () => {
   return (

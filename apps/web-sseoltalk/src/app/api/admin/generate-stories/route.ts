@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isStoryCategory } from "@1-blue/core/sseoltalk";
+import { isStoryCategory } from "@/core";
 import { assertAdminSecret } from "@/lib/admin-auth";
 import { generateStories } from "@/lib/repository";
 
@@ -14,8 +14,7 @@ export const POST = async (request: Request) => {
 
   try {
     const body = (await request.json()) as { count?: number; category?: string };
-    const category =
-      body.category && isStoryCategory(body.category) ? body.category : undefined;
+    const category = body.category && isStoryCategory(body.category) ? body.category : undefined;
     const result = await generateStories({ count: body.count ?? 1, category });
     return NextResponse.json(result);
   } catch (error) {

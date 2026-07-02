@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { MAX_NICKNAME_LENGTH, MIN_NICKNAME_LENGTH } from "@1-blue/core/daily-doodle";
+import { MAX_NICKNAME_LENGTH, MIN_NICKNAME_LENGTH } from "@/core";
 
 const NICKNAME_KEY = "doodle_nickname";
 const SESSION_KEY = "doodle_session_id";

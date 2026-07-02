@@ -1,12 +1,9 @@
+import { ROUTES } from "@/app/_constants/routes";
 import Link from "next/link";
-import type { StoryCategory } from "@1-blue/core/sseoltalk";
-import type { ReactionType } from "@1-blue/core/sseoltalk";
+import type { StoryCategory } from "@/core";
+import type { ReactionType } from "@/core";
 import { formatRelativeTime } from "@/lib/kst";
-import {
-  CATEGORY_CLASS,
-  CATEGORY_EMOJIS,
-  formatCount,
-} from "@/app/_config/ui";
+import { CATEGORY_CLASS, CATEGORY_EMOJIS, formatCount } from "@/app/_config/ui";
 import { ReactionCounts } from "@/app/_components/ReactionCounts";
 import { cn } from "@1-blue/ui/lib/index";
 
@@ -40,7 +37,7 @@ export const StoryCard = ({
 
   return (
     <Link
-      href={`/story/${id}`}
+      href={ROUTES.STORY.DETAIL.path(id)}
       className={cn(
         "surface-card group mb-3 block overflow-hidden transition hover:border-primary/30",
         catClass,
@@ -48,7 +45,12 @@ export const StoryCard = ({
       )}
       style={{ borderLeftWidth: 3, borderLeftColor: `var(--cat-color)` }}
     >
-      <div className={cn("category-badge mb-2 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium", catClass)}>
+      <div
+        className={cn(
+          "category-badge mb-2 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium",
+          catClass,
+        )}
+      >
         {CATEGORY_EMOJIS[cat]} {category}
       </div>
 
@@ -56,10 +58,17 @@ export const StoryCard = ({
         {rank !== undefined && <span className="rank-badge shrink-0">{rank}</span>}
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <h2 className={cn("line-clamp-2 font-bold leading-snug", compact ? "text-[15px]" : "text-lg")}>
+            <h2
+              className={cn(
+                "line-clamp-2 font-bold leading-snug",
+                compact ? "text-[15px]" : "text-lg",
+              )}
+            >
               {title}
             </h2>
-            <span className="text-text-tertiary shrink-0 text-[11px]">{formatRelativeTime(createdAt)}</span>
+            <span className="text-text-tertiary shrink-0 text-[11px]">
+              {formatRelativeTime(createdAt)}
+            </span>
           </div>
 
           <div className="bg-chat-bg/60 mt-3 space-y-2 rounded-xl p-3">
@@ -72,7 +81,9 @@ export const StoryCard = ({
                 )}
               >
                 {!msg.isMe && (
-                  <span className="text-text-secondary mb-0.5 block text-[10px] font-medium">{msg.sender}</span>
+                  <span className="text-text-secondary mb-0.5 block text-[10px] font-medium">
+                    {msg.sender}
+                  </span>
                 )}
                 {msg.content}
               </div>

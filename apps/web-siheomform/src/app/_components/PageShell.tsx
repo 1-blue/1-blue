@@ -1,3 +1,4 @@
+import { ROUTES } from "@/app/_constants/routes";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { PageFooter } from "@/app/_components/PageFooter";
@@ -33,7 +34,7 @@ export const PageShell = ({
           showHomeLink={showHomeLink}
           extra={
             showHomeLink ? undefined : (
-              <Link href="/create" className="text-white/75 underline hover:text-white">
+              <Link href={ROUTES.CREATE.path} className="text-white/75 underline hover:text-white">
                 시험 만들기
               </Link>
             )
